@@ -13,10 +13,10 @@ add_action('wp_enqueue_scripts', 'enqueue_stylesheets');
 function enqueue_javascripts() {
 
   wp_deregister_script('jquery');
-	wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, '3.3.1');
-	wp_enqueue_script('jquery');
+  wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, '3.3.1');
+  wp_enqueue_script('jquery');
 
-  wp_register_script("application", javascript_url("application"), '', false, true);
+  wp_register_script("application", javascript_url("application"), '', '1.0', true);
   wp_enqueue_script("application");
 
   wp_register_script('font-awesome', 'https://use.fontawesome.com/releases/v5.0.6/js/all.js', false, '5.0.6');
