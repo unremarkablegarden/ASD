@@ -1,0 +1,10 @@
+.news
+  section.section.news-grid
+    .container
+      .columns
+        //- .column.is-10.is-offset-1.intro(data-aos="fade-up")
+        //-   - render_partial('partials/page-blurb')
+          
+      - render_partial('partials/news/news-filter')
+      hr
+      div(data-aos="fade-up", data-aos-delay=400)= render_partial('partials/news/news-grid')

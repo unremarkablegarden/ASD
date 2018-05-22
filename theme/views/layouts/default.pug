@@ -1,0 +1,19 @@
+doctype html
+html
+  head= render_partial("partials/head")
+
+  - echo "<body "
+  - body_class()
+  - echo ">"
+
+  - render_partial("partials/header")
+
+  #main
+    - render_partial("partials/hero")
+    .page-wrapper= wl_yield()
+
+  - render_partial("partials/footer")
+
+  //- - render_partial("partials/debug")
+  
+  - wp_footer()

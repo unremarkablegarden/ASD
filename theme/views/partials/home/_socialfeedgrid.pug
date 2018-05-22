@@ -1,0 +1,11 @@
+section.section.socialgrid(data-aos="fade-up", data-aos-offset="200").is-hidden-mobile
+  .container
+    .columns
+      .column.is-8.is-offset-2.is-6-widescreen.is-offset-3-widescreen
+        .logo1.column.is-4.linkedin-item.logo
+          .inner
+            - social('linkedin', 'white')
+        .logo2.column.is-4.linkedin-item.logo
+          .inner
+            - social('xing', 'white')
+        - echo do_shortcode(get_the_content_by_id(1395))

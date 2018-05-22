@@ -1,0 +1,36 @@
+- the_post()
+
+- $hero = get_field('hero_image')
+if $hero
+ .hero
+   .inner
+     img(src=$hero)
+
+section.section.job(data-aos="fade-up")
+  .container
+    .columns.is-multiline.header
+      .column.is-10.is-offset-1
+        header
+          h2= the_title()
+      .column.is-4.is-offset-4
+        ul.meta
+          - $s = get_field('standort')
+          - if (is_array($s))
+            each $st in $s
+              li= $st
+          - else
+            li= $s
+          
+          - $label = acf_option_label('career_level', get_the_ID())
+          li= $label
+          //- li= the_field('job_cat')
+          
+    .columns
+      .column.is-8.is-offset-2.description
+        - the_content()
+    .columns.bewerben
+      .column.is-6.is-offset-3
+        //- h3 Nunc ac malesuada nulla, in mollis eros.
+        .button(href=!the_field('job_tool_url'))= t('Jetzt Bewerben', 'Apply')
+      
+- render_partial('partials/newsletter')        

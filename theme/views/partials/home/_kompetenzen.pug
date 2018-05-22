@@ -1,0 +1,8 @@
+section.section.kompetenzen
+  .container
+    .columns
+      .column.is-8.is-offset-2.intro(data-aos="fade-up")
+        //- p!= get_field('intro', 4)
+        p!= get_field('intro')
+        a(href=l('/kompetenzen'), data-aos="flip-right").mt1em.button= t('Alle Kompetenzen', 'All expertises')
+      

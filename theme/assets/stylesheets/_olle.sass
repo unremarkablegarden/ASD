@@ -1,0 +1,504 @@
+textarea, input, button, *:focus
+  outline: none
+
+::selection
+  color: black
+  background: $darkblue
+
+.section
+  background: white
+  position: relative
+
+content p
+  font-family: 'Cardo', Times, serif
+
+h1
+  font-size: 1.5em
+  margin-bottom: 1em
+
+.filter-toggles
+  display: flex
+  justify-content: center
+  align-items: center
+  .column, .toggle-wrapper
+    text-align: center
+  .toggle-wrapper
+    margin: 0 0.75em
+  .is-selected
+    font-weight: bold
+
+.filter-toggle
+  border-radius: 0
+  padding: 5px
+  text-transform: capitalize !important
+  span
+    border-bottom: 1px $black solid !important
+  .icon
+    border: 0 !important
+  &.is-active
+    font-weight: bold
+    background: transparent !important
+  &:hover
+    border-bottom: 1px black solid
+    background: white !important
+
+.is-semihidden
+  opacity: 0.2
+
+[data-filtertoggletarget]
+  transition: all 300ms ease-in-out
+  max-height: 300px
+.is-filtered
+  transform-origin: top
+  transform: rotate3d(-1,0,0,90deg)
+  opacity: 0
+  max-height: 0
+  padding: 0 !important
+
+.anwalte-grid
+  padding-top: 3rem !important
+
+.icon
+  transition: all 300ms ease-in-out
+.rotate90
+  transform: rotate(90deg)
+
+section.filter-section
+  // background: #F9F9F9
+  padding: 2em 1em
+
+.filter
+  font-size: 1em
+  .filter-item
+    text-align: left
+    // text-align: center
+    font-size: 1rem
+    padding: 10px
+    &:hover
+      font-weight: bold
+      cursor: pointer
+  .is-active span
+    padding-bottom: 3px
+    border-bottom: 1px #444 solid
+  .filter-item[data-filtertype="multi"].is-active
+    &:after
+      content: '✕'
+      font-weight: bold
+      font-family: sans-serif
+      font-size: 0.75em
+      position: relative
+      left: 0.9em
+
+// .lawyer.filler
+//   display: none
+.boxcolour1
+  background: $box1 !important
+.boxcolour2
+  background: $box2 !important
+
++mobile
+  .button.filter-toggle
+    padding: 0 !important
+  // .filter-toggles .column
+
+
+
+.page-wrapper
+  background: white
+  position: relative
+
+.hero
+  position: fixed
+  background: $verylightgrey
+  width: 100vw
+  +heroResponsiveHeights
+  .inner
+    overflow: hidden
+    height: 100%
+    // background-position: top center
+    background-position: center center
+    background-size: cover
+
+.hero-spacer
+  +heroResponsiveHeights
+  overflow: auto !important
+
+
+.anwalte-template-default
+
+  .hero
+    +heroResponsiveHeightsAnwalt
+    .inner
+      +heroResponsiveHeightsAnwalt
+      // display: none
+      // filter: blur(10px)
+      background-position-x: 0
+      background-position-y: 25%
+      transition: all 300ms
+  .hero-spacer
+    +heroResponsiveHeightsAnwalt
+
+.hero img.facecrop
+  display: none
+
+
+
+.hero-spacer.has-breaking
+  .breaking-spacer
+    height: 60px !important
+
+#site-header
+  position: fixed
+  top: 0
+  z-index: 99
+  width: 100vw
+  box-shadow: 0 0 50px rgba(0,0,0,0.05)
+  .top-bar
+    background: white
+
+
+footer
+  .social-links
+    background-color: $darkblue
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 140px
+    .social-icon
+      padding: 0 20px
+    img
+      width: 58px
+      height: 58px
+      transition: all 150ms ease
+      transform: scale(1) translate3d(0, 0, 0)
+      &:hover
+        transform: scale(1.2) translate3d(0, 0, 0)
+
+  .end
+    background-color: $darkerblue
+    color: $textondarkerblue
+    height: 50px
+    overflow: hidden
+    width: 100vw
+    padding: 0.75em 0 0 0
+    .buttons
+      opacity: 0.5
+      transition: all 150ms ease
+      &:hover
+        opacity: 1
+      .button
+        padding: 0 1em !important
+        height: 2em !important
+        font-weight: bold
+    a
+      color: $textondarkerblue
+      transition: all 150ms ease
+      &:hover
+        color: white
+    .is-selected
+      background: white !important
+      color: $darkerblue !important
+    .spacer
+      padding: 0 3px 0 8px
+    +mobile
+      padding: 1.5rem
+      text-align: center
+      .has-text-right
+        text-align: center !important
+
+
+xmp
+  font-size: 14px
+  line-height: 1.2em
+  background: black
+  color: rgb(250,170,50)
+  padding: 10px 20px
+  display: inline-block
+
+.browsersync.button
+  display: none
+  background: white
+  position: fixed
+  top: 20px
+  left: 50%
+  z-index: 999
+  color: #aaa
+  line-height: 1em
+  padding: 6px 8px !important
+  height: 25px !important
+  border-radius: 7px !important
+  font-size: 0.7em
+  &.is-success
+    background: white
+    &:hover
+      color: black
+
+.not-found
+  // background: black
+  font-weight: bold
+  // color: rgba(30,255,70, 0.1)
+  padding: 8em 0
+  h2, h3
+    // animation: pulse 2s infinite ease-in-out
+    // text-shadow: 0 0 1px rgba(0,255,0,0.3)
+  h2
+    font-size: 4em
+  h3
+    font-size: 3em
+
+li a.is-active
+  font-weight: bold
+
+.next-prev
+  +heroResponsiveHeights
+  position: absolute
+  width: calc(80vw)
+  left: 10vw
+  z-index: 7
+  transform: translateY(-100%)
+  display: flex
+  justify-content: space-between
+  align-items: center
+  .icon
+    height: 21px
+    width: auto
+  .text
+    font-weight: bold
+    color: white
+    padding: 0 1em
+    opacity: 0
+    transition: all 200ms
+    text-shadow: 0 0 1px black
+    font-size: 1.2rem
+  a
+    display: flex
+    align-items: center
+    &:hover
+      .text
+        opacity: 1
+
+.standort .next-prev
+  width: 90%
+  left: 5%
+
+.city-hero
+  +heroResponsiveHeights
+  .bg
+    height: 100%
+    background-size: cover
+    background-position: center
+    +mobile
+      height: 160px!important
+
+.scrollToTop
+  transition: all 200ms ease
+  position: fixed
+  bottom: 2rem
+  right: 2rem
+  z-index: 9
+  opacity: 1
+  transform: scale(1)
+  img
+    height: 50px
+    width: 50px
+  &:hover
+    transform: scale(1.1)
+    cursor: pointer
+  &:active
+    transform: scale(1)
+    cursor: pointer
+  &.hidden
+    transition: all 300ms
+    opacity: 0
+    transform: scale(0)
+
+
+$jobbg: #F5F5F5
++tablet-only
+  .job-item
+    &:nth-child(2n-1)
+      background: $jobbg
++desktop
+  .job-item
+    &:nth-child(8n+1),
+    &:nth-child(8n+3),
+    &:nth-child(8n+6),
+    &:nth-child(8n)
+      background: $jobbg
+
+// .bricks
+  // width: 100%
+  // max-width: 100vw
+
+.bricks
+  .brick
+    width: 100%
+    +tablet
+      width: calc(50% - 16px)
+    +desktop
+      width: calc(33.33333% - 18px)
+
+#search
+  height: 100vh
+  width: 100vw
+  z-index: 11
+  background: white
+  position: fixed
+  top: 0
+  left: 0
+  transform: translateY(-100vh)
+  transition: all 300ms ease-in-out
+  display: flex
+  justify-content: center
+  align-items: center
+  &.is-active
+    transform: translateY(0vh)
+  .search-form
+    border: 0 !important
+.search-form
+  height: 85px
+  label
+    font-size: 22px
+    padding-right: 50px
+    padding-top: 8px
+    width: 200px
+    float: left
+  input[type="text"]
+    float: right
+    font-size: 26px
+    line-height: 1.3em
+    color: #9B9B9B
+    font-family: 'Cardo', serif
+    font-style: italic
+    background: #F3F3F3
+    border-radius: 16px
+    // min-width: 30vw
+    width: calc(100% - 222px)
+    padding: 10px 0 5px 30px
+    border: 0
+  #searchsubmit
+    padding: 0 !important
+    border: 0 !important
+    // transform: translate(-2.2em, 0.1em)
+    position: relative
+    left: -2.2em
+    top: 0.1em
+    float: right
+
+
+// SEARCH PAGE
+.page-id-1330
+  .standorte-overview, footer
+    display: none !important
+  .search-results
+    padding: 3em 0
+  .search-form
+    margin-bottom: 2em
+    border-bottom: 2px #00000030 solid
+
+.search-results
+  h2
+    margin-bottom: 16px
+    font-size: 20px
+    color: #aaa
+  .excerpt
+    font-size: 16px
+    font-family: 'Cardo', sans-serif
+    line-height: 1.5em
+    // lines x line height
+    max-height: 3em
+    overflow: hidden
+    margin-bottom: 1em
+  .result
+    margin-bottom: 3em
+  a
+    color: $black
+  .link
+    font-size: 18px
+    padding-bottom: 3px
+    border-bottom: 1px #979797 solid
+
+.mt1em
+  margin-top: 1em !important
+.mt2em
+  margin-top: 2em !important
+
+.mb1em
+  margin-bottom: 1em !important
+.mb2em
+  margin-bottom: 2em !important
+
+
+
+.responsive-info
+  // display: none !important
+  z-index: 999
+  position: fixed
+  top: 0
+  left: 0
+  background: black
+  color: white
+  padding: 3px 10px
+  font-size: 12px
+  .info
+    display: none
+  +mobile
+    .mobile
+      display: block
+  +tablet-only
+    .tablet
+      display: block
+  +desktop-only
+    .desktop
+      display: block
+  +widescreen-only
+    .widescreen
+      display: block
+  +fullhd
+    .fullhd
+      display: block
+
+
+.news .filter
+  .button:hover, .button:active
+    font-weight: normal !important
+    background: white !important
+
+.has-black-links a
+  color: $black !important
+
+a.black
+  color: $black
+
+.v-center
+  display: flex
+  justify-content: center
+  align-items: center
+  .item
+    margin: 0em 0.5em 0
+  .item:first
+    text-align: right
+  .item:second
+    text-align: left
+
+.post-type-archive-publikationen .lang-switcher
+  display: none !important
+
+#buorgul
+  display: none !important
+
+// .container
+//   background: rgba(255,0,0,0.1)
+// .column
+//   background: rgba(255,255,0,0.1)
+
+// @keyframes pulse
+//   0%
+//     text-shadow: 0 0 3px rgba(0,255,0,0.3)
+//     -webkit-text-stroke: 1px rgba(0,255,0,0)
+//   50%
+//     text-shadow: 0 0 30px rgba(0,255,0,1)
+//     -webkit-text-stroke: 1px rgba(0,255,0,1)
+//   100%
+//     text-shadow: 0 0 3px rgba(0,255,0,0.3)
+//     -webkit-text-stroke: 1px rgba(0,255,0,0)

@@ -1,0 +1,84 @@
+- $events = get_posts_by_custom_field('news', 'category', 'veranstaltungen', 1)  
+- $event = $events[0]
+- $month = str_split(substr(get_field('datum', $event->ID), 4), 2)[0];
+- $day = str_split(substr(get_field('datum', $event->ID), 4), 2)[1];
+- $date = $day . '/' . $month
+- $jobs = fetch_custom_posts('jobs', 3)
+
+.karriere
+  section.section.intro
+    .container
+      .columns
+        .column.is-8
+          h2(data-aos="fade-right", data-aos-delay="0").title= the_field('title')
+          h3(data-aos="fade-right", data-aos-delay="50")= the_field('sub_title')
+          p
+            .inner(data-aos="fade-right", data-aos-delay="100", data-aos-anchor=".intro")= the_content()
+          a(data-aos="fade-right", data-aos-delay="200", data-aos-anchor=".intro").button.is-outlined(href='mailto:karriere@asd-law.com')= t('Jetzt Bewerben', 'Apply now')
+          
+        aside.column.is-3.is-offset-1.sidebar(data-aos="fade-left")
+          if ($events)
+            section.upcoming-events
+              h3= t('Veranstaltungen', 'Events')
+              .boxy
+                h4.event-title!= $event->post_title
+                .date= $date
+                .location!= get_field('location', $event->ID)
+                a.button.is-outlined(href='/news/?veranstaltungen=1')= t('Alle Events', 'All events')    
+          //- section.feed
+            h3 Social-Web
+            .boxy
+              .meta Vor 22 Stunden
+              span #iamASD vehicula dolor arcu, sit amet blandit dolor mollis nec. Donec viverra eleifend lacus, 
+              a https://goo.gl/GXHP4a
+              img.social-icon(src=gfx('/social/facebook.svg'))
+          section.social
+            div.folgen= t('Folgen Sie uns auf: ', 'Follow us on: ')
+            - social('linkedin')
+            //- - social('facebook')
+            - social('xing')
+          section.awards
+  
+  section.section.karriere-articles.news-grid
+    //- .bricks
+    .container
+      .columns.is-multiline.shuffler
+        - $filtersData = '["nada"]'
+        - $id = get_trans_page_ID(9)
+        - $children = fetch_page_children('karriere', $id)
+        - $i = 1
+        while ($children->have_posts())
+          - $i = $i+1
+          - $d = 100 * $i
+          - $children->the_post()
+          //- .brick.item(data-aos="fade-up", data-aos-delay=$d, data-aos-anchor=".bricks")
+          .column.is-4.item.shuffler-item(data-groups=$filtersData, data-aos="fade-up", data-aos-delay=$d, data-aos-anchor=".karriere-articles")
+            .cat= the_field('category')
+            .inner
+              .image.is-paddingless
+                .aspect-outer
+                  - bg_boxy(get_the_ID())
+              .text
+                .subtitle= the_field('subtitle')
+                h3.title= the_title()
+                a.button.is-outlined(href!=get_the_permalink())= t('Zum Artikel', 'To article')
+
+
+  section.section.job-offers
+    .container
+      h2.section-title= t('Aktuelle Stellenangebote', 'Recent job offers')
+      .columns
+        each $job in $jobs
+          //- - $standort_url = '/jobs/?s=' . get_field('standort', $job->ID)
+          .column.is-4.job
+            a.job-link-icon(href!=get_the_permalink($job->ID))
+            - $cities = get_field('standort', $job->ID)
+            each $city in $cities
+              span.city= $city
+              //- a.city(href=$standort_url)!= get_field('standort', $job->ID)
+            a.job-title(href!=get_the_permalink($job->ID))!= $job->post_title
+      a.button.is-outlined(href=l('/jobs'))= t('Alle Stellenangebote', 'All job offers')
+          
+  - render_partial('partials/newsletter')
+
+  - render_partial('partials/ansprechpartner')

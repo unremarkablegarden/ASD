@@ -1,0 +1,42 @@
+.anwalte(data-aos="fade-up", data-aos-delay="0")
+  //- section.section
+  //-   .container
+  //-     .columns
+  //-       .column.is-10.is-offset-1.intro.has-text-centered
+  //-         - render_partial('partials/page-blurb')
+
+- render_partial('partials/anwalte/filter')
+
+.anwalte(data-aos="fade-up", data-aos-delay="400")
+  section.section.anwalte-grid.is-paddingless
+    .columns.is-multiline.is-gapless.shuffler.is-mobile
+      - $anwalte = fetch_custom_posts('anwalte', -1, 'rand', 'object')
+      - $n = 0
+      - $c = 0
+      - $last = 0
+      - while ($anwalte->have_posts())
+        - $n = $n+1
+        - $delay = $n * 100
+        - $anwalte->the_post()
+        - $filters = slugs_string_from_ID_array(get_field('kompetenzen')).get_field('standort')
+        - $filtersArray = explode(' ', $filters)
+        - $filtersData = '['.implode(', ', array_map('add_double_quotes', $filtersArray)).']'
+
+        .lawyer.column.content(data-groups=$filtersData).shuffler-item.is-6-mobile.is-one-third-tablet.is-3-desktop.is-3-widescreen.is-is-one-fifth-fullhd.aspect-outer
+          - $thumb = get_field('hero_image', get_the_ID())
+          - $thumb = $thumb['sizes']['retina-thumb']
+          - $style = 'background-image: url('.$thumb.')'
+          .bg-boxy(style=$style).aspect-inner          
+            .lawyer-details
+              h3.title= the_title()
+              - if (get_field('status', get_the_ID()) !== 'none')
+                .cat= acf_option_label('status', get_the_ID())
+              a(href=get_the_permalink()).button.is-inverted.is-outlined= t('Zeigen', 'Show')
+          
+
+        - $last = $last + 1
+        - if (rand(0,6) == ($n%7) && $last !== 3)
+          - $c = $c+1
+          - $last = 0
+          .lawyer.filler.column.shuffler-item(class=($c%2) ? 'boxcolour1' : 'boxcolour2', data-groups='["filler"]').is-6-mobile.is-one-third-tablet.is-3-desktop.is-3-widescreen.is-is-one-fifth-fullhd.aspect-outer
+            .aspect-inner &nbsp;

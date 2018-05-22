@@ -1,0 +1,84 @@
+- the_post()
+.anwalte-single
+  section.section.anwalt
+    .container     
+      .columns.reverse-column-order-on-mobile
+        .column.is-4.details(data-aos="fade-up")
+          h4= t('Kontakt', 'Contact')
+          p.address!= get_field_by_slug('address', get_field('standort'), 'standorte')
+          p.phone-mail
+            if (get_field('telefon'))
+              img.contact-icon(src=gfx('/icons/phone_icon.svg')) 
+              span= the_field('telefon')
+              br
+            if (get_field('email'))
+              img.contact-icon(src=gfx('/icons/mail_icon.svg')) 
+              - $email = get_field('email')
+              - $mailLink = 'mailto:'.$email
+              a(href=$mailLink)= $email
+            
+          ul.kompetenzen
+            each $ID in get_field(kompetenzen)
+              li
+                a(href=get_the_permalink($ID))!= get_the_title($ID)   
+            
+        .column.is-7.is-offset-1.main-info(data-aos="fade-up", data-aos-delay="400")
+            header
+              - if (get_field('status', get_the_ID()) !== 'none')
+                .status!= acf_option_label('status', get_the_ID())
+              h1.name= the_title()
+              //- .city= the_field('standort')
+              .city= acf_option_label('standort', get_the_ID())
+            .vita= the_field('text1')
+      .columns
+        .column.is-4(data-aos="fade-up", data-aos-offset="200")
+          - $img2 = get_field("image2")
+          img.second-pic(src!=$img2[sizes][square])
+        .column.is-7.is-offset-1.weitere-info(data-aos="fade-left")
+          h3= t('Weitere Informationen', 'More information')
+          .info= the_field('text2')
+        
+  - $pubs = get_publikationen2(get_the_ID(), 4)
+  if $pubs
+    section.section.publikationen(data-aos="fade-up")
+      .container
+        h2.title.has-text-centered
+          span= t('Publikationen', 'Publications')
+        .columns.is-variable.is-8.is-centered
+          - $i = 0
+          each $pub in $pubs
+            - $i = $i+1
+            - $col = 'color'.($i%3)
+            - if ($i < 4)
+              - $pid = $pub->ID
+              .column.is-4.publikation
+                .year(class=$col)= get_field('year', $pid)
+                .category= acf_option_label('category', $pid)
+                h4= $pub->post_title
+                .excerpt
+                  div= get_field('info', $pid)
+                  - $authors = get_field('author', $pid)
+                  .authors
+                    each $author in $authors
+                      span= get_the_title($author)
+                      span ,&nbsp;
+                - $url = get_field('url', $pid)
+                if $url
+                  //- .shade
+                  a.button.is-outlined.download(target='_blank' href=$url)= t('Zum Download', 'Link')
+        
+        - $total = count($pubs)
+        if $total > 3
+          .columns
+            .column.has-text-centered
+              - if (ICL_LANGUAGE_CODE == 'en')
+                - $all = '/publikationen/?lang=en&autor='.get_the_ID()
+              - else
+                - $all = '/publikationen/?autor='.get_the_ID()
+              a.button.is-outlined.all-pubs(href=$all)= t('Alle Publikationen', 'All publications')
+
+
+- $map = get_field_by_slug('map', get_field('standort'), 'standorte')  
+if $map
+  .map.snazzy!= $map
+  

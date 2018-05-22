@@ -1,0 +1,19 @@
+- $gallery = get_post_gallery_images(589)
+
+section.section.awards
+  .container
+    .columns
+      .column.is-8.is-offset-2
+        .columns.is-multiline.award-items.closed.is-mobile
+          - $i = 0
+          each $img in $gallery
+            - $i = $i+1
+            - $d = $i * 100
+            - if ($i > 4)
+              - $class = 'hide'
+            .column(class=$class).is-3(data-aos="fade-up", data-aos-delay=$d, data-aos-anchor="section.awards").award.aspect-outer.square
+              - $style = 'background-image: url('.$img.')'
+              .bg_boxy(style=$style).aspect-inner.bg-contain
+        - $text1 = t('Alle Awards', 'All awards')
+        - $text2 = t('Schließen', 'Close')
+        a(href='#open', data-text1=$text1, data-text2=$text2).button.is-outlined.toggle.open= $text1

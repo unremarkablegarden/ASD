@@ -1,0 +1,24 @@
+- $lang = ICL_LANGUAGE_CODE
+
+.search-form
+  form#searchform.searchform(role='search', method='get', action='/search/')
+    .inner
+      - $searched = $_GET['search']
+      - if ($lang == 'en')
+        - $label = 'Search for'
+        - $v = 'Search'
+      - else
+        - $label = 'Suche nach'
+        - $v = 'Suche'
+      
+      - if ($searched)
+        - if ($lang == 'en')
+          - $label = 'Results for'
+        - else
+          - $label = 'Ergebnisse für'
+      label.screen-reader-text(for='s')= $label
+      button.button#searchsubmit(type='submit', value=$v)
+        i.fas.fa-search
+      input#s(type='text', value=$searched, name='search')
+        
+  input(type='hidden', name='lang', value=$lang)

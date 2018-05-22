@@ -1,0 +1,61 @@
+- $date_arr = str_split(get_field('datum'), 2);
+- $date = $date_arr[3] . '.' . $date_arr[2] . '.' . $date_arr[0] . $date_arr[1]
+
+section.section.news-single
+  .container
+    .columns
+      if (get_field('kompetenzen'))
+        .column.is-3.details
+          ul.kompetenzen
+            - $ks = ''
+            each $ID in get_field('kompetenzen')
+              - $post = get_post($ID)
+              - $slug = $post->post_name
+              - $ks .= $slug.','
+              li
+                a(href=get_the_permalink($ID))!= get_the_title($ID)   
+          - $link = '/anwalte/?k='.$ks
+          a(href=$link).button.is-outlined= t('Zu den Anwälten', 'Lawyers')
+      else
+        .column.is-2
+          
+      
+      .column.is-7.is-offset-1.main-info
+        header
+          h1.name= the_title()
+          - if(get_field('category') == 'veranstaltungen')
+            .datum
+              .fa-icon 
+                i.far.fa-clock
+              span!= $date
+            .location
+              .fa-icon
+                i.fas.fa-map-pin
+              span= the_field('location')
+          - else
+            .date= the_date()
+        .info 
+          //- - do_shortcode('[rt_reading_time]')
+          - the_content()
+          - $mailto = 'mailto:?body=URL%20zum%20teilen:%20'. get_the_permalink()
+          .bottom-buttons
+            if(get_field('file'))
+              a(target= _blank href!=get_field('file'))
+                img.download-icon(src=gfx('/icons/download_icon.svg'))
+                div Download PDF
+            a(href= $mailto)
+              img.download-icon(src=gfx('/icons/share_icon.svg'))
+              div= t('Weiterleiten', 'Share')
+
+- if(get_field('category') == 'news')
+  section.section.alle-news
+    .container
+        a.button(href='/news')= t('Alle News', 'All news')
+
+
+- if (get_field('registration_form')[0] == 'true')
+  section.section.golf-form
+    h3= t('Anmeldung', 'Registration')
+    .container
+      .columns
+        - Ninja_Forms()->display( 2 )

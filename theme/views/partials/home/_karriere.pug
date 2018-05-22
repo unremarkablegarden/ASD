@@ -1,0 +1,21 @@
+- $page_data = get_page(4)
+- $page = get_page(icl_object_id($page_data->ID, 'page', true, ICL_LANGUAGE_CODE))
+- $transID = $page->ID
+- $title = get_field('karriere_titel', $transID)
+- $text = get_field('karriere_text', $transID)
+
+section.section.karriere
+  .container
+    .columns
+      .column.is-10.is-offset-1
+        .columns.intro
+          .column.is-4.is-offset-1(data-aos="fade-right", data-aos-delay="200")
+            - $img = get_field('karriere_foto', 4)[sizes]['square']
+            img.image(src!=$img)
+          .column.is-6(data-aos="fade-left", data-aos-delay="400")
+            h3!= $title
+            .social-icons
+              - social('linkedin')
+              - social('xing')
+            p!= $text
+            a.button(href=l('/karriere'))= t('Karriere', 'Career')

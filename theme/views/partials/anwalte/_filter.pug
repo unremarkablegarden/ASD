@@ -1,0 +1,39 @@
+mixin icon
+  span.icon.is-small
+    i.fas.fa-xs.fa-chevron-down(aria-hidden='true')
+
+section.section(data-aos="fade-up", data-aos-delay="200")
+  .container
+      .filter-toggles
+        - if (ICL_LANGUAGE_CODE == 'en') 
+          - $en = true
+        - else
+          - $en = false
+          
+        each $menu in ['alle', 'standorte', 'kompetenzen']
+          .toggle-wrapper
+            - if ($menu == 'alle')
+              button(data-filtertoggle=$menu).is-white.button.filter-toggle.is-active.all
+                span= t('alle', 'all')
+            - else
+              button(data-filtertoggle=$menu).is-white.button.filter-toggle
+                - if($en && $menu == 'standorte')
+                  - $menu = 'locations'
+                - if($en && $menu == 'kompetenzen')
+                  - $menu = 'experise'
+                span= $menu
+                +icon
+
+
+each $filtersection in ['standorte', 'kompetenzen']
+  section.filter-section(data-filtertoggletarget=$filtersection).is-filtered
+    .container
+      .columns.filter(role='menu').is-multiline.is-mobile
+        - $posts = fetch_custom_posts($filtersection)
+        - if ($filtersection == 'standorte')
+          - $filtertype = 'single'
+        - else
+          - $filtertype = 'multi'
+        each $post in $posts
+          .column.is-one-third.filter-item(data-filter=$post->post_name, data-filtertype=$filtertype)
+            span!= get_the_title($post->ID)

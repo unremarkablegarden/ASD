@@ -1,0 +1,22 @@
+- the_post()
+section.section.standard-page.publikationen
+  .container
+    .columns
+      .column.is-8.publikation
+        - $pid = get_the_ID()
+        post
+          header
+            .year= get_field('year', $pid)
+            .category= acf_option_label('category', $pid)
+            h3!= get_the_title()
+            h2!= get_field('info', $pid)
+          content
+            - $authors = get_field('author', $pid)
+            .authors
+              each $author in $authors
+                span= get_the_title($author)
+                span ,&nbsp;
+            - $url = get_field('url', $pid)
+            if $url
+              .shade
+                a.button.is-outlined(target='_blank' href=$url)= t('Zum Download', 'Download')

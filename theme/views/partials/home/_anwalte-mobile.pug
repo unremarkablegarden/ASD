@@ -1,0 +1,69 @@
+- $anwalte = fetch_custom_posts('anwalte', 4, 'rand')
+- $anwalte_count = wp_count_posts('anwalte')
+- $anwalte_count = $anwalte_count->publish
+- $anwalte_count = $anwalte_count / 2 // Divide in half because it counts English translations too
+- $anwalte_count = (int)$anwalte_count // avoid halves
+- $standorte_count = wp_count_posts('standorte')
+- $standorte_count = $standorte_count->publish
+- $standorte_count = $standorte_count / 2 // Divide in half because it counts English translations too
+- $standorte_count = (int)$standorte_count
+//- // - $anwalte = fetch_custom_posts('anwalte', 4, 'rand')
+//- // - $anwalte_count = wp_count_posts('anwalte')
+//- // - $anwalte_count = $anwalte_count->publish
+//- // - $standorte_count = wp_count_posts('standorte')
+//- // - $standorte_count = $standorte_count->publish
+
+//- desktop
+//- .is-hidden-mobile
+
+//- mobile
+//- .is-hidden-tablet
+
+//- .glide
+//-   .glide__track(data-glide-el="track")
+//-     ul.glide__slides
+//-       li.glide__slide
+
+section.anwalte.is-hidden-tablet
+  #anwalte-glide.glide
+    .glide__track(data-glide-el="track")
+      ul.glide__slides
+        - $i = -1
+        - $n = 0
+        - while ($i < 6)
+          - $i = $i+1
+          - $delay = 100 * $i
+          - if ($i == 1)
+            .aspect-outer.glide__slide
+              .boxy.is-lightgrey.aspect-inner
+                .inner
+                  p
+                    span !{$anwalte_count}&nbsp;
+                    span= t('Anwälte', 'Lawyers')
+                  a.button(href=l('/anwalte'))= t('Alle zeigen', 'Show all')
+          - else if ($i == 3)
+            .glide__slide.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).aspect-outer
+              .boxy.is-turquoise.aspect-inner
+                .inner
+                  p
+                    span !{$standorte_count} 
+                    span= t('Standorte', 'Locations')
+                  a(href=l('/standorte')).button.is-outlined.is-inverted= t('Alle Standorte', 'All locations')
+          - else if ($i == 5)
+            .glide__slide.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).aspect-outer
+              .boxy.is-darkblue.aspect-inner
+                .inner
+                  p= t('Werden Sie Teil einer Familie', 'Become part of a family')
+                  a(href=l('/karriere')).button= t('Karriere', 'Career')
+          - else
+            .glide__slide.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).lawyer.aspect-outer
+              - $id = $anwalte[$n]->ID
+              - $n = $n + 1
+              - $thumb = get_field('hero_image', $id)
+              - $thumb = $thumb['sizes']['retina-thumb']
+              - $style = 'background-image: url('.$thumb.')'
+              .bg-boxy(style=$style).aspect-inner
+                .lawyer-details
+                  h3.title= get_the_title($id)
+                  .cat= acf_option_label('status', $id)
+                  a(href=get_the_permalink($id)).button.is-inverted.is-outlined= t('Zeigen', 'Show')

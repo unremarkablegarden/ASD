@@ -1,0 +1,61 @@
+section.section(data-aos="fade-up", data-aos-delay="200")
+  .container
+    .filter-toggles.is-mobile
+      //- each $menu in [ 'standorte', 'levels', 'cats']
+      each $menu in [ 'standorte', 'levels']
+        .toggle-wrapper
+          button.is-white.button.filter-toggle(data-filtertoggle=$menu)
+            - if ($menu == 'standorte')
+              span= t('Standorte', 'Locations')
+            - else if ($menu == 'levels')
+              span= t('Karriere-Level', 'Career level')
+            - else if ($menu == 'cats')
+              span= t('Kategorie', 'Category')
+            - else
+              span= $menu
+            span.icon.is-small
+              i.fas.fa-xs.fa-chevron-down(aria-hidden='true')
+
+
+//- make arrays the custom fields available in all job listings
+- $jobs = fetch_custom_posts('jobs', -1, 'date', 'object')
+- $standorte = array()
+- $levels = array()
+- $levelsLabels = array()
+- $cats = array()
+
+while $jobs->have_posts()
+  - $jobs->the_post()
+  - $standort = get_field('standort')
+  - $level = get_field('career_level')
+  - $levelLabel = acf_option_label('career_level', get_the_ID())
+  - $cat = get_field('job_cat')
+  
+  each $stand in $standort
+    - if (!in_array($stand, $standorte))
+      - $standorte[] = $stand
+  - if (!in_array($levelLabel, $levelsLabels))
+    - $levelsLabels[] = $levelLabel
+  - if (!in_array($cat, $cats))
+    - $cats[] = $cat
+
+//- put all of them in one master array that can be referred to below
+- sort($standorte)
+- sort($levelsLabels)
+- sort($cats)
+- $all = array()
+- $all['standorte'] = $standorte
+- $all['levels'] = $levelsLabels
+- $all['cats'] = $cats
+
+each $section in ['standorte', 'levels', 'cats']
+  - $options = $all[$section]
+  section.filter-section(data-filtertoggletarget=$section).is-filtered
+    .container
+      .filter(role='menu').columns.is-multiline.is-mobile
+        each $option in $options
+          //- - $sluggy = md5($option)
+          - $sluggy = $option
+          //- - dump($option)
+          .column.is-one-third.filter-item(data-filter=$sluggy, data-filtertype='single')
+            span!= $option

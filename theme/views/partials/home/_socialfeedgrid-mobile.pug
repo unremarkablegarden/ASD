@@ -1,0 +1,13 @@
+section.socialgrid.is-hidden-tablet
+  #socialgrid-glide.glide
+    .glide__track(data-glide-el="track")
+      ul.glide__slides
+        .logo1.linkedin-item.logo.glide__slide
+          .inner
+            - social('linkedin', 'white')
+        
+        - echo do_shortcode(get_the_content_by_id(1395))
+        
+        .logo2.linkedin-item.logo.glide__slide
+          .inner
+            - social('xing', 'white')

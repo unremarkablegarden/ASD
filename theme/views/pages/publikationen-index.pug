@@ -1,0 +1,51 @@
+- $id = $_GET['autor']
+
+section.section.publikationen.all
+  .container
+    h1.section-title
+      span
+        span= t('Alle Publikationen von', 'All publications by')
+        |  
+        a(href=get_the_permalink($id))= get_the_title($id)
+        |  
+        span= t('auf einen Blick', 'at a glance')
+
+    - $pubs = get_publikationen2($id)
+    - $currentYear = 0
+    - $nClose = 0
+    - $i = 0
+
+    each $pub in $pubs
+      - $i = $i+1
+      - $pid = $pub->ID
+      - $year = get_field('year', $pid)
+      - $d = 100*$i
+      
+      - if ($year !== $currentYear)
+        - $currentYear = $year
+        if ($nClose > 0)
+          - echo '</div>'
+        - $nClose = $nClose + 1
+        - $col = 'color'.($i%3)
+        .year(data-aos="fade-up", data-aos-delay=$d, data-aos-anchor="h1", class=$col)= $year
+        - echo '<div class="columns is-multiline pub-grid">'
+        - $i = $i + 1
+      
+      .column.is-4.publikation(data-aos="fade-up", data-aos-delay=$d, data-aos-anchor="h1").has-text-centered
+        .category= acf_option_label('category', $pid)
+        .inner
+          h3= $pub->post_title
+          hr
+          .info
+            div= get_field('info', $pid)
+            - $authors = get_field('author', $pid)
+            .authors
+              each $author in $authors
+                span= get_the_title($author)
+                span ,&nbsp;
+          - $url = get_field('url', $pid)
+          if $url
+            a.button.is-outlined.download(target='_blank' href=$url)= t('Zum Download', 'Download')
+    
+    if $nClose > 0
+      - echo '</div>'

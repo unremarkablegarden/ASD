@@ -1,0 +1,18 @@
+- $page_data = get_page(3011)
+- $page = get_page(icl_object_id($page_data->ID, 'page', true, ICL_LANGUAGE_CODE))
+- $text = $page->post_content
+- $title = $page->post_title
+
+section.section.job-alert.newsletter(data-aos="fade-up", data-aos-delay=200)
+  //- (data-aos="fade-up")
+  .container
+    h2.section-title= $title
+    .columns
+      .column.is-8.is-offset-2.boxy	
+        h3!= $text
+        a(href=l('/newsletter')).black
+          .v-center
+            .item
+              img.bell-icon(src=gfx('icons/bell_icon.svg'))
+            .item
+              span= t('Jetzt anmelden', 'Subscribe')

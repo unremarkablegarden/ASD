@@ -1,0 +1,302 @@
+header.site-header
+  padding: 20px
+  background: $primary
+  color: white
+  a
+    color: white
+  h1
+    font-size: 25px
+    margin-bottom: 5px
+    font-weight: bold
+  h2
+    font-size: 15px
+  .breaking
+    background: $darkgrey
+
+.top-bar
+  +headerInnerPadding
+  +headerHeights
+  line-height: 0
+  display: flex
+  align-items: center
+  justify-content: space-between
+  position: relative
+  z-index: 120
+  transform: translate3d(0,0,0)
+  img
+    transform: translate3d(0,0,0)
+  .controls
+    a
+      margin-right: .5em
+      font-size: 0
+      line-height: 0
+      img
+        height: 40px !important
+        width: 40px !important
+        margin-right: 1rem
+        +desktop
+          height: 50px !important
+          width: 50px !important
+        +widescreen
+          height: 58px !important
+          width: 58px !important
+        +fullhd
+          height: 58px !important
+          width: 58px !important
+        transition: all 90ms ease
+        transform: scale(1) translateZ(0)
+        &:hover
+          transform: scale(1.1  ) translateZ(0)
+        &:active
+          transform: scale(1)
+  .logo
+    &:hover
+      opacity: .8
+    img
+      font-size: 0
+      line-height: 0
+      $hw: 3.233275862
+      height: 35px
+      width: (35 * $hw)px
+      +desktop
+        height: 50px !important
+        width: (50 * $hw)px !important
+      +widescreen
+        height: 58px !important
+        width: (58 * $hw)px !important
+      +fullhd
+        height: 58px !important
+        width: (58 * $hw)px !important
+
+// NEWS BAR ------------------------------------
+#main-menu.is-active .news-bar
+  transform: translateY(0)
+  transition: all 300ms ease-in
+  bottom: 0
+.news-bar
+  +mobile
+    display: none !important
+  z-index: 999
+  +headerInnerPadding
+  transition: all 300ms ease-out
+  height: 70px
+  background: $darkgrey
+  color: #fff
+  display: flex
+  align-items: center
+  justify-content: space-between
+  font-size: .9rem
+  overflow: hidden
+  position: fixed
+  bottom: -50px
+  width: 100vw
+  transform: translateY(100%)
+  .button
+    color: #fff
+    padding: 1em!important
+  .news-item
+    display: flex
+    align-items: center
+    justify-content: space-around
+    color: #fff
+    margin-right: 1em
+    a
+      color: #fff
+      line-height: 1.2
+      &:hover
+        color: $lightgrey
+    .date
+      display: flex
+      justify-content: center
+      align-items: center
+      border-radius: 50%
+      background: $turquoise
+      color: #fff
+      font-size: .9em
+      line-height: 0
+      width: 4em
+      height: 4em
+      padding: 2em
+      margin-right: 1em
+    &:nth-child(1)
+      +mobile
+        display: none
+      .date
+        background: $darkblue
+    &:nth-child(2)
+      +mobile
+        display: none
+      .date
+        background: $red
+
+
+// BREAKING TICKER ------------------------------------
+
+.breaking
+  +headerInnerPadding
+  transition: all 200ms ease-in-out
+  height: 0
+  background: $darkgrey
+  color: #fff
+  display: flex
+  align-items: center
+  justify-content: space-between
+  font-size: .9rem
+  overflow: hidden
+  .left, .right
+    display: flex
+    align-items: center
+  .ticker-content
+    +mobile
+      overflow-y: hidden
+      height: 3em
+      font-size: .9em
+      margin-right: .5em
+      max-width: 40vw
+    a
+      color: #fff
+    &:hover
+      color: $lightgrey
+  .meta
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 2em
+    color: #fff
+    font-size: .85em
+    line-height: 0
+    width: 4em
+    height: 4em
+    background: $darkblue
+    margin-right: 1em
+    +mobile
+      font-size: .75em
+  .controls
+    display: flex
+    align-items: center
+    .button
+      color: #fff
+      border-color: #fff
+      background: none
+      font-size: .9em
+      padding: 1em !important
+      margin-right: 2.5em
+      +mobile
+        margin-right: 1em
+        font-size: .8em
+        padding: .5em
+      &:hover
+        background: #ffffff40
+    .close-button
+      font-size: 0
+      line-height: 0
+      right: 1rem
+      img
+        height: 18px
+        width: 18px
+        transition: all 90ms ease
+        transform: scale(1) translateZ(0)
+        &:hover
+          transform: scale(1.1  ) translateZ(0)
+        &:active
+          transform: scale(1  ) translateZ(0)
+
+#main-menu
+  height: 0
+  position: relative
+  z-index: 110
+  &.is-active
+    .menu-main-menu-container, .menu-main-menu-english-container
+      transition: all 444ms ease-in-out
+      top: 0
+      opacity: 1
+      // display: flex
+  .menu-main-menu-container, .menu-main-menu-english-container
+    z-index: 110
+    transition: all 444ms ease-in-out
+    display: flex
+    // display: none
+    position: fixed
+    opacity: 1
+    top: 100vh
+    left: 0
+    background: white
+    width: 100vw
+    height: 100vh
+    justify-content: center
+    align-items: center
+    text-align: center
+    a
+      color: black
+      font-size: 3rem
+      display: inline-block
+      +mobile
+        font-size: 2.5rem
+      &:hover
+        font-weight: 400
+      &:after
+        display: block
+        content: attr(title)
+        font-weight: bold
+        height: 0
+        overflow: hidden
+        visibility: hidden
+    .menu-item
+      font-weight: 200
+    .current-menu-item
+      font-weight: 400
+
+.menu-toggle
+  display: inline-block
+  .close
+    display: none
+  &.is-active
+    .close
+      display: inline-block
+    .open
+      display: none
+
+
+.header-spacer
+  +headerHeights
+  padding-top: 0
+  transition: all 200ms ease-out
+
+header.has-breaking .breaking
+  height: 60px !important
+
+header.has-breaking + .header-spacer
+  transition: all 200ms ease-in
+  +headerHeightsBreaking
+  // box-sizing: content-box
+  // padding-top: 60px
+
+#language_prompt
+  position: fixed
+  z-index: 9999
+  .modal-background
+    background: #74818B70
+  .modal-card-body
+    text-align: center
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5)
+    border-radius: 10px
+    .inner
+      padding: 50px 0
+      p
+        padding: 30px 0 20px
+        font-size: 1.2em
+        +desktop
+          font-size: 1em
+      .button
+        padding-left: 0
+        padding-right: 0
+        width: 45%
+        +desktop
+          width: 30%
+  .close
+    float: right
+    cursor: pointer
+
++mobile
+  .back-button
+    display: none !important

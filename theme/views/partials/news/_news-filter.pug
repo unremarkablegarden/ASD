@@ -1,0 +1,7 @@
+.filter-section(data-filtertoggletarget='news').filter(data-aos="fade-left", data-aos-delay=200)
+  .is-white.button.filter-all.is-active
+    span= t('Alle', 'All')
+  .is-white.button.filter-item(data-filter='news', data-filtertype='single')
+    span News
+  .is-white.button.filter-item(data-filter='veranstaltungen', data-filtertype='single')
+    span= t('Veranstaltungen', 'Events')

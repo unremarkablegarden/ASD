@@ -1,0 +1,86 @@
+- $gallery = get_field('gallery')
+
+.standort
+  section.section
+    .container
+      .columns
+        //- desktop
+        .column.is-8.is-offset-2(data-aos="fade-up")
+          //- desktop
+          ul.cities.is-hidden-mobile= list_custom_posts('standorte')
+          
+          //- mobile
+          .columns.is-mobile.is-multiline.is-hidden-tablet.has-black-links
+            - $cities = fetch_custom_posts('standorte', -1, 'menu_order', 'array')
+            each $city in $cities
+              - $id = $city->ID
+              .column.is-4
+                a(href=get_permalink($id))!= get_the_title($id)
+          
+  
+  - if($gallery)
+    .slider
+      .container
+        .columns(data-aos="fade-left", data-aos-delay=100)
+          .column.is-12
+            - render_partial('partials/acf-gallery')
+  - else
+    .slider
+      .container
+        .columns.city-hero(data-aos="fade-left", data-aos-delay=100)
+          .column.is-12
+            - $bg = get_the_post_thumbnail_url(get_the_ID(), 'hero')
+            - $style = 'background-image: url('.$bg.')'
+            .bg(style=$style)
+        //- .columns
+        //-   .column.is-12
+        //-     - getPrevNext(get_the_ID(), 'standorte')
+
+  section.section
+    .container
+      .columns
+        .column.is-10.is-offset-1
+          .columns.reverse-column-order-on-mobile
+            .column.is-4.contact(data-aos="fade-right", data-aos-delay=400, data-aos-offset=-100)
+              .address
+                div ARNECKE SIBETH DABELSTEIN
+                p!= get_field('address')
+
+              p.details
+                if (get_field('phone'))
+                  img.contact-icon(src=gfx('/icons/phone_icon.svg')) 
+                  span= the_field('phone')
+                  br
+                if (get_field('email'))
+                  img.contact-icon(src=gfx('/icons/mail_icon.svg')) 
+                  - $email = get_field('email')
+                  - $mailLink = 'mailto:'.$email
+                  a(href=$mailLink)= $email
+
+            .column.is-7.is-offset-1(data-aos="fade-left", data-aos-delay=400, data-aos-offset=-100)
+              .content!= get_the_filtered_content()
+              .mtb2em
+                - global $post
+                
+                - if (ICL_LANGUAGE_CODE == 'en')
+                  - $link = '/anwalte/?lang=en&standort='.$post->post_name
+                - else
+                  - $link = '/anwalte/?standort='.$post->post_name
+                a.button(href=$link)
+                  - if (ICL_LANGUAGE_CODE == 'en')
+                    span The
+                    span &nbsp;
+                    span= the_title()
+                    span &nbsp;
+                    span team
+                    
+                  - else
+                    span Das Team  
+                    span &nbsp;
+                    span= the_title()  
+                  
+            
+- $map = get_field('map')
+if $map
+  .map.snazzy!= $map
+  

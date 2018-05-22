@@ -1,0 +1,14 @@
+- if (hasBreaking())
+	- $breaking = latestBreaking()
+	- $date = get_the_time('d.m.', $breaking->ID)
+	.breaking
+		.left
+			.meta!= $date
+			.ticker-content 
+				span.is-hidden-mobile BREAKING || 
+				a(href!= get_the_permalink($breaking->ID))!= $breaking->post_title
+		.right	
+			.controls
+				a(href='/news').button.is-outlined= t('Alle News', 'All News')
+				a(href='#close').close.close-button
+					img(src=gfx('icons/close_icon.svg'))

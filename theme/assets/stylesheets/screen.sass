@@ -1,0 +1,1262 @@
+@import "~aos/dist/aos.css"
+@import "~@glidejs/glide/dist/css/glide.core.min.css"
+@import "~@glidejs/glide/dist/css/glide.theme.min.css"
+
+@import "bulma"
+@import "wp"
+@import "post"
+@import "fonts"
+@import "mixins"
+@import "site_header"
+@import "marijn"
+@import "olle"
+
+
+.is-darkblue
+  background: $darkblue
+.is-red
+  background: $red
+.is-turquoise
+  background: $turquoise
+.is-lightgrey
+  background: $lightgrey
+.is-darkgrey
+  background: $darkgrey
+.is-verylightgrey
+  background: $verylightgrey
+
+html, body
+  width: 100vw!important
+  overflow-x: hidden
+
+html
+  background: $darkerblue
+body
+  background: white
+  font-family: 'Din', sans-serif
+  line-height: 1.5
+  font-size: 16px
+  color: $darkgrey
+  +tablet
+    font-size: 18px !important
+  +desktop
+    font-size: 18px !important
+  +widescreen
+    font-size: 18px !important
+  +fullhd
+    font-size: 20px !important
+
+p
+  margin-bottom: 1em
+
+h2
+  font-size: 1.5rem
+  line-height: 1.3
+
+h2.section-title
+  font-size: 1.5rem
+  margin-bottom: 1em
+  font-weight: normal
+  text-align: center
+
+.title
+  color: $darkgrey
+
+.button
+  padding: .5em 2.75em!important
+  border-radius: 0!important
+  height: 2.75em!important
+  background: none
+  border: 1px solid $lightgrey
+  &:hover
+    background: $verylightgrey
+    color: $darkgrey
+  &:focus
+    outline: 0
+.shade
+  display: block
+  margin-top: -3rem
+  height: 3em
+  background: linear-gradient(180deg,hsla(0,0%,100%,0) 0,#fff)
+  width: 100%
+  position: relative
+  z-index: 4
+  margin-bottom: 1em
+
+// --- SHARED PARTIALS & HELPERS
+
+.reverse-column-order-on-mobile
+  +mobile
+    display: flex
+    flex-direction: column-reverse
+
+section.awards
+  padding: 2em 0 5em
+
+.awards
+  text-align: center
+  transition: all 300ms ease-in-out
+  .award-items
+    overflow: hidden
+    height: auto
+  .closed
+    transition: all 300ms ease-in-out
+    overflow: hidden
+  .button
+    margin-top: 2em
+    transition: all 200ms
+    transform: scale(1)
+  .award
+    transition: all 300ms ease
+    transform: translateY(0)
+    opacity: 1
+    position: relative
+    &.hide
+      position: absolute
+      transform: translateY(2em)
+      opacity: 0
+
+
+#gallery-1 img
+  border: none!important
+
+// Newsletter / Job Alert
+.job-alert, .newsletter
+  margin: 4em 0
+  text-align: center
+  background: $verylightgrey
+  .bell-icon
+    width: 2em
+    // margin: 0 auto 0
+    transition: all 150ms ease-in-out
+    &:hover
+      transform: rotate(-15deg) scale(1.15)
+  .boxy
+    // border: 8px solid #f0f0f0
+    padding: 2em
+    border-radius: .5em
+
+// BG Boxy Helper
+.bg-boxy
+  // height: 200px
+  background-size: cover
+  background-position: center center
+  background-color: #f7f7f7
+
+$gridpad: 0.5em
+.aspect-outer
+  position: relative
+  &:before
+    display: block
+    content: ""
+    width: 100%
+    padding-top: (3 / 5) * 100%
+  > .aspect-inner
+    position: absolute
+    top: $gridpad
+    right: $gridpad
+    bottom: $gridpad
+    left: $gridpad
+
+.aspect-outer.square
+  &:before
+    padding-top: (1 / 1) * 100%
+
+.is-paddingless
+  .aspect-outer
+    > .aspect-inner
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+
+.linkedin-item
+  position: relative
+  &:before
+    display: block
+    content: ""
+    width: 100%
+    padding-top: (1 / 1) * 100%
+  > div
+    position: absolute
+    top: $gridpad
+    right: $gridpad
+    bottom: $gridpad
+    left: $gridpad
+    background: $verylightgrey
+    padding: 0.75em 1.5em
+    overflow-x: hidden
+    overflow-y: auto
+
+
+.bg-contain
+  background-size: contain
+  background-position: center center
+  background-repeat: no-repeat
+
+// FORM FIXES
+
+.nf-form-content hr.ninja-forms-field
+  margin: 2em 0 3em
+
+.nf-form-fields-required
+  color: $lightgrey
+  font-size: .8em
+
+.nf-form-content button, .nf-form-content input[type=button], .nf-form-content input[type=submit]
+  padding: .5em 2.75em
+  height: 2.75em
+  background: none!important
+  border: 1px solid #c3c3c3!important
+  color: #363636!important
+  cursor: pointer
+  justify-content: center
+  text-align: center
+  white-space: nowrap
+  box-shadow: none
+  display: inline-flex
+  font-size: 1rem
+  line-height: 1.5
+  position: relative
+  vertical-align: top
+  &:hover
+    background: $verylightgrey!important
+
+// Filter
+.filter
+  text-align: center
+  a
+    text-align: center
+    color: $darkgrey
+    &.active
+      border-bottom: 1px solid $darkgrey
+      font-weight: bold
+    &:hover
+      border-bottom: 1px solid $darkgrey
+
+// News Grid
+section.news
+  margin-top: 4em
+  .container
+    margin-top: 2em
+    margin-bottom: 2em
+.news-grid
+  .item
+    .cat
+      text-transform: capitalize
+      text-align: center
+      color: $darkblue
+      font-weight: 200
+      font-size: .8em
+      margin-bottom: .5em
+    .inner
+      text-align: center
+      border: 1px solid $darkblue
+      padding: 0
+      .thumb
+        margin: 0
+        padding: 0
+      .text
+        padding: 1em
+        .subtitle
+          font-size: .8em
+          font-weight: 200
+          color: $red
+          // margin: 1em 0 3em
+          margin: 0.1em 0 2.3em
+        h3.title
+          font-weight: normal
+          font-size: 1em
+          color: $darkblue
+
+// Ansprechpartner
+.ansprechpartner
+  line-height: 1.7
+  h2
+    padding-bottom: .5em
+    border-bottom: 1px solid $darkgrey
+    margin-bottom: 1.5em
+    font-size: 1.2em
+    display: inline-block
+  .details
+    .phone, .email
+      color: $turquoise
+    a
+      color: $turquoise
+      &:hover
+        color: $lightgrey
+    .zusatz
+      margin-bottom: 1em
+    h3
+      color: $darkblue
+      margin-bottom: 1.5em
+    .phone-icon, .email-icon
+      margin-right: .6em
+      width: 1em
+
+
+// Standorte overview
+.standorte-overview
+  background: $verylightgrey
+  text-align: center
+  font-size: .8em
+  .city
+    color: $darkblue
+  .plus
+    color: $darkblue
+    height: 30px
+    width: 30px
+    border-radius: 20px
+    display: flex
+    align-items: center
+    justify-content: center
+    background: #fff
+    margin: 1em auto 0
+    &:hover
+      color: $lightgrey
+  .address
+    +desktop
+      height: 80px
+
+.standorte-template-default, .anwalte-template-default
+  .map
+    height: 420px
+    overflow: hidden
+    background-color: #f5f5f5
+  .standorte-overview
+    display: none !important
+
+.standard-page
+  h3
+    color: $darkgrey
+    font-size: 1.5em
+    margin-bottom: 1em
+  content
+    font-family: 'Cardo'
+  li
+    list-style-type: circle
+    line-height: 2
+
+footer
+  .impressum-link, .datenschutz-link
+    font-size: .8em
+    line-height: 1.9
+  .lang-switcher
+    text-transform: uppercase
+    .button:hover
+      color: $darkblue
+  .end
+    +mobile
+      padding: .85em
+
+.searchform
+  +mobile
+    padding: 0
+    height: auto
+    label
+      display: none
+    input
+      width: 90%!important
+
+// HOMEPAGE ------------------------------
+
+.home
+  .kompetenzen
+    .intro
+      text-align: center
+      a
+        font-weight: bold
+        color: $darkgrey
+        &:hover
+          border-bottom: 1px solid $lightgrey
+      a.button
+        font-weight: normal
+      p
+        font-size: 1.5em
+        margin-bottom: 1em
+
+  .anwalte
+    .boxy
+      // height: 100%
+      color: #fff
+      display: flex
+      align-items: center
+      text-align: center
+      padding: 2em
+      p
+        margin-bottom: 1em
+      .inner
+        width: 100%
+      .button
+        border-color: #fff
+        color: #fff
+        background: none
+        &:hover
+          background: #ffffff40
+
+  .news
+    background: #f7f7f7
+    h2
+      font-weight: normal
+      border-bottom: 5px solid #fff
+      display: inline-block
+      margin-bottom: 1.5em
+      padding-bottom: .1em
+    .news-item
+      margin-bottom: 1em
+      .date
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 2em
+        background: $turquoise
+        color: #fff
+        font-size: .9em
+        line-height: 0
+        width: 4em
+        height: 4em
+        margin: 0 auto 1em auto
+      .category
+        color: $darkblue
+        font-weight: 200
+        text-transform: capitalize
+        font-size: .85em
+        margin-bottom: .5em
+      .news-title
+        color: $darkblue
+        font-size: 1rem
+        display: inherit
+        line-height: 1.3
+        &:hover
+          opacity: 0.5
+          text-decoration: underline
+      &:nth-child(1)
+        .date
+          background: $darkblue
+      &:nth-child(2)
+        .date
+          background: $red
+  +mobile
+    .button
+      margin-top: 2em
+    .news-title
+      margin-right: 3em
+      margin-left: 3em
+
+  .karriere
+    margin-top: 4em
+    +mobile
+      text-align: center
+    .intro
+      margin-bottom: 4rem
+      .button
+        margin-top: 0.5em
+      h3
+        font-weight: normal
+        font-size: 1.5em
+        margin-bottom: 0.5em
+      .social-icons
+        display: flex
+        margin-bottom: 0.6em
+        +mobile
+          justify-content: center
+        .social-icon
+          margin-right: .5rem
+        img
+          width: 30px
+          height: 30px
+
+  .socialgrid
+    font-size: .9rem
+    // color: $lightgrey
+    .social-icon
+      width: 100%
+      height: 100%
+      display: flex
+      justify-content: center
+      align-items: center
+    .url
+      color: $darkblue
+    .logo
+      img
+        width: 100px
+        height: 100px
+        display: block !important
+    .logo1
+      +mobile
+        margin-left: 27vw
+      .inner
+        background: #0077B5
+    .logo2 .inner
+      background: #086567
+
+
+#socialgrid-glide .linkedin-item, .linkedin-feed
+  h2, h3, img
+    display: none !important
+.linkedin-item > *
+  display: none
+.linkedin-item > div
+  display: block
+#socialgrid-glide .linkedin-item > div
+  height: 100%
+
+#socialgrid-glide .linkedin-item.logo img
+  display: block !important
+
+// KOMPETENZEN OVERVIEW ---------------------------
+
+.kompetenzen-list
+  a.kompetenz-link
+    color: $darkgrey
+    border-bottom: 1px solid $lightgrey
+    +mobile
+      font-size: 1.3em
+    &:hover
+      color: $lightgrey
+      border: none
+
+.kompetenzen-intro
+  font-family: 'Cardo', serif
+  margin-bottom: 4em
+
+
+// KOMPETENZEN SINGLE -----------------
+.hero-nav
+  display: flex
+  justify-content: space-between
+  width: 100%
+  position: absolute
+  top: 60px
+  height: 250px
+  .next, .prev
+    display: flex
+    flex-direction: column
+    text-align: center
+
+
+.kompetenzen-single
+  padding-bottom: 5em
+  ul
+    list-style: circle
+    margin-left: 2em
+  .details
+    +mobile
+      margin-bottom: 2em
+    .awards
+      text-align: left !important
+      img
+        width: auto
+        height: 150px
+        margin-right: .5em
+      p
+        text-align: left
+    .subpages
+      margin: 1em 0 2em
+      li
+        list-style-type: none
+        line-height: 1.5em
+        margin-bottom: 1em
+        span
+          border-bottom: 1px solid $darkgrey
+        a
+          color: $darkgrey
+          &:hover
+            font-weight: bold
+    .contact
+      color: $darkblue
+      .address
+        font-weight: 200
+      .phone-mail
+        margin-bottom: 2em
+        color: $turquoise
+        a
+          color: $turquoise
+          &:hover
+            color: $darkblue
+        .contact-icon
+          width: 1em
+          margin-right: .5em
+  .main-info
+    header
+      margin-bottom: 1em
+      .parent
+        font-weight: 200
+        color: $turquoise
+        text-transform: uppercase
+      .name
+        margin-bottom: 1.2
+        margin-bottom: 0
+    .info
+      font-family: 'Cardo', serif
+      a
+        color: $turquoise
+        &:hover
+          color: $verylightgrey
+      ul
+        margin-bottom: 2em
+        li
+          line-height: 2
+
+.contact-icon
+  transform: translateY(4px)
+
+  .awards
+    text-align: left
+    img
+      height: auto
+      width: 90px
+      margin-right: 18px
+
+// KARRIERE ---------------------------
+
+.karriere
+  +mobile
+    .shuffler-item
+      width: 100%
+  .sidebar
+    +mobile
+      margin-top: 4em
+    text-align: center
+    .social
+      .social-icon
+        display: inline
+    .folgen
+      font-size: .7em
+      color: $darkblue
+      margin-bottom: .3em
+    .upcoming-events
+      margin-top: -1em
+      margin-bottom: 1em
+      h3
+        font-size: 0.8em
+        margin-bottom: 0.5em
+        color: $darkblue
+      .boxy
+        border: 1px solid $darkblue
+        padding: 1em
+        h4.event-title
+          font-size: .9em
+          color: $darkblue
+          line-height: 1.3
+          margin-bottom: .8em
+        .date
+          font-size: 2.8em
+          line-height: 1
+          color: $red
+          margin-bottom: .4rem
+        .location
+          font-size: .8em
+          color: $darkgrey
+          line-height: 1.3
+          margin-bottom: .8em
+    .feed
+      margin-bottom: 1em
+      .boxy
+        font-size: .75rem
+        padding: 1.5em
+        background: $verylightgrey
+        color: $darkgrey
+        text-align: left
+        .meta
+          color: $darkerblue
+        a
+          color: $darkblue
+          display: inherit
+        .social-icon
+          width: 25px
+          float: right
+          margin-bottom: -25px
+
+  .intro
+    h2
+      font-weight: 400
+      line-height: 1.2
+    h3
+      font-size: 1.3em
+      line-height: 1.3
+      font-weight: 200
+    p
+      font-family: 'Cardo', Times, serif
+  .job-offers
+    background: $verylightgrey
+    text-align: center
+    .button:hover
+      background: #ffffff40
+    .job
+      a:hover
+        color: $darkgrey
+      .job-link-icon
+        height: 60px
+        width: 100%
+        display: block
+        background-image:  url(../gfx/icons/jobs_lightblue.svg)
+        background-size: contain
+        background-repeat: no-repeat
+        background-position: center
+        margin-bottom: 1rem
+        &:hover
+          opacity: .8
+      .city
+        font-size: .8em
+        font-weight: 200
+        color: $darkblue
+        display: block
+      .job-title
+        font-size: .9em
+        color: $darkblue
+      .button
+        margin-top: 2em
+        &:hover
+          background: #ffffff40
+      &:nth-child(2)
+        .job-link-icon
+          background-image:  url(../gfx/icons/jobs_blue.svg)
+      &:nth-child(3)
+        .job-link-icon
+          background-image:  url(../gfx/icons/jobs_red.svg)
+
+//NEWS
+.news
+  .filter
+    .filter-item
+      text-align: left
+    .is-active
+      background: none
+  .news-grid
+    .intro
+      margin-bottom: 1em
+      h1
+        text-align: center
+        font-size: 1.4rem
+        color: $darkgrey
+
+//NEWS SINGLE
+.news-single
+  .details
+    ul.kompetenzen
+      margin-bottom: 2em
+      li
+        line-height: 2
+        a
+          border-bottom: 1px solid $darkgrey
+          color: $darkgrey
+          font-size: 1.2em
+          &:hover
+            border-bottom: 1px solid $lightgrey
+  .main-info
+    header
+      h1.name
+        font-size: 1.5em
+      .date
+        color: $red
+        font-weight: 200
+        margin-bottom: 1em
+      .datum
+        color: $red
+        font-weight: 200
+      .location
+        font-weight: 200
+        margin-bottom: 2em
+      .datum, .location
+        display: flex
+      .fa-icon
+        width: 1.3em
+        .fa-clock, .fa-map-pin
+          color: $darkblue
+        .fa-clock
+          font-size: .8em
+    .info
+      font-family: 'Cardo', serif
+    .rt_reading_time
+      font-weight: 200
+      margin-top: 1em
+      font-family: 'Din', sans-serif
+    .bottom-buttons
+      margin-top: 3em
+      margin-bottom: 2em
+      display: flex
+      // justify-content: space-evenly
+      justify-content: flex-start
+      a
+        font-family: 'Din'
+        font-weight: 200
+        display: flex
+        align-items: center
+        flex-direction: column
+        color: $darkgrey
+        line-height: 2.5em
+        margin-right: 1.5em
+        &:hover
+          opacity: .8
+.alle-news
+  background-color: $verylightgrey
+  text-align: center
+
+.newsletter
+  #nf-field-45-wrap div
+    margin: 0 auto 1em
+
+.news-template-default .standorte-overview
+  display: none
+
+.post-type-archive-news .standorte-overview
+  margin-top: 6em
+
+// News Golf Form
+.golf-form
+  margin-bottom: 8em
+  h3
+    text-align: center
+    display: table
+    margin: 0 auto 3em
+    font-size: 1.5em
+    border-bottom: 5px solid #fff
+  background: $verylightgrey
+  .nf-form-content .list-select-wrap .nf-field-element>div, .nf-form-content input:not([type=button]), .nf-form-content textarea
+    border: 1px solid $lightgrey
+    color: $lightgrey
+    border-radius: 5px !important
+    background: #fff !important
+  .nf-field-label label
+    font-weight: normal
+    color: #4C586E
+    font-size: .75rem
+  .nf-form-content .label-above .nf-field-label, .nf-form-content .label-below .nf-field-label, .nf-form-content .label-hidden .nf-field-label
+    margin-bottom: .3em
+  #nf-field-13:before
+    font-family: 'FontAwesome'
+    content: '\f095'
+  .nf-form-content label
+    font-size: 16px
+  .nf-form-fields-required
+    display: none
+  .nf-form-content
+    margin-left: 11%
+  .nf-form-content button, .nf-form-content input[type=button], .nf-form-content input[type=submit]
+    -webkit-appearance: none
+    align-items: center
+    border-radius: 0
+    box-shadow: none
+    display: inline-flex
+    font-size: 1rem
+    justify-content: flex-start
+    line-height: 1.5
+    position: relative
+    vertical-align: top
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    border-color: #dbdbdb
+    color: #363636
+    cursor: pointer
+    justify-content: center
+    padding: calc(.375em - 1px) .75em
+    text-align: center
+    white-space: nowrap
+    padding: .5em 2.75em
+    height: 2.75em
+    background: none
+    border: 1px solid #c3c3c3
+    margin: 0 auto
+    display: table
+    margin-top: 3em
+    &:hover
+      background: #ffffff90
+      color: #333
+      pointer: cursor
+
+// ANWÄLTE
+.anwalte
+  .intro .blurb
+    +desktop
+      margin-top: 3em
+    h1
+      margin-bottom: 0
+  .filler
+    +mobile
+      display: none
+    +tablet
+      display: none
+  .lawyer
+    // height: 200px
+    // height: 100%
+    // overflow: hidden
+    &:hover .lawyer-details, .touch
+      opacity: 1
+      // transform: translate(0, -100%)
+    .lawyer-details
+      height: 100%
+      text-align: center
+      color: #fff
+      background: rgba($darkblue, .5)
+      width: 100%
+      // height: 200px
+      opacity: 0
+      transform: translate(0%, -0%)
+      transition: all 200ms ease-in-out
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      // box-shadow: inset 0 0 30px $darkblue
+      h3
+        font-size: 1em
+        font-weight: normal
+        color: #fff
+        margin-bottom: .5em
+        +mobile
+          font-size: .9em
+          margin-bottom: .2em
+        &:after
+          content: ""
+          display: block
+          margin: 0 auto
+          width: 50%
+          padding-top: .5em
+          border-bottom: 1px solid #fff
+          +mobile
+            padding-top: .2em
+      .cat
+        font-family: 'Cardo', serif
+        // font-size: 1.1em
+        font-size: 0.9em
+        margin-bottom: 1em
+        +mobile
+          margin-bottom: .4em
+      .button
+        color: #fff
+        +mobile
+          padding: .9em 2em !important
+          height: 0.5em!important
+          font-size: .9em
+        &:hover
+          background: #ffffff40
+          color: #fff
+
+// ANWÄLTE SINGLE ------------------
+.anwalte-single
+  .vita ul, .info ul
+    padding-left: 1em
+  .vita span, .info span
+    font-family: 'Cardo', Times, serif !important
+    font-size: 1em !important
+    color: $darkgrey !important
+  .anwalt
+    .details
+      color: $darkblue
+      h4
+        font-size: 1em
+      .address
+        font-weight: 200
+      .phone-mail
+        color: $turquoise
+        a
+          color: $turquoise
+          &:hover
+            color: $darkblue
+        .contact-icon
+          height: .9em
+          margin-right: .5em
+      .kompetenzen
+        li
+          list-style-type: none
+          line-height: 1.4
+          margin-bottom: 1em
+          a
+            color: $darkgrey
+            border-bottom: 1px solid $lightgrey
+            &:hover
+              color: darken($darkgrey, 10)
+              border: none
+
+    .main-info, .weitere-info
+      li
+        list-style: circle
+        line-height: 1.66em
+        margin-bottom: 1em
+
+    .main-info
+      margin-bottom: 2em
+      header
+        color: $darkblue
+        text-transform: uppercase
+        margin-bottom: 1em
+        .status
+          font-weight: 200
+          color: $turquoise
+        .name
+          margin-bottom: 1.2
+          margin-bottom: 0
+        .city
+          font-weight: 200
+      .vita
+        font-family: 'Cardo', serif
+    .weitere-info
+      h3
+        font-size: 1.4em
+        margin-bottom: 1em
+        line-height: 1
+      .info
+        font-family: 'Cardo', serif
+
+
+  .publikationen
+    background: $verylightgrey
+    padding: 4em
+    .publikation
+      text-align: center
+      +mobile
+        margin-bottom: 2em
+      .year
+        background: $turquoise
+        margin: 0 auto 1em
+      .category
+        color: $darkblue
+        font-size: .8em
+        font-weight: 200
+        margin-bottom: 1em
+      h4
+        font-size: 1em
+        font-weight: normal
+        color: $darkblue
+        padding-bottom: .75em
+        border-bottom: 1px solid $lightgrey
+        margin-bottom: .75em
+      .excerpt
+        font-weight: 200
+        font-size: .9em
+        // min-height: 3em
+        // max-height: 9em
+        // overflow: hidden
+      .download
+        margin-top: 2em !important
+      .shade
+        background: linear-gradient(180deg,hsla(0,0%,100%,0) 0,$verylightgrey)
+
+    .all-pubs
+      margin-top: 2em
+
+
+.standard-page.publikationen
+  h3
+    margin-bottom: 0
+  header
+    margin-bottom: 1em
+  .year
+    margin: 0 0 2em !important
+
+.publikationen
+  .authors span:last-child
+    display: none
+
+// PUBLIKATIONEN -------------------------
+
+.publikationen
+  h2.title
+    font-weight: normal
+    margin-bottom: 2em
+    span
+      border-bottom: 4px white solid
+      padding-bottom: 3px
+  .year
+    height: 4em
+    width: 4em
+    color: #fff
+    border-radius: 2em
+    text-align: center
+    background: $red
+    line-height: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: 0 auto 2em
+  .year.color1
+    background: $turquoise !important
+  .year.color0
+    background: $dustblue !important
+  .year.color2
+    background: $red !important
+
+  .pub-grid
+    .item
+      .cat
+        text-align: center
+        color: $darkblue
+        font-weight: 200
+        font-size: .8em
+        margin-bottom: 1em
+        text-transform: capitalize
+      .inner
+        text-align: center
+        border: 1px solid $darkblue
+        padding: 1em
+        .date
+          font-size: .8em
+          font-weight: 200
+          color: $red
+          margin-bottom: 1em
+        h3.title
+          font-weight: normal
+          font-size: 1.1rem
+          margin-bottom: .5em
+          color: $darkblue
+        .caption
+          border-top: 1px solid $lightgrey
+          padding-top: .5em
+          max-height: 6em
+          overflow: hidden
+          font-size: .9rem
+
+
+.post-type-archive-publikationen .standorte-overview
+  display: none !important
+
+.publikationen.all
+  padding-bottom: 6em
+  h1
+    font-size: 2em
+    text-align: center
+    margin: 0.6em 0 2.3em
+    a
+      color: $darkgrey
+    span
+      border-bottom: 4px #f6f6f6 solid
+      padding-bottom: 3px
+  .publikation
+    +mobile
+      margin-bottom: 2em
+    .category
+      font-size: 0.8em
+      color: $darkblue
+      margin-bottom: 0.8em
+    .inner
+      border: 1px solid $darkblue
+      padding: 1em 1.2em 1.3em
+    h3
+      font-weight: $darkblue
+      color: $darkblue
+    hr
+      margin: 0.9rem 0 1.2rem
+    .download
+      margin: 1em auto 0
+    .info
+      font-size: 0.8em
+
+// STANDORT --------------------------------
+
+.standort
+  .slider
+    padding: 0 1.5rem
+    +mobile
+      padding: 0
+  .controls
+    position: absolute
+    top: 50%
+    line-height: 0
+    display: flex
+    justify-content: space-between
+    width: 100%
+    padding: 0 1em
+    transition: all 90ms ease
+    .prev:hover, .next:hover
+      transform: scale(1.3)
+      cursor: pointer
+
+  ul.cities
+    +tablet
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+    li
+      margin-right: 1em
+      &.is-active
+        font-weight: bold
+    a
+      color: $darkgrey
+  .contact
+    color: $darkblue
+    .details
+      color: $turquoise
+      .contact-icon
+        margin-right: .5em
+      a
+        color: $turquoise
+        &:hover
+          color: $darkblue
+  .content
+    // font-size: .95em
+    font-family: 'Cardo', serif
+
+.mtb2em
+  margin: 3em 0 !important
+
+
+// JOB/KARIERE -------------------------
+
+.jobs
+  .filter .filter-item
+    +mobile
+      border: 1px solid $verylightgrey
+      font-size: 1em
+      line-height: 1.4
+  .job-list
+    font-size: .8em
+    h2.section-title
+      font-size: 1.5rem
+    .list-head
+      margin-top: 100px
+      border-bottom: 1px solid $lightgrey
+    .job
+      a
+        color: $darkgrey
+        &:hover
+          color: $lightgrey
+  .talent-pool
+    text-align: center
+    .inner
+      padding: 2em
+      font-size: 1.4em
+      border: 5px solid $verylightgrey
+  .shuffler-item
+    // width: 100%
+
+
+
+// JOB/KARIERE SINGLE ----------------
+
+.job
+  .header
+    h2
+      font-size: 1.5rem
+    text-align: center
+    margin-bottom: 2em
+    a
+      color: $darkgrey
+    .meta
+      font-size: .8rem
+      display: flex
+      justify-content: space-around
+      li
+        border-bottom: 1px solid $lightgrey
+  .description
+    font-family: 'Cardo', sans-serif
+    font-size: 1rem
+    line-height: 1.5
+    h3
+      font-family: 'Din', serif
+      font-size: 1.4em
+      margin-bottom: 1em
+      font-weight: 200
+      line-height: 1.3
+    ul
+      list-style: circle
+      margin-left: 1em
+  .bewerben
+    text-align: center
+    h3
+      font-size: 1.4rem
+      margin-bottom: 1em

@@ -1,0 +1,4 @@
+tmp/*
+!tmp/README.mdown
+.DS_Store
+node_modules

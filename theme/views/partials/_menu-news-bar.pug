@@ -1,0 +1,16 @@
+- $news_items = fetch_custom_posts('news', 3, 'date', 'array', 'DESC')
+//- ($type = 'post', $per_page = -1, $orderby = 'title', $return = 'array', $order = 'ASC') {
+
+.news-bar
+	each $news in $news_items
+		- $date = get_the_time('d.m.', $news->ID)
+		- $month = str_split(substr(get_field('datum', $news->ID), 4), 2)[0];
+		- $day = str_split(substr(get_field('datum', $news->ID), 4), 2)[1];
+		- $datum = $day . '.' . $month . '.'
+		.news-item
+			if($cat == 'veranstaltung')
+				.date!= $datum
+			else
+				.date!= $date
+			a.news-title(href!= get_the_permalink($news->ID))!= $news->post_title
+	a.button(href= '/news')= t('Alle News', 'All News')

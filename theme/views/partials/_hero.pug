@@ -1,0 +1,27 @@
+//- if is_front_page()
+  video ???
+
+- global $post
+
+if is_archive()
+  - $pt_slug = get_post_type_slug(get_post_type())
+  - $page = get_page_by_path($pt_slug)
+  - $hero = get_field('hero_image', $page->ID)
+else
+  - $hero = get_field('hero_image')
+  - if (!$hero)
+    - $hero = get_field('hero_image', $post->post_parent)
+
+if $hero
+  if is_post_type('anwalte')
+    - $imgW = $hero[sizes]['large-width']
+    - $imgH = $hero[sizes]['large-height']
+    - $hero = $hero[sizes]['large']
+  else
+    - $hero = $hero[sizes][hero]  
+  .hero
+    - $style = 'background-image: url('.$hero.')'
+    .inner(style=$style)
+      span &nbsp;
+    img(src=$hero, width=$imgW, height=$imgH).img.facecrop
+  .hero-spacer

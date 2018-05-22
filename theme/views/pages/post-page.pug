@@ -1,0 +1,11 @@
+- the_post()
+section.section.standard-page
+	.container
+		.columns
+			.column.is-8.is-offset-2(data-aos="fade-up")
+				post
+				  header 
+				    h3!=get_the_title()
+				    //- .meta!= get_the_date()
+				    //- .cat!= get_the_terms()
+				  content!= get_the_filtered_content()

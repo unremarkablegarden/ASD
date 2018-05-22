@@ -1,0 +1,57 @@
+@mixin heroResponsiveHeights
+  +mobile
+    height: 200px
+  +tablet
+    height: 320px
+  +desktop
+    height: 360px
+  +widescreen
+    height: 500px
+  +fullhd
+    height: 650px
+
+@mixin heroResponsiveHeightsAnwalt
+  +mobile
+    height: 200px
+  +tablet
+    height: 320px
+  +desktop
+    height: 350px
+  +widescreen
+    height: 500px
+  +fullhd
+    // height: 650px
+    height: 825px
+
+@mixin headerHeights
+  height: 56px !important
+  +tablet
+    height: 70px !important
+  +desktop
+    height: 80px !important
+  +widescreen
+    height: 112px !important
+  +fullhd
+    height: 112px !important
+
+@mixin headerHeightsBreaking
+  height: 116px !important
+  +tablet
+    height: 130px !important
+  +desktop
+    height: 140px !important
+  +widescreen
+    height: 172px !important
+  +fullhd
+    height: 172px !important
+
+@mixin headerInnerPadding
+  padding: 0 1rem !important
+  +tablet
+    padding: 0 2rem !important
+  +desktop
+    padding: 0 2.5rem !important
+  +widescreen
+    padding: 0 3rem !important
+  +fullhd
+    padding: 0 3.3rem !important

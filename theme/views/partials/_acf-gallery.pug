@@ -1,0 +1,19 @@
+- $gallery = get_field('gallery', get_the_ID(), false)
+
+- if($gallery)
+	- preg_match('/\[gallery.*ids=.(.*).\]/', $gallery, $ids)
+	- $image_ids = explode(",", $ids[1])
+	
+	#acf-glide.glide
+		.glide__track(data-glide-el="track")
+			ul.glide__slides
+				each $id in $image_ids
+					- $img = wp_get_attachment_image($id, 'hero')
+					li.glide__slide!= $img
+			.controls(data-glide-el="controls").is-hidden-mobile
+				.prev(data-glide-dir="<")
+					img(src=gfx('/icons/control_left.svg'))
+				.next(data-glide-dir=">")
+					img(src=gfx('/icons/control_right.svg'))
+				
+	

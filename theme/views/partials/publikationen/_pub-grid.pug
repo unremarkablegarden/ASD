@@ -1,0 +1,19 @@
+- $date_arr = str_split(get_field('date'), 2);
+- $date = $date_arr[3] . '.' . $date_arr[2] . '.' . $date_arr[0] . $date_arr[1]
+- $pub_type = get_field('pub_type')
+if ($pub_type == 'extern')
+	- $link = get_field('url')
+if ($pub_type == 'pdf')
+	- $link = get_field('file_url')
+	
+.column.is-4.item
+	.cat= the_field('category')
+	.inner	
+		.date= $date
+		h3.title= the_title()
+		.caption= the_excerpt()
+		.shade
+		if ($pub_type == 'extern')
+			a.button.is-outlined(target = _blank href= $link)= t('Zum Artikel', 'To article')
+		if ($pub_type == 'pdf')	
+			a.button.is-outlined(target = _blank href= $link) Download PDF

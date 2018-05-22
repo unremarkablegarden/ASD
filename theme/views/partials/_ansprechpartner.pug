@@ -1,0 +1,53 @@
+- $page_data = get_page(570)
+- $page = get_page(icl_object_id($page_data->ID, 'page', true, ICL_LANGUAGE_CODE))
+- $id = $page->ID
+- $name = get_field('name', $id)
+- $zusatz = get_field('zusatz', $id)
+- $phone = get_field('phone', $id)
+- $email = get_field('email', $id)
+- $thumb = get_field('image', $id)['sizes']['square-center']
+- $mailto = 'mailto:' . $email
+
+- $name_2 = get_field('name_2', $id)
+- $zusatz_2 = get_field('zusatz_2', $id)
+- $phone_2 = get_field('phone_2', $id)
+- $email_2 = get_field('email_2', $id)
+- $thumb_2 = get_field('image_2', $id)['sizes']['square-center']
+- $mailto_2 = 'mailto:' . $email_2
+
+section.section.ansprechpartner(data-aos="fade-up", data-aos-delay=200)
+	.container
+		.columns.is-multiline
+			.column.is-12.is-offset-2
+				h2= t('Ansprechpartner', 'Contact')
+			.column.is-3.is-offset-2
+				img(src!=$thumb)
+			.column.is-6.details
+				h3!= $name
+				if ($zusatz)
+					.zusatz!= $zusatz
+				if ($phone)
+					.phone 
+						img.phone-icon(src=gfx('icons/phone_icon.svg'))
+						span!= $phone
+				if ($email)
+					.email
+						img.email-icon(src=gfx('icons/mail_icon.svg'))    
+						a(href=$mailto)!= $email
+		.columns
+			.column.is-3.is-offset-2
+				img(src!=$thumb_2)
+			.column.is-6.details
+				h3!= $name_2
+				if ($zusatz_2)
+					.zusatz!= $zusatz_2
+				if ($phone_2)
+					.phone 
+						img.phone-icon(src=gfx('icons/phone_icon.svg'))
+						span!= $phone_2
+				if ($email_2)
+					.email
+						img.email-icon(src=gfx('icons/mail_icon.svg'))    
+						a(href=$mailto_2)!= $email_2
+			
+					

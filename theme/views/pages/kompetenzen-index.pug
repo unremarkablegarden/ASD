@@ -1,0 +1,18 @@
+section.section
+  .container
+    .columns.is-multiline.kompetenzen-list
+      - $menuItems = wp_get_nav_menu_items('kompetenzen')
+      - $i = 0
+      each $menu in $menuItems
+        - $title = $menu->title
+        - $link = $menu->url
+        - $i = $i + 1
+        - $delay = $i * 50
+        .column.is-4(data-aos="fade-left", data-aos-delay=$delay, data-aos-offset="-100")
+          a(href=$link).kompetenz-link!= $title
+            
+section.section.kompetenzen-intro(data-aos="fade-bottom", data-aos-delay=400)
+  .container
+    .columns
+      .column.is-8.is-offset-2.is-6-widescreen.is-offset-3-widescreen
+        - render_partial('partials/page-blurb')

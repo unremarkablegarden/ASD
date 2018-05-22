@@ -1,0 +1,11 @@
+- if(is_archive())
+  - $pt_slug = get_post_type_slug(get_post_type())
+  - $page = get_page_by_path($pt_slug)
+  
+  - $page = get_page(icl_object_id($page->ID, 'page', true, ICL_LANGUAGE_CODE))
+  
+  if $page
+    - $content = do_shortcode($page->post_content)
+    - $content = apply_filters('the_content', $content)
+    - $content = str_replace(']]>', ']]&gt;', $content)  
+    .blurb!= $content

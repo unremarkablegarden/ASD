@@ -1,0 +1,55 @@
+- $anwalte = fetch_custom_posts('anwalte', 6, 'rand')
+- $anwalte_count = wp_count_posts('anwalte')
+- $anwalte_count = $anwalte_count->publish
+- $anwalte_count = $anwalte_count / 2 // Divide in half because it counts English translations too
+- $anwalte_count = (int)$anwalte_count // avoid halves
+- $standorte_count = wp_count_posts('standorte')
+- $standorte_count = $standorte_count->publish
+- $standorte_count = $standorte_count / 2 // Divide in half because it counts English translations too
+- $standorte_count = (int)$standorte_count
+
+
+section.section.anwalte.is-hidden-mobile
+  .container
+    .columns
+      .column.is-12.is-10-widescreen.is-offset-1-widescreen
+        .grid.columns.is-multiline
+          .column.is-one-third(data-aos="fade-up",  data-aos-anchor="section.anwalte").aspect-outer
+            .boxy.is-lightgrey.aspect-inner
+              .inner
+                p
+                  span !{$anwalte_count}&nbsp;
+                  span= t('Anwälte', 'Lawyers')
+                a.button(href=l('/anwalte'))= t('Alle zeigen', 'Show all')
+          - $i = 0
+          - $n = 0
+          - while ($i < 8)
+            - $i = $i+1
+            - $delay = 100 * $i
+            - if ($i == 5)
+              .column.is-one-third.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).aspect-outer
+                .boxy.is-turquoise.aspect-inner
+                  .inner
+                    p
+                      span !{$standorte_count} 
+                      span= t('Standorte', 'Locations')
+                    a(href=l('/standorte')).button.is-outlined.is-inverted= t('Alle Standorte', 'All locations')
+            - else if ($i == 7)
+              .column.is-one-third.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).aspect-outer
+                .boxy.is-darkblue.aspect-inner
+                  .inner
+                    p= t('Werden Sie Teil einer Familie', 'Become part of a family')
+                    a(href=l('/karriere')).button= t('Karriere', 'Career')
+            - else
+              .column.is-one-third.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).lawyer.aspect-outer
+                - $id = $anwalte[$n]->ID
+                - $n = $n + 1
+                - $thumb = get_field('hero_image', $id)
+                - $thumb = $thumb['sizes']['retina-thumb']
+                - $style = 'background-image: url('.$thumb.')'
+                .bg-boxy(style=$style).aspect-inner
+                  .lawyer-details
+                    h3.title= get_the_title($id)
+                    - if (get_field('status', $id) !== 'none')
+                      .cat= acf_option_label('status', $id)
+                    a(href=get_the_permalink($id)).button.is-inverted.is-outlined= t('Zeigen', 'Show')

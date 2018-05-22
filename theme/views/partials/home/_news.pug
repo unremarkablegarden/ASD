@@ -1,0 +1,33 @@
+- global $sitepress
+- $lang = ICL_LANGUAGE_CODE
+- $sitepress->switch_lang($lang)
+- if (ICL_LANGUAGE_CODE == 'en')
+  - $en = true
+- $news_items = fetch_custom_posts('news', 3, 'date', 'array', 'DESC')
+
+section.section.news(data-aos="fade-up", data-aos-offset="400").is-hidden-mobile
+  .container.has-text-centered
+    h2.title News
+    .columns
+      .column.is-10.is-offset-1
+        .columns
+          - $i = 1
+          each $news in $news_items
+            - $i = $i + 1
+            - $delay = ($i+2) * 100
+            - $cat = get_field('category', $news->ID)
+            - if ($cat == 'veranstaltungen' && $en)
+              - $cat = 'Events'
+            - $date = get_the_time('d.m.', $news->ID)
+            - $month = str_split(substr(get_field('datum', $news->ID), 4), 2)[0];
+            - $day = str_split(substr(get_field('datum', $news->ID), 4), 2)[1];
+            - $datum = $day . '.' . $month . '.'
+            .column.is-4.news-item(data-aos="fade-up", data-aos-delay=$delay)
+              if($cat == 'veranstaltung')
+                .date!= $datum
+              else
+                .date!= $date
+              .category!= $cat
+              a.news-title(href=get_the_permalink($news->ID))!= $news->post_title
+              
+        a.button.is-outlined(href=l('/news'))= t('Alle News', 'All News')

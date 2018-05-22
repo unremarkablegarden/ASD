@@ -1,0 +1,27 @@
+- $news_items = fetch_custom_posts('news', 3)
+
+section.section.news.is-hidden-tablet
+  .container.has-text-centered
+    h2.title News
+    
+    #news-glide.glide
+      .glide__track(data-glide-el="track")
+        ul.glide__slides
+          - $i = 1
+          each $news in $news_items
+            - $i = $i + 1
+            - $delay = ($i+2) * 100
+            - $cat = get_field('category', $news->ID)
+            - $date = get_the_time('d.m.', $news->ID)
+            - $month = str_split(substr(get_field('datum', $news->ID), 4), 2)[0];
+            - $day = str_split(substr(get_field('datum', $news->ID), 4), 2)[1];
+            - $datum = $day . '.' . $month . '.'
+            .glide__slide.news-item
+              if($cat == 'veranstaltung')
+                .date!= $datum
+              else
+                .date!= $date
+              .category!= $cat
+              a.news-title(href=get_the_permalink($news->ID))!= $news->post_title
+        
+    a.button.is-outlined(href= '/news')= t('Alle News', 'All News')
