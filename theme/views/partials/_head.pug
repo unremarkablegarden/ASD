@@ -21,4 +21,29 @@ link(rel='mask-icon', href='/app/themes/asdlaw-wl/assets/fav/safari-pinned-tab.s
 meta(name='msapplication-TileColor', content='#ffffff')
 meta(name='theme-color', content='#ffffff')
 
+link(rel='stylesheet', type='text/css', href='//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css')
+script(src='//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js')
+script.
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+  "palette": {
+  "popup": {
+  "background": "#9bbcc5",
+  "text": "#163e5a"
+  },
+  "button": {
+  "background": "#163e5a",
+  "text": "#ffffff"
+  }
+  },
+  "theme": "edgeless",
+  "content": {
+  "message": "Diese Website verwendet Cookies. Erfahren Sie mehr auf unserer Seite",
+  "dismiss": "OK!",
+  "link": "Datenschutz",
+  "href": "https://asd-law.com/datenschutz/"
+  }
+  })});
+
+
 - wp_head()
