@@ -41,11 +41,11 @@ header(class=hasBreaking() ? 'has-breaking-latent' : '')#site-header
         - $q = '&'.$q
       - if (ICL_LANGUAGE_CODE == 'en')
         - $href = '?lang=de'.$q
-        a(href='#', data-href=$href, data-current-lang="en", data-to-lang="de").lang.de
+        a(href=$href, data-href=$href, data-current-lang="en", data-to-lang="de").lang.de
           img(src=gfx('icons/de.svg'))
       - else
         - $href = '?lang=en'.$q
-        a(href='#', data-href=$href, data-current-lang="de", data-to-lang="en").lang.en
+        a(href=$href, data-href=$href, data-current-lang="de", data-to-lang="en").lang.en
           img(src=gfx('icons/en.svg'))
 
     a(href=l('/')).logo

@@ -1,29 +1,22 @@
-/*
-  ____                      _
- / ___|  ___  __ _ _ __ ___| |__
- \___ \ / _ \/ _` | '__/ __| '_ \
-  ___) |  __/ (_| | | | (__| | | |
- |____/ \___|\__,_|_|  \___|_| |_|
-
- */
 
 const search = () => {
-	const s = $('#search')
-	const m = $('#main-menu')
-	const mt = $('.menu-toggle')
+  const s = $('#search')
+  const m = $('#main-menu')
+  const mt = $('.menu-toggle')
 
-	$('a.search-button').on('click', function(e){
-		s.toggleClass('is-active')
+  $('a.search-button').on('click', function(e){
+    s.toggleClass('is-active')
+    $('#s').focus()
 
-		if (m.hasClass('is-active')) {
-			m.removeClass('is-active')
-			mt.removeClass('is-active')
-		}
+    if (m.hasClass('is-active')) {
+      m.removeClass('is-active')
+      mt.removeClass('is-active')
+    }
 
-		e.preventDefault()
-	})
+    e.preventDefault()
+  })
 
-	// $('#searchform #s').attr('autocomplete', 'off')
+  // $('#searchform #s').attr('autocomplete', 'off')
 
 }
 

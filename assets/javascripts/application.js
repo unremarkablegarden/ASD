@@ -6925,7 +6925,15 @@ __webpack_require__.r(__webpack_exports__);
 
   langButton.on('click', function(e){
     localStorage.setItem('lang', toLang)
-    var href = window.location.href + langButton.data('href')
+
+    // const href = window.location.href.split('?')[0] + langButton.data('href')
+    var href
+    if (window.location.href.includes('?')) {
+      href = window.location.href.split('?')[0] + langButton.data('href')
+    } else {
+      href = window.location.href + langButton.data('href')
+    }
+    // console.log(href);
     window.location.replace(href)
     e.preventDefault()
   })
@@ -6947,7 +6955,14 @@ __webpack_require__.r(__webpack_exports__);
 
   // auto-redirect if lang set but on the wrong page
   if (storedLang && storedLang !== currentLang) {
-    var href = window.location.href + langButton.data('href')
+    var href
+    if (window.location.href.includes('?')) {
+      href = window.location.href.split('?')[0] + langButton.data('href')
+    } else {
+      href = window.location.href + langButton.data('href')
+    }
+    // const href = window.location.href + langButton.data('href')
+    // const href = window.location.href.split('?')[0] + langButton.data('href')
     window.location.replace(href)
   }
 
@@ -7025,32 +7040,25 @@ var scroll2top = function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {/*
-  ____                      _
- / ___|  ___  __ _ _ __ ___| |__
- \___ \ / _ \/ _` | '__/ __| '_ \
-  ___) |  __/ (_| | | | (__| | | |
- |____/ \___|\__,_|_|  \___|_| |_|
-
- */
-
+/* WEBPACK VAR INJECTION */(function($) {
 var search = function () {
-	var s = $('#search')
-	var m = $('#main-menu')
-	var mt = $('.menu-toggle')
+  var s = $('#search')
+  var m = $('#main-menu')
+  var mt = $('.menu-toggle')
 
-	$('a.search-button').on('click', function(e){
-		s.toggleClass('is-active')
+  $('a.search-button').on('click', function(e){
+    s.toggleClass('is-active')
+    $('#s').focus()
 
-		if (m.hasClass('is-active')) {
-			m.removeClass('is-active')
-			mt.removeClass('is-active')
-		}
+    if (m.hasClass('is-active')) {
+      m.removeClass('is-active')
+      mt.removeClass('is-active')
+    }
 
-		e.preventDefault()
-	})
+    e.preventDefault()
+  })
 
-	// $('#searchform #s').attr('autocomplete', 'off')
+  // $('#searchform #s').attr('autocomplete', 'off')
 
 }
 

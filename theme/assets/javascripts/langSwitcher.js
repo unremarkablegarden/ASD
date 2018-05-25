@@ -8,7 +8,15 @@ const langSwitcher = () => {
 
   langButton.on('click', function(e){
     localStorage.setItem('lang', toLang)
-    const href = window.location.href + langButton.data('href')
+
+    // const href = window.location.href.split('?')[0] + langButton.data('href')
+    let href
+    if (window.location.href.includes('?')) {
+      href = window.location.href.split('?')[0] + langButton.data('href')
+    } else {
+      href = window.location.href + langButton.data('href')
+    }
+    // console.log(href);
     window.location.replace(href)
     e.preventDefault()
   })
@@ -30,7 +38,14 @@ const langSwitcher = () => {
 
   // auto-redirect if lang set but on the wrong page
   if (storedLang && storedLang !== currentLang) {
-    const href = window.location.href + langButton.data('href')
+    let href
+    if (window.location.href.includes('?')) {
+      href = window.location.href.split('?')[0] + langButton.data('href')
+    } else {
+      href = window.location.href + langButton.data('href')
+    }
+    // const href = window.location.href + langButton.data('href')
+    // const href = window.location.href.split('?')[0] + langButton.data('href')
     window.location.replace(href)
   }
 
