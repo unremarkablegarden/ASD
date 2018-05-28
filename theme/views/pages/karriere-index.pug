@@ -14,7 +14,10 @@
           h3(data-aos="fade-right", data-aos-delay="50")= the_field('sub_title')
           p
             .inner(data-aos="fade-right", data-aos-delay="100", data-aos-anchor=".intro")= the_content()
+            br
           a(data-aos="fade-right", data-aos-delay="200", data-aos-anchor=".intro").button.is-outlined(href='mailto:karriere@asd-law.com')= t('Jetzt Bewerben', 'Apply now')
+          span.spacer &nbsp;&nbsp;&nbsp;
+          a(data-aos="fade-right", data-aos-delay="300", data-aos-anchor=".intro").button.is-outlined(href='/jobs/')= t('Aktuelle Stellenangebote', 'Recent job offers')
           
         aside.column.is-3.is-offset-1.sidebar(data-aos="fade-left")
           if ($events)
