@@ -10,27 +10,30 @@ section.search-results
           - $global_lang = ICL_LANGUAGE_CODE
           - relevanssi_do_query($query)
           - $posts = array()
-          each $p in $query->posts
-            - $d = 150 + count($posts) * 150
-            .result(data-aos="fade-left", data-aos-delay=$d, data-aos-anchor=".search-results")
-              - $id = $p->ID
-              - $lang_info = wpml_get_language_information(id)
-              - $post_lang = $lang_info[language_code]
-              - if ($post_lang == $global_lang && !in_array($p, $posts))
-                - $posts[] = $id
-                - $type = get_post_type_object(get_post_type($id))
-                - $type = $type->labels->singular_name
-                - $excerpt = get_the_excerpt($id)
-                - if (! $excerpt) 
-                  - $excerpt = get_the_content_by_id($id)
-                - if (! $excerpt) 
-                  - $excerpt = get_field('text1', $id)
-                - if (! $excerpt)
-                  - $excerpt = get_field('text1', $id)
-                h2
-                  if ($type)
-                    span= $type.": "
-                  a(href=get_the_permalink($id))= get_the_title($id)
-                if $excerpt
-                  .excerpt!= $excerpt
-                a(href=get_the_permalink($id)).link= substr(get_the_permalink($id), 7, -1)
+          if $p
+            each $p in $query->posts
+              - $d = 150 + count($posts) * 150
+              .result(data-aos="fade-left", data-aos-delay=$d, data-aos-anchor=".search-results")
+                - $id = $p->ID
+                - $lang_info = wpml_get_language_information(id)
+                - $post_lang = $lang_info[language_code]
+                - if ($post_lang == $global_lang && !in_array($p, $posts))
+                  - $posts[] = $id
+                  - $type = get_post_type_object(get_post_type($id))
+                  - $type = $type->labels->singular_name
+                  - $excerpt = get_the_excerpt($id)
+                  - if (! $excerpt) 
+                    - $excerpt = get_the_content_by_id($id)
+                  - if (! $excerpt) 
+                    - $excerpt = get_field('text1', $id)
+                  - if (! $excerpt)
+                    - $excerpt = get_field('text1', $id)
+                  h2
+                    if ($type)
+                      span= $type.": "
+                    a(href=get_the_permalink($id))= get_the_title($id)
+                  if $excerpt
+                    .excerpt!= $excerpt
+                  a(href=get_the_permalink($id)).link= substr(get_the_permalink($id), 7, -1)
+          else
+            h2= t('Für Ihren Suchbegriff wurden keine Ergebnisse gefunden.', 'Your search yielded no results.')
