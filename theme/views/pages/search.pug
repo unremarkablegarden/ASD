@@ -10,7 +10,8 @@ section.search-results
           - $global_lang = ICL_LANGUAGE_CODE
           - relevanssi_do_query($query)
           - $posts = array()
-          if $p
+          - $p = true
+          - if ($query->post_count > 0)
             each $p in $query->posts
               - $d = 150 + count($posts) * 150
               .result(data-aos="fade-left", data-aos-delay=$d, data-aos-anchor=".search-results")
@@ -35,5 +36,5 @@ section.search-results
                   if $excerpt
                     .excerpt!= $excerpt
                   a(href=get_the_permalink($id)).link= substr(get_the_permalink($id), 7, -1)
-          else
+          - else
             h2= t('Für Ihren Suchbegriff wurden keine Ergebnisse gefunden.', 'Your search yielded no results.')
