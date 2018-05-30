@@ -60,7 +60,8 @@ section.anwalte.is-hidden-tablet
               - $id = $anwalte[$n]->ID
               - $n = $n + 1
               - $thumb = get_field('hero_image', $id)
-              - $thumb = $thumb['sizes']['retina-thumb']
+              //- - $thumb = $thumb['sizes']['retina-thumb']
+              - $thumb = $thumb['sizes']['thumbnail']
               - $style = 'background-image: url('.$thumb.')'
               .bg-boxy(style=$style).aspect-inner
                 .lawyer-details

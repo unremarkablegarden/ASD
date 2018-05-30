@@ -11,6 +11,8 @@ function asd_to_ASD($content) {
 add_filter ('the_content', 'asd_to_ASD');
 add_filter ('get_the_content', 'asd_to_ASD');
 
+add_filter('jpeg_quality', function($arg){ return 90; });
+
 // function override_404() {
 //     if (isset($_GET['search']) || isset($_GET['s'])) {
 //       $squery = true;

@@ -45,7 +45,10 @@ section.section.anwalte.is-hidden-mobile
                 - $id = $anwalte[$n]->ID
                 - $n = $n + 1
                 - $thumb = get_field('hero_image', $id)
-                - $thumb = $thumb['sizes']['retina-thumb']
+                //- home thumb max width: 360px = 720 retina, h=60% = 432
+                //- - dump($thumb)
+                //- - $thumb = $thumb['sizes']['retina-thumb']
+                - $thumb = $thumb['sizes']['thumbnail']
                 - $style = 'background-image: url('.$thumb.')'
                 .bg-boxy(style=$style).aspect-inner
                   .lawyer-details

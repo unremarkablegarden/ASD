@@ -24,7 +24,8 @@
 
         .lawyer.column.content(data-groups=$filtersData).shuffler-item.is-6-mobile.is-one-third-tablet.is-3-desktop.is-3-widescreen.is-is-one-fifth-fullhd.aspect-outer
           - $thumb = get_field('hero_image', get_the_ID())
-          - $thumb = $thumb['sizes']['retina-thumb']
+          //- - $thumb = $thumb['sizes']['retina-thumb']
+          - $thumb = $thumb['sizes']['thumbnail']
           - $style = 'background-image: url('.$thumb.')'
           .bg-boxy(style=$style).aspect-inner          
             .lawyer-details
