@@ -15,18 +15,18 @@ else
 if $hero
   - $full = $hero['url']
   if is_post_type('anwalte')
-    - $imgW = $hero[sizes]['large-width']
-    - $imgH = $hero[sizes]['large-height']
-    - $hero = $hero[sizes]['large']
+    - $imgW = $hero[sizes]['large-retina-width']
+    - $imgH = $hero[sizes]['large-retina-height']
+    - $hero = $hero[sizes]['large-retina']
     - $fullW = $full[width]
     - $fullH = $full[height]
   else
     - $hero = $hero[sizes][hero]
   .hero
-    //- - $style = 'background-image: url('.$hero.')'
-    - $style = 'background-image: url('.$full.')'
+    - $style = 'background-image: url('.$hero.')'
+    //- - $style = 'background-image: url('.$full.')'
     .inner(style=$style)
       span &nbsp;
-    //- img(src=$hero, width=$imgW, height=$imgH).img.facecrop
-    img(src=$full, width=$fullW, height=$fullH).img.facecrop
+    img(src=$hero, width=$imgW, height=$imgH).img.facecrop
+    //- img(src=$full, width=$fullW, height=$fullH).img.facecrop
   .hero-spacer
