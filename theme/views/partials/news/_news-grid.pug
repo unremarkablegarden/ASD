@@ -3,7 +3,10 @@
     - the_post()
     - $filtersData = '["'.get_field('category').'"]'
     .column.is-4.item.shuffler-item(data-groups=$filtersData)
-      .cat= the_field('category')
+      - $cat = get_field('category')
+      - if ($cat == 'veranstaltungen')
+        - $cat = t('veranstaltungen', 'events')
+      .cat= $cat
       .inner
         .image.is-paddingless
           .aspect-outer
@@ -12,7 +15,7 @@
           .subtitle= the_field('subtitle')
           h3.title= the_title()
           a.button.is-outlined(href!=get_the_permalink())
-						- if (get_field('category') == 'news')
-							span= t('Zum Artikel', 'To article')
-						- else
-							span= t('Zeigen', 'Show')
+            - if (get_field('category') == 'news')
+              span= t('Zum Artikel', 'To article')
+            - else
+              span= t('Zeigen', 'Show')
