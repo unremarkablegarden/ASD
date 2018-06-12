@@ -38,7 +38,7 @@ const langSwitcher = () => {
   if (storedLang && storedLang !== urlLang) {
     console.log('redirecting cus wrong lang: '+href)
     const href = langButton.data('href')
-    window.location.replace(href)
+    // window.location.replace(href)
   }
 
   $('#language_prompt .close, #language_prompt button[data-action="close"]').on('click', function(){
