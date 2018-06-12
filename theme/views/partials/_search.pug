@@ -1,7 +1,11 @@
 - $lang = ICL_LANGUAGE_CODE
 
+- if($lang == 'en')
+  - $action = '/en/search/'
+- else
+  - $action = '/search/'
 .search-form
-  form#searchform.searchform(role='search', method='get', action='/search/')
+  form#searchform.searchform(role='search', method='get', action=$action)
     .inner
       - $searched = $_GET['search']
       - if ($lang == 'en')
@@ -21,4 +25,4 @@
         i.fas.fa-search
       input#s(type='text', value=$searched, name='search')
         
-      input(type='hidden', name='lang', value=$lang)
+      //- input(type='hidden', name='lang', value=$lang)

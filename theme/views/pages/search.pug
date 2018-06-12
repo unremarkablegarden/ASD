@@ -22,6 +22,18 @@ section.search-results
                   - $posts[] = $id
                   - $type = get_post_type_object(get_post_type($id))
                   - $type = $type->labels->singular_name
+                  - if($global_lang == 'en')
+                    - if($type == 'Anwalt')
+                      - $type = 'Lawyer'
+                    - if($type == 'Standort')
+                      - $type = 'Location'
+                    - if($type == 'Veranstaltung')
+                      - $type = 'Event'
+                    - if($type == 'Publikation')
+                      - $type = 'Publication'
+                    - if($type == 'Kompetenz')
+                      - $type = 'Expertise'
+                      
                   - $excerpt = get_the_excerpt($id)
                   - if (! $excerpt) 
                     - $excerpt = get_the_content_by_id($id)
