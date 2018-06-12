@@ -32,13 +32,18 @@ section.section.publikationen.all
         - $i = $i + 1
       
       .column.is-4.publikation(data-aos="fade-up", data-aos-delay=$d, data-aos-anchor="h1").has-text-centered
+        - if (ICL_LANGUAGE_CODE == 'en')
+          - $en = true
         - $cat = acf_option_label('category', $pid)
-        - if($cat == 'Veröffentlichung')
+        - if($cat == 'Veröffentlichung' && $en)
           - $cat = 'Publication'
-        - if($cat == 'Vortrag')
+        - if($cat == 'Vortrag' && $en)
           - $cat = 'Lecture'
+        - if(!$cat)
+          .category &nbsp;
+        - else
+          .category= $cat
         
-        .category= $cat
         .inner
           h3= $pub->post_title
           hr

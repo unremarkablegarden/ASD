@@ -6955,7 +6955,7 @@ __webpack_require__.r(__webpack_exports__);
   if (storedLang && storedLang !== urlLang) {
     console.log('redirecting cus wrong lang: '+href$1)
     var href$1 = langButton.data('href')
-    window.location.replace(href$1)
+    // window.location.replace(href)
   }
 
   $('#language_prompt .close, #language_prompt button[data-action="close"]').on('click', function(){
