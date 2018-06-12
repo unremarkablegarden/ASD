@@ -50,7 +50,6 @@ else {
     render_view("pages/standort-single");
   } else if ( is_page('newsletter') ) {
     render_view("pages/newsletter-form");
-  // } else if ( is_page('search') ) {
   } else if ( is_search() || is_page('search') ) {
     render_view("pages/search");
   } else {

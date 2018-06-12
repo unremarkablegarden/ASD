@@ -9,6 +9,6 @@
 				a(href!= get_the_permalink($breaking->ID))!= $breaking->post_title
 		.right	
 			.controls
-				a(href='/news').button.is-outlined= t('Alle News', 'All News')
+				a(href=l('/news')).button.is-outlined= t('Alle News', 'All News')
 				a(href='#close').close.close-button
 					img(src=gfx('icons/close_icon.svg'))

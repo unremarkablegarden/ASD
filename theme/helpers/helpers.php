@@ -4,7 +4,8 @@ class Helpers {
     function l($link) {
       if (ICL_LANGUAGE_CODE == 'en') {
         $link = rtrim($link, '/');
-        return $link."/?lang=en";
+        // return $link."/?lang=en";
+        return "/en/".$link;
       } else {
         return $link;
       }

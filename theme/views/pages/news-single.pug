@@ -14,7 +14,11 @@ section.section.news-single
               - $ks .= $slug.','
               li
                 a(href=get_the_permalink($ID))!= get_the_title($ID)   
-          - $link = '/anwalte/?k='.$ks
+          //- - $link = '/anwalte/?k='.$ks
+          - if (ICL_LANGUAGE_CODE == 'en')
+            - $link = '/en/anwalte/?k='.$ks
+          - else
+            - $link = '/anwalte/?k='.$ks
           a(href=$link).button.is-outlined= t('Zu den Anwälten', 'Lawyers')
       else
         .column.is-2

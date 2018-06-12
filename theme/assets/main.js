@@ -47,8 +47,6 @@ browserUpdate({
   insecure:true,
   unsupported:true,
   api:5,
-  // text_xx: 'Hi',
-  // test: true
 })
 
 

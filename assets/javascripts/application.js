@@ -6921,19 +6921,17 @@ __webpack_require__.r(__webpack_exports__);
   var langButton = $('.top-bar a.lang')
   var currentLang = langButton.data('current-lang')
   var toLang = langButton.data('to-lang')
+  var href = langButton.data('href')
   var storedLang = localStorage.getItem('lang')
+
+  var urlLang
+  if (window.location.href.includes('/en/')) { urlLang = 'en' }
+  else { urlLang = 'de' }
+  console.log('urlLang: ' + urlLang)
 
   langButton.on('click', function(e){
     localStorage.setItem('lang', toLang)
-
-    // const href = window.location.href.split('?')[0] + langButton.data('href')
-    var href
-    if (window.location.href.includes('?')) {
-      href = window.location.href.split('?')[0] + langButton.data('href')
-    } else {
-      href = window.location.href + langButton.data('href')
-    }
-    // console.log(href);
+    console.log(href)
     window.location.replace(href)
     e.preventDefault()
   })
@@ -6946,7 +6944,7 @@ __webpack_require__.r(__webpack_exports__);
   if (browserLang.includes('de')) { isntGerman = false }
   else { isntGerman = true }
 
-  if (isntGerman && !storedLang) {
+  if (isntGerman && !storedLang && urlLang == 'de') {
     // is not german
     // has no language stored in localStorage
     console.log('ask if they want to switch')
@@ -6954,16 +6952,10 @@ __webpack_require__.r(__webpack_exports__);
   }
 
   // auto-redirect if lang set but on the wrong page
-  if (storedLang && storedLang !== currentLang) {
-    var href
-    if (window.location.href.includes('?')) {
-      href = window.location.href.split('?')[0] + langButton.data('href')
-    } else {
-      href = window.location.href + langButton.data('href')
-    }
-    // const href = window.location.href + langButton.data('href')
-    // const href = window.location.href.split('?')[0] + langButton.data('href')
-    window.location.replace(href)
+  if (storedLang && storedLang !== urlLang) {
+    console.log('redirecting cus wrong lang: '+href$1)
+    var href$1 = langButton.data('href')
+    window.location.replace(href$1)
   }
 
   $('#language_prompt .close, #language_prompt button[data-action="close"]').on('click', function(){
@@ -6975,7 +6967,8 @@ __webpack_require__.r(__webpack_exports__);
   $('#language_prompt button[data-action="english"]').on('click', function(){
     console.log('change it to en')
     localStorage.setItem('lang', 'en')
-    var href = window.location.href + langButton.data('href')
+    // const href = window.location.href + langButton.data('href')
+    var href = langButton.data('href')
     console.log(href)
     window.location.replace(href)
   })
@@ -7356,8 +7349,6 @@ browser_update__WEBPACK_IMPORTED_MODULE_9___default()({
   insecure:true,
   unsupported:true,
   api:5,
-  // text_xx: 'Hi',
-  // test: true
 })
 
 

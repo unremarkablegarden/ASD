@@ -11,8 +11,6 @@
 - $currentID = get_the_ID()
 - $slug = $post->post_name
 
-//- // - getPrevNext($mainID, 'kompetenzen')
-
 section.section.kompetenzen-single
   .container
     .columns.reverse-column-order-on-mobile
@@ -64,7 +62,7 @@ section.section.kompetenzen-single
               a(href=$mailLink)!= $email
 
         - if (ICL_LANGUAGE_CODE == 'en')
-          - $href = '/anwalte/?lang=en&k='.$slug
+          - $href = '/en/anwalte/?k='.$slug
         - else
           - $href = '/anwalte/?k='.$slug
         a(href=$href).button.is-outlined!= t('Zu den Anwälten', 'Lawyers')
@@ -73,8 +71,8 @@ section.section.kompetenzen-single
         header
           - if ($isSub)
             - $link = '..'
-            - if (ICL_LANGUAGE_CODE == 'en')
-              - $link = '../?lang=en'
+            //- - if (ICL_LANGUAGE_CODE == 'en')
+              //- - $link = '../?lang=en'
             a(href=$link).parent!= get_the_title($mainID)
           - else
             .parent= t('Kompetenzen', 'Expertise')

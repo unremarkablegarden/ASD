@@ -72,7 +72,7 @@
           .columns
             .column.has-text-centered
               - if (ICL_LANGUAGE_CODE == 'en')
-                - $all = '/publikationen/?lang=en&autor='.get_the_ID()
+                - $all = '/en/publikationen/?autor='.get_the_ID()
               - else
                 - $all = '/publikationen/?autor='.get_the_ID()
               a.button.is-outlined.all-pubs(href=$all)= t('Alle Publikationen', 'All publications')
