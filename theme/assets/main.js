@@ -11,7 +11,7 @@ import browserUpdate from 'browser-update'
 import faceDetection from 'jquery.facedetection'
 import glideInit from './javascripts/galleries'
 import imagesLoaded from './javascripts/imagesLoaded'
-import faceCrop from './javascripts/faceCrop'
+// import faceCrop from './javascripts/faceCrop'
 import socialHax from './javascripts/socialHax'
 import langSwitcher from './javascripts/langSwitcher'
 
@@ -67,7 +67,7 @@ const whenDOMready = () => {
   socialHax()
   AOS.refresh()
   glideInit()
-  faceCrop()
+  // faceCrop() 
   anwaltHax()
   langSwitcher()
 }

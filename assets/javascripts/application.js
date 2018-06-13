@@ -6577,81 +6577,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./theme/assets/javascripts/faceCrop.js":
-/*!**********************************************!*\
-  !*** ./theme/assets/javascripts/faceCrop.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function($) {var faceCrop = function () {
-  var img = $('.single-anwalte img.facecrop')
-  if (img.length) {
-    img.imagesLoaded(function(){
-      img.faceDetection({
-        complete: function (faces) {
-          // console.log(faces)
-          if (faces.length) {
-            console.log(faces)
-            var face
-            // get face with highest confidence rating
-            if (faces.length > 1) {
-              face = faces.reduce(function(prev, current) {
-                return (prev.confidence > current.confidence) ? prev : current
-              })
-            } else {
-              face = faces[0]
-            }
-            console.log(face)
-
-            var imgW = img.attr('width')
-            var imgH = img.attr('height')
-            var t = parseInt(face.y)
-            var h = parseInt(face.height)
-
-            if (face.height > 100) { // && face.confidence > 0
-              console.log('found face')
-              var winW = $(window).width()
-              var heroH = $('.hero .inner').height()
-              var maxOffset = (imgH - heroH) / 2
-
-              var ratio = winW / imgW
-              // if (ratio > 1) ratio = 1
-              // // const offset = ((ratio * t * -1) + h)
-              var offset = (t * ratio)
-              // if (offset > maxOffset) { offset = maxOffset }
-
-              offset = (offset - (h*ratio/1.5))
-
-              var imgRealH = winW * (imgH/imgW)
-              var spareMargin = imgRealH - heroH - offset
-
-              offset = offset * -1
-
-              console.log( 'offset: '+offset+'\n heroH: '+heroH)
-
-              if(offset < 0 && spareMargin > 0) {
-                $('.hero .inner').css({ 'background-position-y': offset })
-              }
-            }
-            // } else {
-            //   console.log('no face confidence or face too small')
-            // }
-          }
-        }
-      })
-    })
-  }
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (faceCrop);
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "jquery")))
-
-/***/ }),
-
 /***/ "./theme/assets/javascripts/filterToggle.js":
 /*!**************************************************!*\
   !*** ./theme/assets/javascripts/filterToggle.js ***!
@@ -7297,9 +7222,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _javascripts_galleries__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./javascripts/galleries */ "./theme/assets/javascripts/galleries.js");
 /* harmony import */ var _javascripts_imagesLoaded__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./javascripts/imagesLoaded */ "./theme/assets/javascripts/imagesLoaded.js");
 /* harmony import */ var _javascripts_imagesLoaded__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_javascripts_imagesLoaded__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _javascripts_faceCrop__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./javascripts/faceCrop */ "./theme/assets/javascripts/faceCrop.js");
-/* harmony import */ var _javascripts_socialHax__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./javascripts/socialHax */ "./theme/assets/javascripts/socialHax.js");
-/* harmony import */ var _javascripts_langSwitcher__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./javascripts/langSwitcher */ "./theme/assets/javascripts/langSwitcher.js");
+/* harmony import */ var _javascripts_socialHax__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./javascripts/socialHax */ "./theme/assets/javascripts/socialHax.js");
+/* harmony import */ var _javascripts_langSwitcher__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./javascripts/langSwitcher */ "./theme/assets/javascripts/langSwitcher.js");
 
 
 
@@ -7313,7 +7237,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+// import faceCrop from './javascripts/faceCrop'
 
 
 
@@ -7366,12 +7290,12 @@ var whenDOMready = function () {
   Object(_javascripts_urlQuery__WEBPACK_IMPORTED_MODULE_5__["default"])()
   Object(_javascripts_scroll2top__WEBPACK_IMPORTED_MODULE_6__["default"])()
   Object(_javascripts_search__WEBPACK_IMPORTED_MODULE_7__["default"])()
-  Object(_javascripts_socialHax__WEBPACK_IMPORTED_MODULE_14__["default"])()
+  Object(_javascripts_socialHax__WEBPACK_IMPORTED_MODULE_13__["default"])()
   aos_dist_aos__WEBPACK_IMPORTED_MODULE_8___default.a.refresh()
   Object(_javascripts_galleries__WEBPACK_IMPORTED_MODULE_11__["default"])()
-  Object(_javascripts_faceCrop__WEBPACK_IMPORTED_MODULE_13__["default"])()
+  // faceCrop() 
   anwaltHax()
-  Object(_javascripts_langSwitcher__WEBPACK_IMPORTED_MODULE_15__["default"])()
+  Object(_javascripts_langSwitcher__WEBPACK_IMPORTED_MODULE_14__["default"])()
 }
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "jquery")))
