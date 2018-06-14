@@ -16,11 +16,6 @@ const linkedInJsText = `
 	api_key:   ${linkedIn.api_key}
 	lang:      ${linkedIn.lang}
 `
-// authorize: ${linkedIn.authorize}
-
-// onLoad:    ${linkedIn.onLoad}
-
-
 
 let linkedInScript = document.createElement('script')
 linkedInScript.src = linkedIn.jsSrc

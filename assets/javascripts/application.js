@@ -7110,22 +7110,29 @@ __webpack_require__.r(__webpack_exports__);
   // true/false
 
   $('.is-hidden-mobile .linkedin-item').not('.logo').each(function(){
-    var trimLength = 80
+    var trimLength = 160
 
     // copy the link
     var link = $(this).find('div:first p:first a')
     var href = link.attr('href')
 
-    // check en or de for link text
-    var word
-    if (whichLang() == 'en') { word = 'More' }
-    else { word = 'Mehr' }
-    var newLink = '<a target=_blank href="'+ href +'">'+ word +'</a>'
+    var newLink
+    if(href) {
+      // check en or de for link text
+      var word
+      if (whichLang() == 'en') { word = 'More' }
+      else { word = 'Mehr' }
+      newLink = '<div class="link"><a target=_blank href="'+ href +'">'+ word +'</a></div>'
+    } else {
+      newLink = ''
+    }
 
     link.remove()
     var text = $(this).find('div:first p:first').text()
-    text = text.substring(0, trimLength) + '&hellip;'
-    var html = '<div><p>' + text + '</p><div class="link">' + newLink + '</div></div>'
+    if(text.length > trimLength) {
+      text = text.substring(0, trimLength) + '&hellip;'
+    }
+    var html = '<div><p>' + text + '</p>' + newLink + '</div>'
     $(this).html(html)
   })
 }
