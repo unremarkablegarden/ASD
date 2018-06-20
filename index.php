@@ -28,7 +28,7 @@ else {
     render_view("pages/kompetenzen-index");
   } else if ( if_post_type('kompetenzen') ) {
     render_view("pages/kompetenzen-single");
-  } else if ( is_page('karriere') ) {
+  } else if ( is_page('karriere') || is_page('career') ) {
     render_view("pages/karriere-index");
   } else if ( is_post_type_archive('jobs') ) {
     render_view("pages/jobs-index");
