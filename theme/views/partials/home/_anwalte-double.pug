@@ -41,7 +41,7 @@ section.section.anwalte.is-hidden-mobile
                 .boxy.is-darkblue.aspect-inner
                   .inner
                     p= t('Werden Sie Teil einer Familie', 'Become part of a family')
-                    a(href=t('/karriere', '/en/careers')).button= t('Karriere', 'Career')
+                    a(href=t('/karriere', '/en/career')).button= t('Karriere', 'Career')
             - else
               .column.is-one-third.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).lawyer.aspect-outer
                 - $id = $anwalte[$n]->ID
@@ -93,7 +93,7 @@ section.anwalte.is-hidden-tablet
               .boxy.is-darkblue.aspect-inner
                 .inner
                   p= t('Werden Sie Teil einer Familie', 'Become part of a family')
-                  a(href=t('/karriere', '/en/careers')).button= t('Karriere', 'Career')
+                  a(href=t('/karriere', '/en/career')).button= t('Karriere', 'Career')
           - else
             .glide__slide.has-text-centered(data-aos="fade-up", data-aos-anchor="section.anwalte", data-aos-delay=$delay).lawyer.aspect-outer
               - $id = $anwalte[$n]->ID
