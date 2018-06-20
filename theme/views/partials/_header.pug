@@ -45,10 +45,16 @@ header(class=hasBreaking() ? 'has-breaking-latent' : '')#site-header
       - if (ICL_LANGUAGE_CODE == 'en')
         //- link to german
         - $href = str_replace('/en/', '/', $href)
+        - $href = str_replace('/lawyers', '/anwalte', $href)
+        - $href = str_replace('/expertise', '/kompetenzen', $href)
+        - $href = str_replace('/career', '/karriere', $href)
         a(href='#de', data-href=$href, data-current-lang="en", data-to-lang="de").lang.de
           img(src=gfx('icons/de.svg'))
       - else
         //- link to english
+        - $href = str_replace('/anwalte', '/lawyers', $href)
+        - $href = str_replace('/kompetenzen', '/expertise', $href)
+        - $href = str_replace('/karriere', '/career', $href)
         a(href='#en', data-href=$href, data-current-lang="de", data-to-lang="en").lang.en
           img(src=gfx('icons/en.svg'))
 
