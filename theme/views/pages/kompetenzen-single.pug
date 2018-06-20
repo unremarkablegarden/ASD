@@ -62,7 +62,7 @@ section.section.kompetenzen-single
               a(href=$mailLink)!= $email
 
         - if (ICL_LANGUAGE_CODE == 'en')
-          - $href = '/en/anwalte/?k='.$slug
+          - $href = '/en/lawyers/?k='.$slug
         - else
           - $href = '/anwalte/?k='.$slug
         a(href=$href).button.is-outlined!= t('Zu den Anwälten', 'Lawyers')

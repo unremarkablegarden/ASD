@@ -27,7 +27,7 @@
                 h4.event-title!= $event->post_title
                 .date= $date
                 .location!= get_field('location', $event->ID)
-                a.button.is-outlined(href='/news/?veranstaltungen=1')= t('Alle Events', 'All events')    
+                a.button.is-outlined(href=t('/news/?veranstaltungen=1', '/en/news/?veranstaltungen=1'))= t('Alle Events', 'All events')    
           //- section.feed
             h3 Social-Web
             .boxy

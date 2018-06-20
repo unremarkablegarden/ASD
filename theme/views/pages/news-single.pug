@@ -16,7 +16,7 @@ section.section.news-single
                 a(href=get_the_permalink($ID))!= get_the_title($ID)   
           //- - $link = '/anwalte/?k='.$ks
           - if (ICL_LANGUAGE_CODE == 'en')
-            - $link = '/en/anwalte/?k='.$ks
+            - $link = '/en/lawyers/?k='.$ks
           - else
             - $link = '/anwalte/?k='.$ks
           a(href=$link).button.is-outlined= t('Zu den Anwälten', 'Lawyers')
@@ -54,7 +54,7 @@ section.section.news-single
 - if(get_field('category') == 'news')
   section.section.alle-news
     .container
-        a.button(href='/news')= t('Alle News', 'All news')
+        a.button(href=t('/news', '/en/news'))= t('Alle News', 'All news')
 
 
 - if (get_field('registration_form')[0] == 'true')

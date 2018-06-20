@@ -14,6 +14,6 @@ if ($pub_type == 'pdf')
 		.caption= the_excerpt()
 		.shade
 		if ($pub_type == 'extern')
-			a.button.is-outlined(target = _blank href= $link)= t('Zum Artikel', 'To article')
+			a.button.is-outlined(target='_blank', href=$link)= t('Zum Artikel', 'To article')
 		if ($pub_type == 'pdf')	
-			a.button.is-outlined(target = _blank href= $link) Download PDF
+			a.button.is-outlined(target='_blank', href=$link) Download PDF
