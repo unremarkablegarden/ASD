@@ -31,6 +31,17 @@ section.section.job(data-aos="fade-up")
     .columns.bewerben
       .column.is-6.is-offset-3
         //- h3 Nunc ac malesuada nulla, in mollis eros.
-        .button(href=!the_field('job_tool_url'))= t('Jetzt Bewerben', 'Apply')
-      
+        - $job = get_field('job_tool_url', get_the_ID())
+        - if ($job)
+          - if (strpos($job, '@') !== false)
+            //- is email
+            - $job = 'mailto:'.$job.'?subject='.get_the_title().' / '.$s
+            - $target = ''
+          - else if ((strpos($job,'http://') === false) && (strpos($job,'https://') === false))
+            //- append http if missing
+            - $job = 'http://'.$job
+            - $target = '_blank'
+            
+          a.button(href=$job, target=$target)= t('Jetzt Bewerben', 'Apply')
+        
 - render_partial('partials/newsletter')        
