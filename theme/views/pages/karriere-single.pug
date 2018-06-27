@@ -35,9 +35,12 @@ section.section.job(data-aos="fade-up")
         - if ($job)
           - if (strpos($job, '@') !== false)
             //- is email
-            - if (is_array($s))
-              - $s = explode(', ', $s)
-            - $job = 'mailto:'.$job.'?subject='.get_the_title().' / '.$s
+            - if($s)
+              - if (is_array($s))
+                - $s = ' / '.explode(', ', $s)
+              - else
+                - $s = ' / '.$s
+            - $job = 'mailto:'.$job.'?subject='.get_the_title().$st
             - $target = ''
           - else if ((strpos($job,'http://') === false) && (strpos($job,'https://') === false))
             //- append http if missing
