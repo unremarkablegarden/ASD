@@ -40,7 +40,7 @@ section.section.job(data-aos="fade-up")
                 - $s = ' / '.explode(', ', $s)
               - else
                 - $s = ' / '.$s
-            - $job = 'mailto:'.$job.'?subject='.get_the_title().$st
+            - $job = 'mailto:'.$job.'?subject='.get_the_title().$s
             - $target = ''
           - else if ((strpos($job,'http://') === false) && (strpos($job,'https://') === false))
             //- append http if missing
