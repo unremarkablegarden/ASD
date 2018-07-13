@@ -66,7 +66,12 @@
                 if $url
                   //- .shade
                   - $url = preg_replace('/^(?!https?:\/\/)/', 'http://', $url)
-                  a.button.is-outlined.download(target='_blank' href=$url)= t('Zum Download', 'Link')
+                  - $fileend = substr($url, -4)
+                  - if($fileend == '.pdf')
+                    - $label = t('Zum Download', 'Download')
+                  - else
+                    - $label = t('Zur Website', 'Link')
+                  a.button.is-outlined.download(target='_blank' href=$url)= $label
         
         - $total = count($pubs)
         if $total > 3

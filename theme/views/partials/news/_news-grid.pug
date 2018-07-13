@@ -8,9 +8,11 @@
         - $cat = t('veranstaltungen', 'events')
       .cat= $cat
       .inner
-        .image.is-paddingless
-          .aspect-outer
-            - bg_boxy(get_the_ID())
+        - $hero = get_field('hero_image', get_the_ID())
+        - if($hero)
+          .image.is-paddingless
+            .aspect-outer
+              - bg_boxy(get_the_ID())
         .text
           .subtitle= the_field('subtitle')
           h3.title= the_title()
