@@ -24,6 +24,8 @@ else {
 
   if ( is_front_page() ) {
     render_view("pages/homepage");
+  } else if ( if_post_type('screens') ) {
+    render_view("pages/screens-single");
   } else if ( is_post_type_archive('kompetenzen') ) {
     render_view("pages/kompetenzen-index");
   } else if ( if_post_type('kompetenzen') ) {

@@ -1260,3 +1260,51 @@ footer
     h3
       font-size: 1.4rem
       margin-bottom: 1em
+
+
+body.single-screens
+  // 1080x1920px
+  #site-header, .standorte-overview, footer, .header-spacer
+    display: none !important
+  #main, .page-wrapper, .columns
+    margin: 0 !important
+    padding: 0 !important
+    background-color: transparent
+  #main
+    height: 100vh
+    background-color: white
+    background-image: url('/app/themes/asdlaw-wl/theme/assets/gfx/logo.svg')
+    background-size: 334px auto
+    background-repeat: no-repeat
+    background-position: right 26px top 53px
+
+    color: #194767 !important
+    font-size: 16px
+    line-height: 23px
+    strong, b
+      color: #194767 !important
+      font-size: 22px
+      line-height: 52px
+    i, em
+      color: #9BBCC5 !important
+      font-style: normal !important
+      text-transform: uppercase
+      font-size: 18px
+      line-height: 23px
+    p
+      margin-bottom: 1em
+  .welcome
+    height: 100vh
+    width: 100vw
+    display: flex
+    align-items: center
+    justify-content: center
+    background: transparent
+    h1
+      text-align: center
+      font-size: 64px
+      line-height: 82px
+  .lawyers
+    column-count: 3
+    column-gap: 21px
+    padding: 205px 46px 60px
