@@ -81,7 +81,8 @@
               //- a.city(href=$standort_url)!= get_field('standort', $job->ID)
             a.job-title(href!=get_the_permalink($job->ID))!= $job->post_title
       a.button.is-outlined(href=l('/jobs'))= t('Alle Stellenangebote', 'All job offers')
-          
-  - render_partial('partials/newsletter')
+      
+  //- temporary    
+  //- - render_partial('partials/newsletter')
 
   - render_partial('partials/ansprechpartner')
