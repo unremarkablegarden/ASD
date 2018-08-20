@@ -34,20 +34,27 @@ const anwaltHax = () => {
     const t = $(this).text()
     if (t.includes('joining')) {
       console.log(t)
-
       $(this).text(t.replace('joining', 'joined'))
     }
 
   })
 }
 
+let isNotScreens
+if (!$('body').hasClass('single-screens')) {
+  isNotScreens = true
+} else {
+  isNotScreens = false
+}
 
-browserUpdate({
-  notify:{e:11,f:-4,o:-4,s:-2,c:-6},
-  insecure:true,
-  unsupported:true,
-  api:5,
-})
+if (isNotScreens) {
+  browserUpdate({
+    notify:{e:11,f:-4,o:-4,s:-2,c:-6},
+    insecure:true,
+    unsupported:true,
+    api:5,
+  })
+}
 
 
 $(() => {
@@ -67,7 +74,9 @@ const whenDOMready = () => {
   socialHax()
   AOS.refresh()
   glideInit()
-  // faceCrop() 
+  // faceCrop()
   anwaltHax()
-  langSwitcher()
+  if (isNotScreens) {
+    langSwitcher()
+  }
 }

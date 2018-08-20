@@ -6,5 +6,31 @@
 	.welcome!= get_the_filtered_content()
 
 - else
+	- $dom = new DOMDocument()
+	- $paragraphs = array()
+	- $dom->loadHTML('<?xml encoding="utf-8" ?>' . $content)
+	- foreach($dom->getElementsByTagName('p') as $node)
+		- $paragraphs[] = $dom->saveHTML($node);
+	- $percol = intval((count($paragraphs) / 3) + 1)
+	- $n = -1
+	- $paras = array()
+	- $paras[0] = array()
+	- $paras[1] = array()
+	- $paras[2] = array()
 	
-	.lawyers!= get_the_filtered_content()
+	- for( $i=0; $i<count($paragraphs); $i++ )
+		- if ($i % $percol === 0)
+			- $n++
+		- $paras[$n][] = $paragraphs[$i]
+	
+	.lawyers
+		.columns
+			.column.is-4
+				- for( $i=0; $i<count($paras[0]); $i++ )
+					span!= $paras[0][$i]
+			.column.is-4
+				- for( $i=0; $i<count($paras[1]); $i++ )
+					span!= $paras[1][$i]
+			.column.is-4
+				- for( $i=0; $i<count($paras[2]); $i++ )
+					span!= $paras[2][$i]

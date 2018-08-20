@@ -7267,20 +7267,27 @@ var anwaltHax = function () {
     var t = $(this).text()
     if (t.includes('joining')) {
       console.log(t)
-
       $(this).text(t.replace('joining', 'joined'))
     }
 
   })
 }
 
+var isNotScreens
+if (!$('body').hasClass('single-screens')) {
+  isNotScreens = true
+} else {
+  isNotScreens = false
+}
 
-browser_update__WEBPACK_IMPORTED_MODULE_9___default()({
-  notify:{e:11,f:-4,o:-4,s:-2,c:-6},
-  insecure:true,
-  unsupported:true,
-  api:5,
-})
+if (isNotScreens) {
+  browser_update__WEBPACK_IMPORTED_MODULE_9___default()({
+    notify:{e:11,f:-4,o:-4,s:-2,c:-6},
+    insecure:true,
+    unsupported:true,
+    api:5,
+  })
+}
 
 
 $(function () {
@@ -7300,9 +7307,11 @@ var whenDOMready = function () {
   Object(_javascripts_socialHax__WEBPACK_IMPORTED_MODULE_13__["default"])()
   aos_dist_aos__WEBPACK_IMPORTED_MODULE_8___default.a.refresh()
   Object(_javascripts_galleries__WEBPACK_IMPORTED_MODULE_11__["default"])()
-  // faceCrop() 
+  // faceCrop()
   anwaltHax()
-  Object(_javascripts_langSwitcher__WEBPACK_IMPORTED_MODULE_14__["default"])()
+  if (isNotScreens) {
+    Object(_javascripts_langSwitcher__WEBPACK_IMPORTED_MODULE_14__["default"])()
+  }
 }
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "jquery")))
