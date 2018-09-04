@@ -335,10 +335,22 @@ section.news
   content
     font-family: 'Cardo'
   li
-    list-style-type: circle
+    // list-style-type: circle
     line-height: 2
-  ol li
+  ol
+    counter-reset: item
+    li
+      display: block
+      list-style-type: decimal
+    li:before
+      content: counters(item, ".") " "
+      counter-increment: item
+  li
+    display: block
     list-style-type: decimal
+  li:before
+    content: counters(item, ".") " "
+    counter-increment: item
 
 footer
   .impressum-link, .datenschutz-link
@@ -1265,10 +1277,11 @@ footer
 
 // 1080x1920px
 body.single-screens
+  overflow: hidden !important
   padding: 0 !important
   // overflow: hidden
-  // *
-  //   overflow: hidden !important
+  *
+    overflow: hidden !important
   .cc-window
     display: none !important
     opacity: 0 !important
