@@ -342,15 +342,13 @@ section.news
     li
       display: block
       list-style-type: decimal
-    li:before
-      content: counters(item, ".") " "
-      counter-increment: item
-  li
-    display: block
-    list-style-type: decimal
-  li:before
-    content: counters(item, ".") " "
-    counter-increment: item
+      &:before
+        content: counters(item, ".") " "
+        counter-increment: item
+  ul li
+      list-style-type: disc
+      &:before
+        content: '○ '
 
 footer
   .impressum-link, .datenschutz-link
