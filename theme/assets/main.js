@@ -78,5 +78,12 @@ const whenDOMready = () => {
   anwaltHax()
   if (isNotScreens) {
     langSwitcher()
+  } else {
+    // is screens
+    $('html').css({
+      'overflow': 'hidden',
+      'overflow-y': 'hidden',
+      'overflow-x': 'hidden'
+    })
   }
 }

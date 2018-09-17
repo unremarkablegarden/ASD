@@ -7311,6 +7311,13 @@ var whenDOMready = function () {
   anwaltHax()
   if (isNotScreens) {
     Object(_javascripts_langSwitcher__WEBPACK_IMPORTED_MODULE_14__["default"])()
+  } else {
+    // is screens
+    $('html').css({
+      'overflow': 'hidden',
+      'overflow-y': 'hidden',
+      'overflow-x': 'hidden'
+    })
   }
 }
 
