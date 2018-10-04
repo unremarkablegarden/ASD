@@ -25,7 +25,7 @@ const glideInit = () => {
       } else if (id == 'socialgrid-glide') {
         glideConfig = {
           type: 'carousel',
-          perView: 1.5
+          perView: 1.3
         }
         $('.socialgrid.is-hidden-tablet ul#linkedin-con .glide__slide').unwrap()
       } else if (id == 'acf-glide') {
