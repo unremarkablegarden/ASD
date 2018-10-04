@@ -107,3 +107,14 @@ section.anwalte.is-hidden-tablet
                   h3.title= get_the_title($id)
                   .cat= acf_option_label('status', $id)
                   a(href=get_the_permalink($id)).button.is-inverted.is-outlined= t('Zeigen', 'Show')
+
+    //- .glide__bullets(data-glide-el='controls[nav]')
+      button.glide__bullet(data-glide-dir='=0')
+      button.glide__bullet(data-glide-dir='=1')
+      button.glide__bullet(data-glide-dir='=2')
+
+    .glide__arrows(data-glide-el='controls')
+      .glide__arrow.glide__arrow--left(data-glide-dir='<')
+        i(class='fas fa-chevron-left')
+      .glide__arrow.glide__arrow--right(data-glide-dir='>')
+        i(class='fas fa-chevron-right')

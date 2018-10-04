@@ -56,5 +56,11 @@ section.section.news.is-hidden-tablet
                 .date!= $date
               .category!= $cat
               a.news-title(href=get_the_permalink($news->ID))!= $news->post_title
-        
+              
+        .glide__arrows(data-glide-el='controls').black.nopad
+          .glide__arrow.glide__arrow--left(data-glide-dir='<')
+            i(class='fas fa-chevron-left')
+          .glide__arrow.glide__arrow--right(data-glide-dir='>')
+            i(class='fas fa-chevron-right')
+
     a.button.is-outlined(href= '/news')= t('Alle News', 'All News')

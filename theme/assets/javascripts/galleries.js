@@ -13,7 +13,9 @@ const glideInit = () => {
       if (id == 'anwalte-glide') {
         glideConfig = {
           type: 'carousel',
-          perView: 1.15
+          perView: 1,
+          // gap: 0
+
         }
       } else if (id == 'news-glide') {
         glideConfig = {

@@ -500,7 +500,7 @@ footer
         display: block !important
     .logo1
       +mobile
-        margin-left: 27vw
+        // margin-left: 27vw
       .inner
         background: #0077B5
     .logo2 .inner
@@ -1332,3 +1332,26 @@ body.single-screens
     // column-count: 3
     // column-gap: 21px
     padding: 205px 46px 0px
+
+
+.glide__arrow
+  border: 0 !important
+  box-shadow: none !important
+  font-size: 1.7em
+  text-shadow: 0 0.25em 0.5em rgba(0,0,0,1)
+
+.glide__arrows.black
+  .glide__arrow
+    color: #194767
+
+.glide__arrows
+  .glide__arrow--left
+    left: 10px
+  .glide__arrow--right
+    right: 10px
+
+.glide__arrows.nopad
+  .glide__arrow--left
+    left: 0
+  .glide__arrow--right
+    right: 0
