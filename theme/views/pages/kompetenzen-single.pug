@@ -3,13 +3,17 @@
   - $isSub = true
   - $parentID = $post->post_parent
   - $mainID = $parentID
+  - $parent_post = get_post($parentID)
+  - $slugButton = $parent_post->post_name
 - else
   - $isSub = false
   - $mainID = get_the_ID()
-
+  - $slugButton = $post->post_name
+  
 - $children = fetch_current_children()
 - $currentID = get_the_ID()
 - $slug = $post->post_name
+
 
 section.section.kompetenzen-single
   .container
@@ -62,9 +66,9 @@ section.section.kompetenzen-single
               a(href=$mailLink)!= $email
 
         - if (ICL_LANGUAGE_CODE == 'en')
-          - $href = '/en/lawyers/?k='.$slug
+          - $href = '/en/lawyers/?k='.$slugButton
         - else
-          - $href = '/anwalte/?k='.$slug
+          - $href = '/anwalte/?k='.$slugButton
         a(href=$href).button.is-outlined!= t('Zu den Anwälten', 'Lawyers')
 
       .column.is-7.is-offset-1.main-info(data-aos="fade-left", data-aos-delay="200", data-aos-offset="-100")
