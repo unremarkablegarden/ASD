@@ -6649,7 +6649,7 @@ var glideInit = function () {
       } else if (id == 'socialgrid-glide') {
         glideConfig = {
           type: 'carousel',
-          perView: 1.3
+          perView: 1.23
         }
         $('.socialgrid.is-hidden-tablet ul#linkedin-con .glide__slide').unwrap()
       } else if (id == 'acf-glide') {
