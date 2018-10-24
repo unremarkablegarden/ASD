@@ -20,6 +20,15 @@ function remove_admin_menu_items() {
   }
 }
 
+function screen_editor() {
+  // 17 = Elisabeth Wöller
+  if (get_current_user_id() == 17) {
+    echo '<style>#adminmenu li{display:none}#menu-posts-screens,.wp-first-item{display:block !important}</style>';
+  }
+}
+add_action( 'admin_head', 'screen_editor' );
+
+
 /*
  * Remove Update messages for all users uncommenting the line below
  */
@@ -46,9 +55,9 @@ function remove_update_message() {
 function remove_dashboard_widgets() {
   // Globalize the metaboxes array, this holds all the widgets for wp-admin
   global $wp_meta_boxes;
-  
+
   // Remove the incoming links widget
-  unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']); 
+  unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
 
   // Remove Right Now widget
   unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
@@ -57,7 +66,7 @@ function remove_dashboard_widgets() {
 }
 
 /*
- * Remove some links in Admin bar uncommenting line below and setting $elements array in 
+ * Remove some links in Admin bar uncommenting line below and setting $elements array in
  * remove_admin_bar_links function.
  */
 // add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
@@ -67,7 +76,7 @@ function remove_admin_bar_links() {
     global $wp_admin_bar;
     $elements = array('wp-logo', 'about', 'wporg', 'documentation', 'support-forums', 'feedback', 'updates', 'comments', 'new-content');
     foreach ($elements as $element) {
-      $wp_admin_bar->remove_menu($element);  
+      $wp_admin_bar->remove_menu($element);
     }
 }
 
