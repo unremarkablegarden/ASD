@@ -348,10 +348,14 @@ section.news
       &:before
         content: counters(item, ".") " "
         counter-increment: item
-  ul li
+  // ul li
+  //     list-style-type: disc
+  //     &:before
+  //       content: '○ '
+  ul
+    margin-left: 1.3em
+    li
       list-style-type: disc
-      &:before
-        content: '○ '
 
 footer
   .impressum-link, .datenschutz-link
