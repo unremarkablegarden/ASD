@@ -48,6 +48,10 @@ else {
     render_view("pages/publikationen-index");
   } else if ( is_post_type('publikationen') ) {
     render_view("pages/publikation-single");
+  } else if (is_page('standorte')) {
+    render_view("pages/standort-index");
+  } else if ( is_post_type_archive('standorte') ) {
+    render_view("pages/standort-index");
   } else if ( if_post_type('standorte') ) {
     render_view("pages/standort-single");
   } else if ( is_page('newsletter') ) {
