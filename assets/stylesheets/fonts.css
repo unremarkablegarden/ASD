@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css?family=Cardo");
+@font-face {
+    font-family: 'Din';
+    font-style: italic;
+    font-weight: bold;
+    src: url("../newfonts/din/361044_2_0.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Din';
+    font-style: italic;
+    font-weight: 200;
+    src: url("../newfonts/din/361044_4_0.woff2");
+}
+
+@font-face {
+    font-family: 'Din';
+    font-style: normal;
+    font-weight: 200;
+    src: url("../newfonts/din/361044_5_0.woff2");
+}
+
+@font-face {
+    font-family: 'Din';
+    font-style: normal;
+    font-weight: bold;
+    src: url("../newfonts/din/361044_8_0.woff2");
+}
+
+@font-face {
+    font-family: 'Din';
+    font-style: italic;
+    font-weight: normal;
+    src: url("../newfonts/din/361044_A_0.woff2");
+}
+
+@font-face {
+    font-family: 'Din';
+    font-style: normal;
+    font-weight: normal;
+    src: url("../newfonts/din/361044_B_0.woff2") format("woff2");
+}

@@ -1,4 +1,4 @@
-import browserSyncIt from './javascripts/browserSyncIt'
+// import browserSyncIt from './javascripts/browserSyncIt'
 import headerParallax from './javascripts/headerParallax'
 import shuffler from './javascripts/shuffler'
 import filterToggle from './javascripts/filterToggle'
@@ -8,7 +8,7 @@ import scroll2top from './javascripts/scroll2top'
 import search from './javascripts/search'
 import AOS from 'aos/dist/aos'
 import browserUpdate from 'browser-update'
-import faceDetection from 'jquery.facedetection'
+// import faceDetection from 'jquery.facedetection'
 import glideInit from './javascripts/galleries'
 import imagesLoaded from './javascripts/imagesLoaded'
 // import faceCrop from './javascripts/faceCrop'
@@ -23,6 +23,18 @@ import langSwitcher from './javascripts/langSwitcher'
   \____|\__,_|\___\___|_| |_|  |_|\__,_|_| |_|\___|
 */
 
+
+// var supportsPassive = false;
+// try {
+//   var opts = Object.defineProperty({}, 'passive', {
+//     get: function() {
+//       supportsPassive = true;
+//     }
+//   });
+//   window.addEventListener("testPassive", null, opts);
+//   window.removeEventListener("testPassive", null, opts);
+// } catch (e) {}
+// document.addEventListener('touchstart', fn, supportsPassive ? { passive: true } : false); 
 
 AOS.init({
   disable: 'mobile',
@@ -63,7 +75,7 @@ $(() => {
 
 
 const whenDOMready = () => {
-  browserSyncIt()
+  // browserSyncIt()
   headerAndMenu()
   headerParallax()
   filterToggle()

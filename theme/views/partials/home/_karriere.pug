@@ -11,7 +11,7 @@ section.section.karriere
         .columns.intro
           .column.is-4.is-offset-1(data-aos="fade-right", data-aos-delay="200")
             - $img = get_field('karriere_foto', 4)[sizes]['square']
-            img.image(src!=$img)
+            img.image(src!=$img, alt='Karriere')
           .column.is-6(data-aos="fade-left", data-aos-delay="400")
             h3!= $title
             .social-icons

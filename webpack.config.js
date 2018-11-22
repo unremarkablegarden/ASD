@@ -16,21 +16,30 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 let webpackConfig = {
   entry: [
     path.join(srcDirAssets, '/main.js'),
+    // path.join(srcDirAssets, '/stylesheets/fonts.sass'),
     path.join(srcDirAssets, '/stylesheets/screen.sass'),
   ],
 
-  mode: 'development',
+  // mode: 'development',
+  mode: 'production',
 
   output: {
-    filename: 'application.js',
+    // filename: 'application.js',
+    filename: '[name].bundle.js',
     path: javascriptsDstPath,
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
   },
 
   // stats: "minimal",
   stats: "normal",
 
-  devtool: 'source-map',
-  // devtool: 'cheap-module-source-map',
+  // devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
 
   performance: {
     hints: "warning"
@@ -56,24 +65,25 @@ let webpackConfig = {
           fallback: "style-loader",
           use: [
             // { loader: 'cache' },
-            { loader: 'css-loader',
-							options: {
-								sourceMap: true,
-								minimize: false
-							}
-						},
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                minimize: true
+              }
+            },
             {
               loader: 'postcss-loader',
-							options: {
+              options: {
                 sourceMap: true
               }
             },
             {
-							loader: 'sass-loader',
-							options: {
-								sourceMap: true
-							}
-						},
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            },
           ]
         })
       },
@@ -113,9 +123,15 @@ let webpackConfig = {
   externals: {
     jquery: 'jQuery',
   },
+
   plugins: [
     new ExtractTextPlugin({
       filename: stylesheetDst
+      // filename:  (getPath) => {
+      //   return getPath('../stylesheets/[name].css')
+      // },
+      // filename: "../stylesheets/[name].min.css",
+      // allChunks: true
     }),
 
     new webpack.ProvidePlugin({
@@ -128,23 +144,23 @@ let webpackConfig = {
 
     // new webpack.HotModuleReplacementPlugin(),
 
-    new BrowserSyncPlugin({
-      online: true,
-      cors: true,
-      // reloadOnRestart: true,
-      host: 'localhost',
-      ghostMode: false,
-      files: [{
-        match: [
-          "theme/views/**/*.pug",
-          // "theme/views/**/*.sass",
-        ],
-        options: { ignored: '*safe*' }
-      }],
-      open: false,
-      delay: 200,
-      reload: false
-    })
+    // new BrowserSyncPlugin({
+    //   online: true,
+    //   cors: true,
+    //   // reloadOnRestart: true,
+    //   host: 'localhost',
+    //   ghostMode: false,
+    //   files: [{
+    //     match: [
+    //       "theme/views/**/*.pug",
+    //       // "theme/views/**/*.sass",
+    //     ],
+    //     options: { ignored: '*safe*' }
+    //   }],
+    //   open: false,
+    //   delay: 200,
+    //   reload: false
+    // })
   ],
 };
 

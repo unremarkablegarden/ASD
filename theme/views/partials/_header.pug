@@ -15,24 +15,24 @@ header(class=hasBreaking() ? 'has-breaking-latent' : '')#site-header
         span.icon.close
           .fas.fa-times
         .inner
-          img(src=gfx('icons/sb.svg')).img
+          img(src=gfx('icons/sb.svg'), alt='Language switch').img
           p Would you like to view the English version of this site?
-          button(data-action='english').button Switch to English
-          button(data-action='close').button Close
+          button(data-action='english', aria-label='Switch to English').button Switch to English
+          button(data-action='close', aria-label='Close').button Close
     
   .top-bar
     .controls
       unless (is_front_page())
         a(href='#back').back-button
-          img(src=gfx('icons/back.svg'))
+          img(src=gfx('icons/back.svg'), alt="Back")
 
       a.menu-toggle
-        img(src=gfx('icons/hamburger.svg')).open
-        img(src=gfx('icons/close_hamburger.svg')).close
+        img(src=gfx('icons/hamburger.svg'), alt="Menu").open
+        img(src=gfx('icons/close_hamburger.svg'), alt="Close").close
 
       unless is_page('search')
         a.search-button
-          img(src=gfx('icons/search-l.svg')).search
+          img(src=gfx('icons/search-l.svg'), alt="Search").search
       
       - if(ICL_LANGUAGE_CODE == 'de')
         - $other_lang = 'en'
@@ -49,16 +49,16 @@ header(class=hasBreaking() ? 'has-breaking-latent' : '')#site-header
         - $href = str_replace('/expertise', '/kompetenzen', $href)
         - $href = str_replace('/career', '/karriere', $href)
         a(href='#de', data-href=$href, data-current-lang="en", data-to-lang="de").lang.de
-          img(src=gfx('icons/de.svg'))
+          img(src=gfx('icons/de.svg'), alt="DE")
       - else
         //- link to english
         - $href = str_replace('/anwalte', '/lawyers', $href)
         - $href = str_replace('/kompetenzen', '/expertise', $href)
         - $href = str_replace('/karriere', '/career', $href)
         a(href='#en', data-href=$href, data-current-lang="de", data-to-lang="en").lang.en
-          img(src=gfx('icons/en.svg'))
+          img(src=gfx('icons/en.svg'), alt="EN")
 
     a(href=l('/')).logo
-      img(src=gfx('logo.svg'))
+      img(src=gfx('logo.svg'), alt="ARNECKE SIBETH DABELSTEIN")
 
 .header-spacer

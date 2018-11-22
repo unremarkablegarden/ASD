@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang=ICL_LANGUAGE_CODE)
   head= render_partial("partials/head")
 
   - echo "<body "
@@ -15,5 +15,7 @@ html
   - render_partial("partials/footer")
 
   //- - render_partial("partials/debug")
+  
+  - render_partial("partials/scripts")
   
   - wp_footer()

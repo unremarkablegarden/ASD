@@ -14,7 +14,9 @@ Wordless::set_preference("css.require_libs", array (
   0 => '',
 ));
 Wordless::set_preference("css.lessc_path", "");
-Wordless::set_preference("css.compress", false);
+// Wordless::set_preference("css.compress", false);
+Wordless::set_preference("css.compress", true);
 Wordless::set_preference("js.ruby_path", "/opt/wordless/ruby");
-Wordless::set_preference("js.yui_compress", false);
+// Wordless::set_preference("js.yui_compress", false);
+Wordless::set_preference("js.yui_compress", true);
 Wordless::set_preference("js.yui_munge", false);

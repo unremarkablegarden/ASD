@@ -21,8 +21,8 @@
         - else
           - $label = 'Ergebnisse für'
       label.screen-reader-text(for='s')= $label
-      button.button#searchsubmit(type='submit', value=$v)
+      button.button#searchsubmit(type='submit', value=$v, aria-label=$v)
         i.fas.fa-search
-      input#s(type='text', value=$searched, name='search')
+      input#s(type='text', value=$searched, name='search', aria-label=$v)
         
       //- input(type='hidden', name='lang', value=$lang)

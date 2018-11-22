@@ -277,7 +277,7 @@ class Helpers {
 
         $link = $links[$brand];
 
-        $html = "<div class='social-icon'>\n\t<a href='".$link."' target='".$target."'>\n\t\t<img src='".$img."'>\n\t</a>\n</div>";
+        $html = "<div class='social-icon'>\n\t<a href='".$link."' target='".$target."'>\n\t\t<img src='".$img."' alt='".$brand.".'>\n\t</a>\n</div>";
 
         echo $html;
     }
@@ -319,8 +319,8 @@ class Helpers {
         $prevTitle = get_the_title($prevID);
         $nextTitle = get_the_title($nextID);
 
-        $prevArrow = '<img src="'.gfx('/icons/control_left.svg').'" class="icon"> <span class="text">'.$prevTitle.'</span>';
-        $nextArrow = '<span class="text">'.$nextTitle.'</span> <img src="'.gfx('/icons/control_right.svg').'" class="icon">';
+        $prevArrow = '<img src="'.gfx('/icons/control_left.svg').'" class="icon" alt="'.$prevTitle.'"> <span class="text">'.$prevTitle.'</span>';
+        $nextArrow = '<span class="text">'.$nextTitle.'</span> <img src="'.gfx('/icons/control_right.svg').'" class="icon"  alt="'.$nextTitle.'">';
 
         echo '<div class="next-prev">';
           if (!empty($prevID)) echo '<div><a href="'.get_permalink($prevID).'">'.$prevArrow.'</a></div>';
