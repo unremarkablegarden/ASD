@@ -187,6 +187,26 @@ class Helpers {
         else return $wp_query->posts;
     }
 
+    function fetch_lawyers_by_city($city = 'frankfurt') {
+
+        global $sitepress;
+        $lang = ICL_LANGUAGE_CODE;
+        $sitepress->switch_lang($lang);
+
+        $wp_query = new WP_Query(array(
+            'post_type'      => 'anwalte',
+            'posts_per_page' => -1,
+            'order'          => 'ASC',
+            'orderby'        => 'rand',
+            'post_parent'    => 0, // top level only
+            'meta_key'       => 'standort',
+            'meta_value'     => $city
+        ));
+        // if ($return == 'object') return $wp_query;
+        // else return $wp_query->posts;
+        return $wp_query;
+    }
+
 
     function get_publikationen($authorID, $lim) {
         $pubs = fetch_custom_posts('publikationen');
