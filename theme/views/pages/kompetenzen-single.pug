@@ -69,7 +69,13 @@ section.section.kompetenzen-single
           - $href = '/en/lawyers/?k='.$slugButton
         - else
           - $href = '/anwalte/?k='.$slugButton
-        a(href=$href).button.is-outlined!= t('Zu den Anwälten', 'Lawyers')
+        
+        - if ($slug == 'tax')
+          - $german = 'Zu den Steuerberatern'
+        - else
+          - $german = 'Zu den Anwälten'
+        
+        a(href=$href).button.is-outlined!= t($german, 'Lawyers')
 
       .column.is-7.is-offset-1.main-info(data-aos="fade-left", data-aos-delay="200", data-aos-offset="-100")
         header
