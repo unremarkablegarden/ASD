@@ -59,8 +59,8 @@
             .cat= the_field('category')
             .inner
               .image.is-paddingless
-                .aspect-outer
-                  - bg_boxy(get_the_ID())
+                //- .aspect-outer
+                - bg_boxy(get_the_ID(), 'medium_large', true)
               .text
                 .subtitle= the_field('subtitle')
                 h3.title= the_title()

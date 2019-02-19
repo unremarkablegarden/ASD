@@ -37,13 +37,25 @@ class Helpers {
         }
     }
 
-    function bg_boxy($ID, $size = 'retina-thumb'){
-        $thumb = get_the_post_thumbnail_url($ID, $size);
+    function bg_boxy($ID, $size = 'retina-thumb', $fixed = false){
+        // $thumb = get_the_post_thumbnail_url($ID, $size);
+
+        // echo "<xmp style='text-align: left; font-size: 10px;'>";
+        // print_r(get_field('hero_image', $ID));
+        // echo "</xmp>";
+        // get_field('hero_image', $ID);
+         
         if( ! $thumb) {
             $thumb = get_field('hero_image', $ID);
-            $thumb = $thumb['url'];
+            // $thumb = $thumb['url'];
+            $thumb = $thumb['sizes'][$size];
         }
-        $html = "<div class='bg-boxy aspect-inner' style='background-image: url($thumb);'></div>";
+        if($fixed == false) {
+          $html = "<div class='bg-boxy aspect-inner' style='background-image: url($thumb);' data-size='".$size."'></div>";
+        } else {
+          $html = '<img src="'.$thumb.'" data-size="'.$size.'"/>';
+        }
+        
         echo $html;
     }
 
