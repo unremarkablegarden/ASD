@@ -79,10 +79,30 @@
 
                 - if($anfahrt_pdf)
                   a(href=$anfahrt_pdf, target='_blank').button.is-outlined!= t('Download Anfahrt-PDF', 'Download Directions PDF')
+              
+              .kompetenzen
+                - $js = 'document.getElementById("kompetenzen").classList.toggle("is-hidden")'
+
+                //- button(onclick=$js).button.is-outlined!= t('Kompetenzen', 'Expertise')
+                button(onclick=$js, style='margin: 1rem 0').button.is-outlined.show-directions!= t('Kompetenzen', 'Expertise')
+                br
+
+                ul#kompetenzen.is-hidden
+                  - $menuItems = wp_get_nav_menu_items('kompetenzen')
+                  - $i = 0
+                  each $menu in $menuItems
+                    - $title = $menu->title
+                    - $link = $menu->url
+                    - $i = $i + 1
+                    - $delay = $i * 50
+                    li
+                      span(style='color: #77b1c3') •&nbsp;
+                      a(href=$link, style='color: #77b1c3; font-size: 0.8em;')!= $title
+
 
             .column.is-7.is-offset-1(data-aos="fade-left", data-aos-delay=400, data-aos-offset=-100)
               .content!= get_the_filtered_content()
-              .mtb2em
+              //- .mtb2em
                 - global $post
                 
                 - if (ICL_LANGUAGE_CODE == 'en')
