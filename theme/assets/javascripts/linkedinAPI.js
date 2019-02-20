@@ -31,6 +31,7 @@ $(() => {
 		},
 	  dataType: 'json',
 	  success: function (data) {
+			console.log('---linkedin API---');
 			console.log(data);
 	      // $.each(data, function(index, element) {
 	      //     console.log(element);
