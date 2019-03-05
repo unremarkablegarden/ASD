@@ -123,12 +123,15 @@
                     span= the_title()  
 
 
+
 .anwalte(data-aos="fade-up", data-aos-delay="400")
   section.section.anwalte-grid.is-paddingless
     .columns.is-multiline.is-gapless.shuffler.is-mobile(style='background: #EEE')
       //- - $anwalte = fetch_custom_posts('anwalte', -1, 'rand', 'object')
-      - $anwalte = fetch_lawyers_by_city($post->post_name)
-      
+      - global $post
+      - $city = $post->post_name;
+      - $anwalte = fetch_lawyers_by_city($city)
+
       - $n = 0
       - $c = 0
       - $last = 0
