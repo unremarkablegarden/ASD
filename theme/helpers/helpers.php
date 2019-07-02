@@ -60,10 +60,43 @@ class Helpers {
     }
 
     function acf_option_label($field, $id) {
+      // global $sitepress;
+      // $lang = ICL_LANGUAGE_CODE;
+      // $sitepress->switch_lang($lang);
       $option = get_field($field, $id);
       $arr = get_field_object($field, $id, false, true);
       $label = $arr['choices'][$option];
+      // dirty hack
+      $label = t('München', 'Munich');
       return $label;
+    }
+
+    function acf_get_field_key( $field_name, $post_id ) {
+      global $wpdb;
+      $acf_fields = $wpdb->get_results( $wpdb->prepare( "SELECT ID,post_parent,post_name FROM $wpdb->posts WHERE post_excerpt=%s AND post_type=%s" , $field_name , 'acf-field' ) );
+      // get all fields with that name.
+      switch ( count( $acf_fields ) ) {
+        case 0: // no such field
+          return false;
+        case 1: // just one result. 
+          return $acf_fields[0]->post_name;
+      }
+      // result is ambiguous
+      // get IDs of all field groups for this post
+      $field_groups_ids = array();
+      $field_groups = acf_get_field_groups( array(
+        'post_id' => $post_id,
+      ) );
+      foreach ( $field_groups as $field_group )
+        $field_groups_ids[] = $field_group['ID'];
+      
+      // Check if field is part of one of the field groups
+      // Return the first one.
+      foreach ( $acf_fields as $acf_field ) {
+        if ( in_array($acf_field->post_parent,$field_groups_ids) )
+          return $acf_field->post_name;
+      }
+      return false;
     }
 
 
@@ -108,10 +141,19 @@ class Helpers {
 
 
     function get_field_by_slug($field, $slug, $post_type) {
-        $post = get_page_by_path($slug, OBJECT, $post_type);
-        $field_data = get_field($field, $post->ID);
-        return $field_data;
+      $post = get_page_by_path($slug, OBJECT, $post_type);
+        
+      // Returns the ID of the current custom post
+      $oid = icl_object_id( $post->ID, $post_type, false, ICL_LANGUAGE_CODE );
+      
+      $wpmlID = apply_filters('wpml_object_id', $oid, $post_type, true, ICL_LANGUAGE_CODE);
+
+      $field_data = get_field($field, $wpmlID);
+
+      return $field_data;
     }
+
+
 
 
     function list_custom_posts($type, $links = true, $wrap = 'li', $per_page = -1) {

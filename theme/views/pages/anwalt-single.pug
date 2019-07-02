@@ -5,6 +5,7 @@
       .columns.reverse-column-order-on-mobile
         .column.is-4.details(data-aos="fade-up")
           h4= t('Kontakt', 'Contact')
+
           p.address!= get_field_by_slug('address', get_field('standort'), 'standorte')
           p.phone-mail
             if (get_field('telefon'))
@@ -27,8 +28,10 @@
               - if (get_field('status', get_the_ID()) !== 'none')
                 .status!= acf_option_label('status', get_the_ID())
               h1.name= the_title()
-              //- .city= the_field('standort')
+
+              //- hack in helpers.php
               .city= acf_option_label('standort', get_the_ID())
+
             .vita= the_field('text1')
       .columns
         .column.is-4(data-aos="fade-up", data-aos-offset="200")
