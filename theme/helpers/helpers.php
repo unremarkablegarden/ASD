@@ -67,7 +67,9 @@ class Helpers {
       $arr = get_field_object($field, $id, false, true);
       $label = $arr['choices'][$option];
       // dirty hack
-      $label = t('München', 'Munich');
+      if($field == 'standort' && $option == 'munchen') {
+        $label = t('München', 'Munich');
+      }
       return $label;
     }
 
