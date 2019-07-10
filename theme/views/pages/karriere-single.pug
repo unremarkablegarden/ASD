@@ -12,7 +12,8 @@ section.section.job(data-aos="fade-up")
       .column.is-10.is-offset-1
         header
           h2= the_title()
-      .column.is-4.is-offset-4
+      .column.is-8.is-offset-2
+        //- .is-4.is-offset-4
         ul.meta
           - $s = get_field('standort')
           - if (is_array($s))
