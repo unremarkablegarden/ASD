@@ -456,6 +456,19 @@ class Helpers {
       else return false;
     }
 
+    function get_images_by_id($post_id) {
+      $html = get_the_content_by_id($post_id);
+      // $html = file_get_contents($url);
+      $doc = new DOMDocument();
+      @$doc->loadHTML($html);
+      $tags = $doc->getElementsByTagName('img');
+      $srcs = [];
+      foreach ($tags as $tag) {
+        $srcs[] = $tag->getAttribute('src');
+      }
+      return $srcs;
+    }
+
     function t($de, $en) {
       if(ICL_LANGUAGE_CODE == 'en') {
         return $en;

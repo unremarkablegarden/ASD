@@ -5,11 +5,14 @@
 // This function include screen.css in wp_head() function
 
 function enqueue_stylesheets() {
-  wp_register_style("fonts", stylesheet_url("fonts"), false, false, 'screen');
+  wp_register_style("fonts", stylesheet_url("fonts"), false, false, 'all');
   wp_enqueue_style("fonts");
 
-  wp_register_style("screen", stylesheet_url("screen"), 'fonts', false, 'screen');
+  wp_register_style("screen", stylesheet_url("screen"), 'fonts', false, 'all');
   wp_enqueue_style("screen");
+
+  wp_register_style("print", stylesheet_url("print"), false, false, 'print');
+  wp_enqueue_style("print");
 }
 add_action('wp_enqueue_scripts', 'enqueue_stylesheets');
 

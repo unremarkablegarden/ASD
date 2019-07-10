@@ -1,9 +1,19 @@
 - $events = get_posts_by_custom_field('news', 'category', 'veranstaltungen', 1)  
+- $careerevents = get_posts_by_custom_field('news', 'category', 'karriereveranstaltungen', 1)
+
+if ($careerevents)
+  - $events = $careerevents
+  - $eventype = 'karriereveranstaltungen'
+else
+  - $eventype = 'veranstaltungen'
+
 - $event = $events[0]
 - $month = str_split(substr(get_field('datum', $event->ID), 4), 2)[0];
 - $day = str_split(substr(get_field('datum', $event->ID), 4), 2)[1];
 - $date = $day . '/' . $month
+
 - $jobs = fetch_custom_posts('jobs', 3)
+
 
 .karriere
   section.section.intro
@@ -22,12 +32,12 @@
         aside.column.is-3.is-offset-1.sidebar(data-aos="fade-left")
           if ($events)
             section.upcoming-events
-              h3= t('Veranstaltungen', 'Events')
+              h3= t('Messen & Veranstaltungen', 'Trade fairs & events')
               .boxy
                 h4.event-title!= $event->post_title
                 .date= $date
                 .location!= get_field('location', $event->ID)
-                a.button.is-outlined(href=t('/news/?veranstaltungen=1', '/en/news/?veranstaltungen=1'))= t('Alle Events', 'All events')    
+                a.button.is-outlined(href=t('/news/?'.$eventype.'=1', '/en/news/?'.$eventtype.'=1'))= t('Alle Events', 'All events')    
           //- section.feed
             h3 Social-Web
             .boxy

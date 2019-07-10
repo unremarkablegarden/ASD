@@ -17,6 +17,7 @@ let webpackConfig = {
   entry: [
     path.join(srcDirAssets, '/main.js'),
     // path.join(srcDirAssets, '/stylesheets/fonts.sass'),
+    // path.join(srcDirAssets, '/stylesheets/print.sass'),
     path.join(srcDirAssets, '/stylesheets/screen.sass'),
   ],
 

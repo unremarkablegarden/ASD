@@ -54,6 +54,13 @@ const shuffler = () => {
 				} else {
 					filterState = []
 				}
+
+				// show/hide events footer logos
+				if (target === 'veranstaltungen' || target === 'karriereveranstaltungen') {
+					$('.karriere-logos').removeClass('is-hidden')
+				} else {
+					$('.karriere-logos').addClass('is-hidden')
+				}
       }
 
       $('.filter-toggle.all, .filter-all').on('click', function(){

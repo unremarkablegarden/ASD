@@ -35,8 +35,11 @@ const urlQuery = () => {
     if ($('body').hasClass('post-type-archive-news')) {
       if (params.has('veranstaltungen')) {
         $('[data-filter="veranstaltungen"]').trigger('click')
-        // const standort = params.get('standort')
-        // $('[data-filter="'+standort+'"]').trigger('click')
+        // $('.karriere-logos').removeClass('is-hidden')
+      }
+      if (params.has('karriereveranstaltungen')) {
+        $('[data-filter="karriereveranstaltungen"]').trigger('click')
+        // $('.karriere-logos').removeClass('is-hidden')
       }
     } // end news
 

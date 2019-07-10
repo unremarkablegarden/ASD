@@ -49,6 +49,7 @@ section.section.job(data-aos="fade-up")
             - $job = 'http://'.$job
             - $target = '_blank'
             
-          a.button(href=$job, target=$target)= t('Jetzt Bewerben', 'Apply')
+          a.button(href=$job, target=$target, style='margin-right: 0.5em')= t('Jetzt Bewerben', 'Apply')
+          a.button(href="javascript:window.onclick = function () { window.print() }", style='margin-left: 0.5em')= t('Drucken', 'Print')
         
 - render_partial('partials/newsletter')        
