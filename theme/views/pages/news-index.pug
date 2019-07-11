@@ -8,9 +8,7 @@
       - render_partial('partials/news/news-filter')
       
       - $id = get_id_by_slug('veranstaltungen-grid-copy')
-      h1= $id
       - $content = get_the_content_by_id($id)
-      h2= $content
 
       if ($id)
         .career-text.is-hidden
