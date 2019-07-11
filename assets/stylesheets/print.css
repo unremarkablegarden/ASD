@@ -6,7 +6,16 @@
 .section.job-alert,
 .section.standorte-overview,
 .section.standorte-overview,
-footer
+footer,
+.breaking
 {
   display: none !important;
+}
+
+#site-header .top-bar {
+  background: transparent !important;
+}
+#site-header {
+  position: absolute !important;
+  background: transparent !important;
 }
