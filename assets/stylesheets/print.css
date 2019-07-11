@@ -1,0 +1,12 @@
+.top-bar .controls,
+#search,
+#main-menu,
+#language_prompt,
+.bewerben,
+.section.job-alert,
+.section.standorte-overview,
+.section.standorte-overview,
+footer
+{
+  display: none !important;
+}
