@@ -6,5 +6,16 @@
         //-   - render_partial('partials/page-blurb')
           
       - render_partial('partials/news/news-filter')
+      
+      - $id = get_id_by_slug('veranstaltungen-grid-copy')
+      - $content = get_the_content_by_id($id)
+      if($id)
+        .career-text.is-hidden
+          hr    
+          .columns
+            .column.is-12.is-offset-0
+              .content= $content
+
+
       hr
       div(data-aos="fade-up", data-aos-delay=400)= render_partial('partials/news/news-grid')

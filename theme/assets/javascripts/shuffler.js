@@ -61,6 +61,14 @@ const shuffler = () => {
 				} else {
 					$('.karriere-logos').addClass('is-hidden')
 				}
+
+				if (target === 'karriereveranstaltungen') {
+					$('.career-text').removeClass('is-hidden')
+				}
+				else {
+					$('.career-text').addClass('is-hidden')
+				}
+				
       }
 
       $('.filter-toggle.all, .filter-all').on('click', function(){
