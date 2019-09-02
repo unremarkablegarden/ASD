@@ -347,7 +347,7 @@ class Helpers {
         }
         $img = gfx($img);
 
-        $links[linkedin] = 'https://www.linkedin.com/company/arnecke-sibeth/';
+        $links[linkedin] = 'https://de.linkedin.com/company/arnecke-sibeth-dabelstein';
         $links[facebook] = 'https://www.facebook.com/pages/Arnecke-Sibeth/528421304174745?rf=1023596797662260';
         $links[xing] = 'https://www.xing.com/companies/arneckesibeth?sc_o=da980_e';
 
