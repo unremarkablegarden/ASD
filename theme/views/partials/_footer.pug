@@ -1,4 +1,7 @@
-- render_partial('partials/standorte')
+if (is_post_type_archive('news'))
+	- render_partial('partials/standorte-static')
+else
+	- render_partial('partials/standorte')
 
 footer
 	section.social-links

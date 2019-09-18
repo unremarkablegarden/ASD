@@ -1,0 +1,16 @@
+- $standorte = fetch_custom_posts('standorte')
+- usort($standorte, 'sort_objects')
+
+section.section.standorte-overview
+  .container
+    .columns
+      .column.is-12.is-10-widescreen.is-offset-1-widescreen
+        .columns.is-mobile.is-multiline
+          - $i = 1
+          each $standort in $standorte
+            - $i = $i + 1
+            - $d = $i * 100
+            .column.is-2-desktop.is-6-mobile
+              a.city(href!= get_the_permalink($standort->ID))!= $standort->post_title
+              .address!= get_field('address', $standort->ID)
+              a.plus(href!= get_the_permalink($standort->ID)) +
