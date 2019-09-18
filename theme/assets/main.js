@@ -15,6 +15,8 @@ import glideInit from './javascripts/galleries'
 import socialHax from './javascripts/socialHax'
 import langSwitcher from './javascripts/langSwitcher'
 
+import jump from 'jump.js'
+
 /*
    ____                _   __  __
   / ___|_   _  ___ ___(_) |  \/  | __ _ _ __   ___
@@ -48,8 +50,28 @@ const anwaltHax = () => {
       console.log(t)
       $(this).text(t.replace('joining', 'joined'))
     }
-
   })
+}
+
+const autoAnchorPoints = () => {
+  if ($('.auto-anchor').hasClass('enabled')) {
+    const headings = $('post content').find('h2, h3, h4')
+    let n = 0
+    headings.each(function(){
+      $(this).attr('data-n', n).addClass('anchor')
+      const text = $(this).text()
+      const link = $('<div class="column is-4"><a href="#" data-n="'+n+'" class="kompetenz-link">'+text+'</a></div>')
+      $(link).appendTo('.kompetenzen-list')
+      n += 1
+    })
+
+    $('.auto-anchor a').on('click', function(e) {
+      const n = $(this).data('n')
+      jump('.anchor[data-n="'+n+'"]', { offset: -100 })
+      e.preventDefault()
+      return false
+    })
+  }
 }
 
 let isNotScreens
@@ -88,6 +110,7 @@ const whenDOMready = () => {
   glideInit()
   // faceCrop()
   anwaltHax()
+  autoAnchorPoints()
   if (isNotScreens) {
     langSwitcher()
   } else {

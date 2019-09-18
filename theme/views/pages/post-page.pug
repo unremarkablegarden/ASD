@@ -8,4 +8,8 @@ section.section.standard-page
 				    h3!=get_the_title()
 				    //- .meta!= get_the_date()
 				    //- .cat!= get_the_terms()
+					
+					if (get_field('auto_anchor'))
+						.auto-anchor.enabled.kompetenzen-list.columns.is-multiline
+
 				  content!= get_the_filtered_content()
