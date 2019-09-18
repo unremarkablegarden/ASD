@@ -16,7 +16,7 @@ import socialHax from './javascripts/socialHax'
 import langSwitcher from './javascripts/langSwitcher'
 
 import jump from 'jump.js'
-
+ 
 /*
    ____                _   __  __
   / ___|_   _  ___ ___(_) |  \/  | __ _ _ __   ___
@@ -55,7 +55,7 @@ const anwaltHax = () => {
 
 const autoAnchorPoints = () => {
   if ($('.auto-anchor').hasClass('enabled')) {
-    const headings = $('post content').find('h2, h3, h4')
+    const headings = $('post content').find('h2')
     let n = 0
     headings.each(function(){
       $(this).attr('data-n', n).addClass('anchor')
