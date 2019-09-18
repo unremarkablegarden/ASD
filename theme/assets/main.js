@@ -67,7 +67,10 @@ const autoAnchorPoints = () => {
 
     $('.auto-anchor a').on('click', function(e) {
       const n = $(this).data('n')
-      jump('.anchor[data-n="'+n+'"]', { offset: -100 })
+      const offset = ($('.top-bar').height() + 20) * -1
+      console.log(offset) 
+      
+      jump('.anchor[data-n="'+n+'"]', { offset: offset })
       e.preventDefault()
       return false
     })
