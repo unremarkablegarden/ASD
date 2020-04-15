@@ -14,6 +14,7 @@ import glideInit from './javascripts/galleries'
 // import faceCrop from './javascripts/faceCrop'
 import socialHax from './javascripts/socialHax'
 import langSwitcher from './javascripts/langSwitcher'
+import videoHeader from './javascripts/videoHeader'
 
 import jump from 'jump.js'
  
@@ -114,6 +115,7 @@ const whenDOMready = () => {
   // faceCrop()
   anwaltHax()
   autoAnchorPoints()
+  videoHeader()
   if (isNotScreens) {
     langSwitcher()
   } else {

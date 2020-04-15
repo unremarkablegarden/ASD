@@ -21,8 +21,10 @@ add_action('wp_enqueue_scripts', 'enqueue_stylesheets');
 function enqueue_javascripts() {
 
   wp_deregister_script('jquery');
-  wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, '3.3.1', true);
+  wp_register_script('jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', false, '3.4.1', true);
   wp_enqueue_script('jquery');
+
+  // wp_register_script("vuejs-dev", "https://cdn.jsdelivr.net/npm/vue/dist/vue.js", '', false, false); wp_enqueue_script("vuejs-dev");
 
   wp_register_script('vendors', javascript_url('vendors~main.bundle'), ['jquery'], false, true);
   wp_enqueue_script('vendors');

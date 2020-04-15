@@ -300,3 +300,53 @@ header.has-breaking + .header-spacer
 +mobile
   .back-button
     display: none !important
+
+
+
+#video-header
+  width: 100%
+  height: auto
+  z-index: 0
+  video
+    position: absolute
+    width: 100%
+
+#video-header-img
+  position: relative
+  z-index: 10
+  width: 100%
+  display: flex
+  // justify-content: center
+  align-items: center
+  +mobile
+    height: 200px
+  +tablet
+    height: 320px
+  +desktop
+    height: 360px
+  +widescreen
+    height: 500px
+  +fullhd
+    height: 650px
+  .inner
+    height: auto
+    color: white
+    h1
+      color: white
+    img
+      width: auto
+      +mobile
+        height: 170px
+        margin-left: 15px
+      +tablet
+        height: 272px
+        margin-left: 24px
+      +desktop
+        height: 306px
+        margin-left: 27px
+      +widescreen
+        height: 425px
+        margin-left: 38px
+      +fullhd
+        height: 552px
+        margin-left: 49px

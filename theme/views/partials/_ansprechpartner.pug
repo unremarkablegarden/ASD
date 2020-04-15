@@ -17,37 +17,37 @@
 
 section.section.ansprechpartner(data-aos="fade-up", data-aos-delay=200)
 	.container
-		.columns.is-multiline
-			.column.is-12.is-offset-2
-				h2= t('Ansprechpartner', 'Contact')
-			.column.is-3.is-offset-2
-				img(src!=$thumb, alt="Contact person")
-			.column.is-6.details
-				h3!= $name
-				if ($zusatz)
-					.zusatz!= $zusatz
-				if ($phone)
-					.phone 
-						img.phone-icon(src=gfx('icons/phone_icon.svg'), alt="Phone icon")
-						span!= $phone
-				if ($email)
-					.email
-						img.email-icon(src=gfx('icons/mail_icon.svg'), alt="Email icon")    
-						a(href=$mailto)!= $email
-		.columns
-			.column.is-3.is-offset-2
-				img(src!=$thumb_2, alt="Contact person 2")
-			.column.is-6.details
-				h3!= $name_2
-				if ($zusatz_2)
-					.zusatz!= $zusatz_2
-				if ($phone_2)
-					.phone 
-						img.phone-icon(src=gfx('icons/phone_icon.svg'), alt="Phone icon")
-						span!= $phone_2
-				if ($email_2)
-					.email
-						img.email-icon(src=gfx('icons/mail_icon.svg'), alt="Email icon")    
-						a(href=$mailto_2)!= $email_2
-			
-					
+		if ($name)
+			.columns.is-multiline
+				.column.is-12.is-offset-2
+					h2= t('Ansprechpartner', 'Contact')
+				.column.is-3.is-offset-2
+					img(src!=$thumb, alt!=$name)
+				.column.is-6.details
+					h3!= $name
+					if ($zusatz)
+						.zusatz!= $zusatz
+					if ($phone)
+						.phone 
+							img.phone-icon(src=gfx('icons/phone_icon.svg'), alt="Phone icon")
+							span!= $phone
+					if ($email)
+						.email
+							img.email-icon(src=gfx('icons/mail_icon.svg'), alt="Email icon")    
+							a(href=$mailto)!= $email
+		if ($name_2)
+			.columns
+				.column.is-3.is-offset-2
+					img(src!=$thumb_2, alt!=$name_2)
+				.column.is-6.details
+					h3!= $name_2
+					if ($zusatz_2)
+						.zusatz!= $zusatz_2
+					if ($phone_2)
+						.phone 
+							img.phone-icon(src=gfx('icons/phone_icon.svg'), alt="Phone icon")
+							span!= $phone_2
+					if ($email_2)
+						.email
+							img.email-icon(src=gfx('icons/mail_icon.svg'), alt="Email icon")    
+							a(href=$mailto_2)!= $email_2

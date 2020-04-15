@@ -1707,6 +1707,14 @@ cloneable-readable@^1.0.0:
     process-nextick-args "^2.0.0"
     readable-stream "^2.3.5"
 
+cloudinary-core@^2.7.4:
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/cloudinary-core/-/cloudinary-core-2.7.4.tgz#35db9b8a851ca7ef9feace6e98496a8455de6663"
+
+cloudinary-jquery@^2.7.4:
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/cloudinary-jquery/-/cloudinary-jquery-2.7.4.tgz#f81c5f128b080625c3b66308ce4e42c1004730bb"
+
 co@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/co/-/co-3.1.0.tgz#4ea54ea5a08938153185e15210c68d9092bc1b78"

@@ -1,28 +1,43 @@
+- global $post
+- global $sitepress
+- $lang = ICL_LANGUAGE_CODE
+
 .columns.is-multiline.shuffler
   while (have_posts())
     - the_post()
-    - $filtersData = '["'.get_field('category').'"]'
-    .column.is-4.item.shuffler-item(data-groups=$filtersData)
-      - $cat = get_field('category')
-      - if ($cat == 'veranstaltungen')
-        - $cat = t('Allg. Veranstaltungen', 'events')
-      - else if ($cat == 'karriereveranstaltungen')
-        - $cat = t('karriereveranstaltungen', 'careerevents')
-      .cat= $cat
-      .inner
-        - $hero = get_field('hero_image', get_the_ID())
-        - if($hero)
-          .image.is-paddingless
-            .aspect-outer
-              - bg_boxy(get_the_ID())
-        .text
-          .subtitle= the_field('subtitle')
-          h3.title= the_title()
-          a.button.is-outlined(href!=get_the_permalink())
-            - if (get_field('category') == 'news')
-              span= t('Zum Artikel', 'To article')
-            - else
-              span= t('Zeigen', 'Show')
+    
+    - $l = wpml_get_language_information(get_the_ID())
+    if ($l['language_code'] == 'en')
+      - $post_lang = 'en'
+    else
+      - $post_lang = 'de'
+    
+    //- if (1 == 1)  
+    if ($lang == $post_lang)
+    
+      - $filtersData = '["'.get_field('category').'", "'.$post_lang.'"]'
+      .column.is-4.item.shuffler-item(data-groups=$filtersData)
+        - $cat = get_field('category')
+        - if ($cat == 'veranstaltungen')
+          - $cat = t('Allg. Veranstaltungen', 'events')
+        - else if ($cat == 'karriereveranstaltungen')
+          - $cat = t('karriereveranstaltungen', 'careerevents')
+        .cat= $cat
+        .inner
+          //- h1= $post_lang
+          - $hero = get_field('hero_image', get_the_ID())
+          - if($hero)
+            .image.is-paddingless
+              .aspect-outer
+                - bg_boxy(get_the_ID())
+          .text
+            .subtitle= the_field('subtitle')
+            h3.title= the_title()
+            a.button.is-outlined(href!=get_the_permalink())
+              - if (get_field('category') == 'news')
+                span= t('Zum Artikel', 'To article')
+              - else
+                span= t('Zeigen', 'Show')
 
 .columns.is-multiline.karriere-logos.is-hidden
   - $id = get_id_by_slug('karriereveranstaltungen-footer-logos')

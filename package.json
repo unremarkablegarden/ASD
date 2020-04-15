@@ -16,6 +16,8 @@
     "aos": "^2.2.0",
     "bricks.js": "^1.8.0",
     "browser-update": "^2.3.3",
+    "cloudinary-core": "^2.7.4",
+    "cloudinary-jquery": "^2.7.4",
     "debounce": "^1.1.0",
     "jquery.facedetection": "^2.0.3",
     "jump.js": "^1.0.2",
