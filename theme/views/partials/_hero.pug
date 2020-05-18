@@ -35,3 +35,7 @@ if $hero
     img(src=$hero, width=$imgW, height=$imgH).img.facecrop
     //- img(src=$full, width=$fullW, height=$fullH).img.facecrop
   .hero-spacer
+  
+  if is_front_page()
+    a(href='https://news.asd-law.com/corona/')
+      img(src=t('https://asd-law.com/app/uploads/2020/05/Stoerer_german@2x.png', 'https://asd-law.com/app/uploads/2020/05/Stoerer_engl@2x.png')).covid

@@ -7,8 +7,7 @@
   "author": "'weLaika' <info@welaika.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack --watch",
-    "dev": "webpack-dev-server"
+    "start": "webpack --watch"  
   },
   "dependencies": {
     "@glidejs/glide": "^3.0.1",
