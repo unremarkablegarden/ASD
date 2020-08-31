@@ -31,3 +31,14 @@ add_filter('jpeg_quality', function($arg){ return 90; });
 //     }
 // }
 // add_action('init', 'override_404');
+
+
+ function my_filter_plugin_updates( $value ) {
+	$plug = 'wordless/wordless.php';
+   if( isset( $value->response[$plug] ) ) {        
+      unset( $value->response[$plug] );
+    }
+    return $value;
+ }
+ add_filter( 'site_transient_update_plugins', 'my_filter_plugin_updates' );
+
