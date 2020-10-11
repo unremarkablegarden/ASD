@@ -7,37 +7,49 @@
       - render_partial('partials/karriere/filter')  
       
       .columns.list-head.is-mobile
-        .column.is-6-desktop.is-9-mobile= t('Job', 'Job')
-        .column.is-2-desktop.is-3-mobile= t('Standort', 'Location')
+        .column.is-6-desktop.is-9-mobile= t('Job', 'Job') 
+        .column.is-2-desktop.is-3-mobile= t('Standort', 'Location') 
         .column.is-4-desktop.is-hidden-mobile= t('Karriere-Level', 'Career level')
         //- .column.is-3-desktop.is-hidden-mobile= t('Kategorie', 'Category')
       
       .shuffler.columns.is-multiline
         while (have_posts())
           - the_post()
-          - $i = $i + 1
-          - $delay = ($i+1) * 50
-          - $filtersArray = array()
-          - $stand = get_field('standort')
-          each $s in $stand
-            - $filtersArray[] = $s
-          //- - $filtersArray[] = get_field('career_level')
-          - $levelLabel = acf_option_label('career_level', get_the_ID())
-          - $filtersArray[] = $levelLabel
-          //- - $filtersArray[] = md5(get_field('job_cat'))
-          - $filtersData = '['.implode(', ', array_map('add_double_quotes', $filtersArray)).']'
-          .column.is-12.job.shuffler-item(data-groups=$filtersData)
-            .columns(data-aos="fade-right", data-aos-delay=$delay).is-mobile
-              .column.is-6-desktop.is-9-mobile
-                a(href!=get_the_permalink())= the_title()
-              .column.is-2-desktop.is-3-mobile
-                a(href!=get_the_permalink())= the_field('standort')
-              .column.is-4-desktop.is-hidden-mobile
-                - $label = acf_option_label('career_level', get_the_ID())
-                a(href!=get_the_permalink())= $label
-              //- .column.is-3-desktop.is-hidden-mobile
-                a(href!=get_the_permalink())= the_field('job_cat')
-                    
+          
+          //- - global $post
+          - global $sitepress
+          - $pagelang = ICL_LANGUAGE_CODE
+          - $postlang = wpml_get_language_information(get_the_ID());
+          - $postlang = $postlang['language_code']
+          //- xmp!= print_r($postlang)
+          //- xmp!= 
+          
+          if ($postlang == $pagelang)
+            
+            - $i = $i + 1
+            - $delay = ($i+1) * 50
+            - $filtersArray = array()
+            - $stand = get_field('standort')
+            each $s in $stand
+              - $filtersArray[] = $s
+            //- - $filtersArray[] = get_field('career_level')
+            - $levelLabel = acf_option_label('career_level', get_the_ID())
+            - $filtersArray[] = $levelLabel
+            //- - $filtersArray[] = md5(get_field('job_cat'))
+            - $filtersData = '['.implode(', ', array_map('add_double_quotes', $filtersArray)).']'
+
+            .column.is-12.job.shuffler-item(data-groups=$filtersData)
+              .columns(data-aos="fade-right", data-aos-delay=$delay).is-mobile
+                .column.is-6-desktop.is-9-mobile
+                  a(href!=get_the_permalink())= the_title()
+                .column.is-2-desktop.is-3-mobile
+                  a(href!=get_the_permalink())= the_field('standort')
+                .column.is-4-desktop.is-hidden-mobile
+                  - $label = acf_option_label('career_level', get_the_ID())
+                  a(href!=get_the_permalink())= $label
+                //- .column.is-3-desktop.is-hidden-mobile
+                  a(href!=get_the_permalink())= the_field('job_cat')
+                      
   - render_partial('partials/talent-pool')
 
   - render_partial('partials/ansprechpartner')
