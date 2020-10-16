@@ -90,7 +90,8 @@ else
               span.city= $city
               //- a.city(href=$standort_url)!= get_field('standort', $job->ID)
             a.job-title(href!=get_the_permalink($job->ID))!= $job->post_title
-      a.button.is-outlined(href=l('/jobs'))= t('Alle Stellenangebote', 'All job offers')
+      //- a.button.is-outlined(href=l('/jobs'))= t('Alle Stellenangebote', 'All job offers')
+      a.button.is-outlined(href=t('/jobs', '/en/jobs'))= t('Alle Stellenangebote', 'All job offers')
       
   //- temporary    
   //- - render_partial('partials/newsletter')
