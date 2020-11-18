@@ -29,7 +29,7 @@
           - if($hero)
             .image.is-paddingless
               .aspect-outer
-                - bg_boxy(get_the_ID())
+                - bg_boxy(get_the_ID(), 'thumbnail')
           .text
             .subtitle= the_field('subtitle')
             h3.title= the_title()

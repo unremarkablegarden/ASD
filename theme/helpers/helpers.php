@@ -50,6 +50,7 @@ class Helpers {
           // $thumb = $thumb['url'];
           $thumb = $thumb['sizes'][$size];
         }
+        
         if($fixed == false) {
           $html = "<div class='bg-boxy aspect-inner' style='background-image: url($thumb);' data-size='".$size."'></div>";
         } else {
