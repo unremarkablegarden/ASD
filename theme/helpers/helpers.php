@@ -37,7 +37,8 @@ class Helpers {
         }
     }
 
-    function bg_boxy($ID, $size = 'retina-thumb', $fixed = false){
+    // function bg_boxy($ID, $size = 'retina-thumb', $fixed = false){
+    function bg_boxy($ID, $size = 'thumbnail', $fixed = false){
         // $thumb = get_the_post_thumbnail_url($ID, $size);
 
         // echo "<xmp style='text-align: left; font-size: 10px;'>";
