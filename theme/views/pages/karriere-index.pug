@@ -20,7 +20,7 @@ else
     .container
       .columns
         .column.is-8
-          h2(data-aos="fade-right", data-aos-delay="0").title= the_field('title')
+          h2(data-aos="fade-right", data-aos-delay="0").title= the_field('title') 
           h3(data-aos="fade-right", data-aos-delay="50")= the_field('sub_title')
           p
             .inner(data-aos="fade-right", data-aos-delay="100", data-aos-anchor=".intro")= the_content()
@@ -33,7 +33,7 @@ else
         aside.column.is-3.is-offset-1.sidebar(data-aos="fade-left")
           if ($events)
             section.upcoming-events
-              h3= t('Messen & Veranstaltungen', 'Trade fairs & events')
+              h3= t('Messen & Veranstaltungen', 'Trade fairs & events') 
               .boxy
                 h4.event-title!= $event->post_title
                 .date= $date
@@ -67,11 +67,12 @@ else
           - $children->the_post()
           //- .brick.item(data-aos="fade-up", data-aos-delay=$d, data-aos-anchor=".bricks")
           .column.is-4.item.shuffler-item(data-groups=$filtersData, data-aos="fade-up", data-aos-delay=$d, data-aos-anchor=".karriere-articles")
-            .cat= the_field('category')
+            .cat= the_field('category') 
             .inner
               .image.is-paddingless
                 //- .aspect-outer
-                - bg_boxy(get_the_ID(), 'medium_large', true)
+                //- - bg_boxy(get_the_ID(), 'medium_large', true)
+                - bg_boxy(get_the_ID(), 'thumbnail')  
               .text
                 .subtitle= the_field('subtitle')
                 h3.title= the_title()
