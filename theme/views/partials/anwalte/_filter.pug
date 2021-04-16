@@ -46,10 +46,10 @@ each $filtersection in ['standorte', 'kompetenzen']
 script(src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.0/cash.min.js")
 script.
   $(function () {
-    $('.column').on('click', function(){
+    $('.filter .column').on('click', function(){
       $('.column').removeClass('is-active2');
     })
-    $('*[data-double="true"]').on('click', function(){
+    $('.filter *[data-double="true"]').on('click', function(){
       setTimeout(function(){
         var t = $(this);
         setTimeout(function(){
