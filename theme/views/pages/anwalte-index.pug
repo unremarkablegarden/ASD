@@ -19,7 +19,15 @@
         - $delay = $n * 100
         - $anwalte->the_post()
         - $filters = slugs_string_from_ID_array(get_field('kompetenzen')).get_field('standort')
+        
         - $filtersArray = explode(' ', $filters)
+          
+        if (in_array('hamburg', $filtersArray))
+          - array_push($filtersArray, 'leer')
+        if (in_array('leer', $filtersArray) && !in_array('hamburg', $filtersArray))
+          - array_push($filtersArray, 'hamburg')
+          
+          
         - $filtersData = '['.implode(', ', array_map('add_double_quotes', $filtersArray)).']'
 
         .lawyer.column.content(data-groups=$filtersData).shuffler-item.is-6-mobile.is-one-third-tablet.is-3-desktop.is-3-widescreen.is-is-one-fifth-fullhd.aspect-outer
@@ -29,6 +37,7 @@
           - $style = 'background-image: url('.$thumb.')'
           .bg-boxy(style=$style).aspect-inner          
             .lawyer-details
+              //- div= $filtersData
               h3.title= the_title()
               - if (get_field('status', get_the_ID()) !== 'none')
                 .cat= acf_option_label('status', get_the_ID())

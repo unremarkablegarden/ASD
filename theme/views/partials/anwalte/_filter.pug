@@ -35,5 +35,32 @@ each $filtersection in ['standorte', 'kompetenzen']
         - else
           - $filtertype = 'multi'
         each $post in $posts
-          .column.is-one-third.filter-item(data-filter=$post->post_name, data-filtertype=$filtertype)
-            span!= get_the_title($post->ID)
+          - $t = get_the_title($post->ID) 
+          - $d = 'false'
+          if ($t == 'Hamburg' || $t == 'Leer')
+            - $d = 'true'
+           
+          .column.is-one-third.filter-item(data-filter=$post->post_name, data-filtertype=$filtertype, data-title=$t, data-double=$d)  
+            span!= $t  
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.0/cash.min.js")
+script.
+  $(function () {
+    $('.column').on('click', function(){
+      $('.column').removeClass('is-active2');
+    })
+    $('*[data-double="true"]').on('click', function(){
+      setTimeout(function(){
+        var t = $(this);
+        setTimeout(function(){
+          $('*[data-double="true"]').not(t).addClass('is-active2');
+        }, 20)
+      }, 10)
+    });
+  });
+  
+style.
+  .filter .is-active2 span {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #444;
+  }
