@@ -70,11 +70,11 @@ else
             .cat= the_field('category') 
             .inner
               .image.is-paddingless
-                //- .aspect-outer
                 //- xmp
                   - bg_boxy(get_the_ID(), 'medium_large', true)
                 //- xmp
-                - bg_boxy(get_the_ID(), 'thumbnail', true)  
+                .aspect-outer
+                  - bg_boxy(get_the_ID(), 'thumbnail')
               .text
                 .subtitle= the_field('subtitle')
                 h3.title= the_title()

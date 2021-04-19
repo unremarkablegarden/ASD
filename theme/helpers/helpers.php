@@ -46,11 +46,11 @@ class Helpers {
         // echo "</xmp>";
         // get_field('hero_image', $ID);
          
-        if( ! $thumb) {
+        // if( ! $thumb) {
           $thumb = get_field('hero_image', $ID);
           // $thumb = $thumb['url'];
           $thumb = $thumb['sizes'][$size];
-        }
+        // }
         
         if($fixed == false) {
           $html = "<div class='bg-boxy aspect-inner' style='background-image: url($thumb);' data-size='".$size."'></div>";

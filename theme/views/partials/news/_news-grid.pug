@@ -26,6 +26,8 @@
         .inner
           //- h1= $post_lang
           - $hero = get_field('hero_image', get_the_ID())
+          //- xmp
+            //- - print_r($hero['sizes']['thumbnail'])
           - if($hero)
             .image.is-paddingless
               .aspect-outer
