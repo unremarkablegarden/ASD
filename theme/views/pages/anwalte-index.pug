@@ -22,11 +22,10 @@
         
         - $filtersArray = explode(' ', $filters)
           
-        if (in_array('hamburg', $filtersArray))
-          - array_push($filtersArray, 'leer')
-        if (in_array('leer', $filtersArray) && !in_array('hamburg', $filtersArray))
-          - array_push($filtersArray, 'hamburg')
-          
+        //- if (in_array('hamburg', $filtersArray))
+        //-   - array_push($filtersArray, 'leer')
+        //- if (in_array('leer', $filtersArray) && !in_array('hamburg', $filtersArray))
+        //-   - array_push($filtersArray, 'hamburg')
           
         - $filtersData = '['.implode(', ', array_map('add_double_quotes', $filtersArray)).']'
 

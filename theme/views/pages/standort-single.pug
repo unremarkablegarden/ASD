@@ -129,8 +129,24 @@
     .columns.is-multiline.is-gapless.shuffler.is-mobile(style='background: #EEE')
       //- - $anwalte = fetch_custom_posts('anwalte', -1, 'rand', 'object')
       - global $post
-      - $city = $post->post_name;
+      - $city = $post->post_name
       - $anwalte = fetch_lawyers_by_city($city)
+      
+      if ($city == 'hamburg')
+        - $city2 = 'leer'
+        - $anwalte2 = fetch_lawyers_by_city($city2)
+        - $anwalte2 = $anwalte2->posts
+        - $anwalte1 = $anwalte->posts
+        - $all_anwalte = array_merge($anwalte1, $anwalte2)
+        - $anwalte->posts = $all_anwalte
+        - $anwalte->post_count = count($anwalte->posts)
+        - $anwalte->found_posts = count($anwalte->posts)
+        
+        
+        
+
+      //- xmp
+        - print_r($anwalte)
 
       - $n = 0
       - $c = 0
@@ -150,6 +166,7 @@
           - $style = 'background-image: url('.$thumb.')'
           .bg-boxy(style=$style).aspect-inner          
             .lawyer-details
+              h1!= $n
               h3.title= the_title()
               - if (get_field('status', get_the_ID()) !== 'none')
                 .cat= acf_option_label('status', get_the_ID())
@@ -157,6 +174,9 @@
           
 
         - $last = $last + 1
+        
+        
+        
         //- - if (rand(0,6) == ($n%7) && $last !== 3)
         //-   - $c = $c+1
         //-   - $last = 0
@@ -168,4 +188,3 @@
 - $map = get_field('map')
 if $map
   .map.snazzy!= $map
-  
