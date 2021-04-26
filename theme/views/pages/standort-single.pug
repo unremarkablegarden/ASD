@@ -166,7 +166,6 @@
           - $style = 'background-image: url('.$thumb.')'
           .bg-boxy(style=$style).aspect-inner          
             .lawyer-details
-              h1!= $n
               h3.title= the_title()
               - if (get_field('status', get_the_ID()) !== 'none')
                 .cat= acf_option_label('status', get_the_ID())
